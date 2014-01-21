@@ -1,7 +1,5 @@
 package com.avconv4java.util;
 
-import java.util.List;
-
 /**
  * @author Vladislav Bauer
  */
@@ -16,15 +14,23 @@ public final class AVTextUtils {
     }
 
 
-    public static String join(final List<String> arguments) {
+    public static String join(final Iterable<String> arguments) {
         return join(arguments, SPACE);
     }
 
-    public static String join(final List<String> arguments, final String delimiter) {
+    public static String join(final Iterable<String> arguments, final String delimiter) {
         final StringBuilder buf = new StringBuilder();
-        for (final String arg : arguments) {
-            buf.append(arg).append(delimiter);
+        boolean first = true;
 
+        for (final String arg : arguments) {
+            if (arg != null) {
+                if (first) {
+                    first = false;
+                } else {
+                    buf.append(delimiter);
+                }
+                buf.append(arg);
+            }
         }
         return buf.toString();
     }
