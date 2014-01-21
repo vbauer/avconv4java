@@ -2,6 +2,7 @@ package com.avconv4java.core;
 
 import com.avconv4java.util.AVTextUtils;
 
+import java.lang.reflect.Method;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -104,7 +105,14 @@ public class AVCommand {
         final ProcessBuilder builder = new ProcessBuilder(pArgs);
         if (isDebug()) {
             LOGGER.info(AVTextUtils.join(pArgs));
-            builder.inheritIO();
+
+            // Invoke "inheritIO" for Java 7+
+            try {
+                final Method inheritIO = ProcessBuilder.class.getMethod("inheritIO");
+                inheritIO.invoke(builder);
+            } catch (final Exception ignored) {
+                // Ignore
+            }
         }
         return builder.start();
     }
