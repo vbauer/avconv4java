@@ -66,3 +66,7 @@ This command is equivalent to the following:
 ```bash
 /usr/bin/avconv -i inputFile -y -vf scale=w=trunc(800/2)*2:h=trunc(ow/a/2)*2 -vcodec libx264 -movflags faststart -acodec libvo_aacenc -ab 128k -b 1000k -ac 2 -ar 11025 outputFile
 ```
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/vbauer/avconv4java/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
