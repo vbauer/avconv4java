@@ -28,11 +28,14 @@ public class AVGenericOptions {
 
     public AVGenericOptions flags(final Object... flags) {
         if (flags != null && flags.length > 0) {
+            final List<String> newFlags = new LinkedList<String>();
             for (final Object flag : flags) {
-                if (flag != null) {
-                    arguments.add(String.valueOf(flag));
+                if (flag == null) {
+                    return this;
                 }
+                newFlags.add(String.valueOf(flag));
             }
+            arguments.addAll(newFlags);
         }
         return this;
     }
