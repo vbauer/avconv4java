@@ -32,8 +32,8 @@ public class AVAudioOptions extends AVGenericOptions {
      * ‘-aq q (output)’
      * Set the audio quality (codec-specific, VBR). This is an alias for -q:a.
      */
-    public AVAudioOptions audioFreq(final int freq) {
-        return flags("-aq", freq);
+    public AVAudioOptions audioQuality(final int quality) {
+        return flags("-aq", quality);
     }
 
     /**
