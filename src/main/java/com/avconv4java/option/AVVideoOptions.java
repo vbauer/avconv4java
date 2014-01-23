@@ -79,7 +79,7 @@ public class AVVideoOptions extends AVGenericOptions {
      * ‘-vframes number (output)’
      * Set the number of video frames to record. This is an alias for -frames:v.
      */
-    public AVVideoOptions videoFramesCount(final int frames) {
+    public AVVideoOptions videoFramesCount(final Integer frames) {
         return flags("-vframes", frames);
     }
 

@@ -48,4 +48,40 @@ public class AVAudioOptions extends AVGenericOptions {
         return flags("-ab", bitRate + "k");
     }
 
+    /**
+     * ‘-an (output)’
+     * Disable audio recording.
+     */
+    public AVAudioOptions disableAudioRecording() {
+        return flags("-an");
+    }
+
+    /**
+     * ‘-aframes number (output)’
+     * Set the number of audio frames to record. This is an alias for -frames:a.
+     */
+    public AVAudioOptions audioFramesCount(final Long count) {
+        return flags("-aframes", count);
+    }
+
+    /**
+     * ‘-ac[:stream_specifier] channels (input/output,per-stream)’
+     * Set the number of audio channels. For output streams it is set by default to the number of input audio channels.
+     * For input streams this option only makes sense for audio grabbing devices and raw demuxers and is mapped to the
+     * corresponding demuxer options.
+     */
+    public AVAudioOptions audioChannelsCount(final Integer count) {
+        return flags("-ac", count);
+    }
+
+    /**
+     ‘-ar[:stream_specifier] freq (input/output,per-stream)’
+     * Set the audio sampling frequency. For output streams it is set by default to the frequency of the corresponding
+     * input stream. For input streams this option only makes sense for audio grabbing devices and raw demuxers and is
+     * mapped to the corresponding demuxer options.
+     */
+    public AVAudioOptions sampleRate(final Integer sampleRate) {
+        return flags("-ar", sampleRate);
+    }
+
 }
