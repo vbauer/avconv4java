@@ -35,11 +35,11 @@ final AVOptions options = AVOptions.create(inputFile, outputFile)
             .movFlags(AVMovFlagsType.FAST_START),
         AVAudioOptions.create()
             .audioCodec(AVAudioCodecType.VISUAL_ON_AAC)
-            .audioBitRate(128),
+            .audioBitRate(128)
+            .audioChannelsCount(2)
+            .sampleRate(11025),
         AVCodecOptions.create()
             .videoBitRate(1000)
-            .audioChannelsCount(2)
-            .sampleRate(11025)
     )
 ```
 
