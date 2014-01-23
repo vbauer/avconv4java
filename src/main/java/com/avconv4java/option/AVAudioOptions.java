@@ -41,7 +41,11 @@ public class AVAudioOptions extends AVGenericOptions {
      * Set the audio codec. This is an alias for -codec:a.
      */
     public AVAudioOptions audioCodec(final AVAudioCodecType codecType) {
-        return flags("-acodec", codecType.getName());
+        return audioCodec(codecType == null ? null : codecType.getName());
+    }
+
+    public AVAudioOptions audioCodec(final String codecTypeName) {
+        return flags("-acodec", codecTypeName);
     }
 
     public AVAudioOptions audioBitRate(final int bitRate) {

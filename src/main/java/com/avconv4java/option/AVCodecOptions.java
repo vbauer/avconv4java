@@ -26,7 +26,11 @@ public class AVCodecOptions extends AVGenericOptions {
 
 
     public AVCodecOptions strict(final AVStrictType strictType) {
-        return flags("-strict", strictType.getName());
+        return strict(strictType == null ? null : strictType.getName());
+    }
+
+    public AVCodecOptions strict(final String strictTypeName) {
+        return flags("-strict", strictTypeName);
     }
 
     public AVCodecOptions videoBitRate(final Integer bitRate) {

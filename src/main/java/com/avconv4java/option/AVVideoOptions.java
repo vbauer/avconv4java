@@ -34,7 +34,11 @@ public class AVVideoOptions extends AVGenericOptions {
      * Set the video codec. This is an alias for -codec:v.
      */
     public AVVideoOptions videoCodec(final AVVideoCodecType codecType) {
-        return flags("-vcodec", codecType.getName());
+        return videoCodec(codecType == null ? null : codecType.getName());
+    }
+
+    public AVVideoOptions videoCodec(final String codecTypeName) {
+        return flags("-vcodec", codecTypeName);
     }
 
     public AVVideoOptions resize(final Integer width, final Integer height) {
@@ -68,11 +72,19 @@ public class AVVideoOptions extends AVGenericOptions {
     }
 
     public AVVideoOptions fileFormat(final AVFileFormatType formatType) {
-        return flags("-f", formatType.getName());
+        return fileFormat(formatType == null ? null : formatType.getName());
+    }
+
+    public AVVideoOptions fileFormat(final String formatTypeName) {
+        return flags("-f", formatTypeName);
     }
 
     public AVVideoOptions movFlags(final AVMovFlagsType movFlagsType) {
-        return flags("-movflags", movFlagsType.getName());
+        return movFlags(movFlagsType == null ? null : movFlagsType.getName());
+    }
+
+    public AVVideoOptions movFlags(final String movFlagsTypeName) {
+        return flags("-movflags", movFlagsTypeName);
     }
 
     /**
