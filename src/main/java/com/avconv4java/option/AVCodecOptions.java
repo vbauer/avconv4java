@@ -1,6 +1,7 @@
 package com.avconv4java.option;
 
 import com.avconv4java.core.AVGenericOptions;
+import com.avconv4java.model.AVDebugInfoType;
 import com.avconv4java.model.AVStrictType;
 
 /**
@@ -35,6 +36,18 @@ public class AVCodecOptions extends AVGenericOptions {
 
     public AVCodecOptions videoBitRate(final Integer bitRate) {
         return bitRate == null ? this : flags("-b", bitRate + "k");
+    }
+
+    /**
+     * ‘-debug[:stream_specifier] flags (input/output,audio,video,subtitles)’
+     * Print specific debug info.
+     */
+    public AVCodecOptions debug(final AVDebugInfoType debugInfoType) {
+        return debug(debugInfoType == null ? null : debugInfoType.getName());
+    }
+
+    public AVCodecOptions debug(final String debugInfoTypeName) {
+        return flags("-debug", debugInfoTypeName);
     }
 
 }
