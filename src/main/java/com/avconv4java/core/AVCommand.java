@@ -23,19 +23,25 @@ public class AVCommand {
     public static final int EXIT_CODE_ERROR = 1;
 
     private static final Logger LOGGER = Logger.getLogger(AVCommand.class.getSimpleName());
-    private static String toolPath = DEFAULT_PATH;
+    private static String globalToolPath = DEFAULT_PATH;
 
     private boolean debug;
+    private String toolPath;
     private Long timeout;
 
 
-    public static void setGlobalSearchPath(final String toolPath) {
-        AVCommand.toolPath = toolPath;
+    public static void setGlobalToolPath(final String toolPath) {
+        AVCommand.globalToolPath = toolPath;
     }
 
 
     public int run(final AVOptions operation) throws Exception {
-        final List<String> arguments = prepareArguments(operation);
+        final List<String> flags = operation.build();
+        return run(flags);
+    }
+
+    public int run(final List<String> flags) throws Exception {
+        final List<String> arguments = prepareArguments(flags);
         final Process process = startProcess(arguments);
         final Long timeout = getTimeout();
 
@@ -63,6 +69,14 @@ public class AVCommand {
     public AVCommand setTimeout(final Long timeout) {
         this.timeout = timeout;
         return this;
+    }
+
+    public String getToolPath() {
+        return toolPath;
+    }
+
+    public void setToolPath(final String toolPath) {
+        this.toolPath = toolPath;
     }
 
 
@@ -117,10 +131,14 @@ public class AVCommand {
         return builder.start();
     }
 
-    private List<String> prepareArguments(final AVOptions operation) throws Exception {
+    private List<String> prepareArguments(final List<String> flags) {
+        final String path = toolPath == null ? AVCommand.globalToolPath : toolPath;
         final List<String> parameters = new LinkedList<String>();
-        parameters.add(AVCommand.toolPath);
-        parameters.addAll(operation.build());
+
+        parameters.add(path);
+        if (flags != null) {
+            parameters.addAll(flags);
+        }
         return parameters;
     }
 
