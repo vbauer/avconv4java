@@ -11,7 +11,7 @@ import java.util.Collection;
  */
 
 @Test
-public class AVTextUtilsTest {
+public class AVUtilsTest {
 
     private static final String WORLD = "World!";
     private static final String HELLO = "Hello,";
@@ -22,14 +22,15 @@ public class AVTextUtilsTest {
     public void testJoin() {
         final Collection<String> data = Arrays.asList(HELLO, WORLD);
 
-        Assert.assertEquals(AVTextUtils.SPACE, SPACE);
+        Assert.assertEquals(AVUtils.SPACE, SPACE);
 
-        Assert.assertEquals(AVTextUtils.join(data), AVTextUtils.join(data, AVTextUtils.SPACE));
-        Assert.assertEquals(AVTextUtils.join(data), HELLO_WORLD);
-        Assert.assertEquals(AVTextUtils.join(data), HELLO_WORLD);
+        Assert.assertEquals(AVUtils.join(data), AVUtils.join(data, AVUtils.SPACE));
+        Assert.assertEquals(AVUtils.join(data), HELLO_WORLD);
+        Assert.assertEquals(AVUtils.join(data), HELLO_WORLD);
 
-        Assert.assertEquals(AVTextUtils.join(Arrays.<String>asList(null, null)), "");
-        Assert.assertEquals(AVTextUtils.join(null), "");
+        Assert.assertEquals(AVUtils.join(Arrays.<String>asList(null, null)), "");
+        Assert.assertEquals(AVUtils.join((String) null), "");
+        Assert.assertEquals(AVUtils.join((Iterable<String>) null), "");
     }
 
 }

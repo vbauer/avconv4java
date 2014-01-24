@@ -1,6 +1,6 @@
 package com.avconv4java.core;
 
-import com.avconv4java.util.AVTextUtils;
+import com.avconv4java.util.AVUtils;
 
 import java.lang.reflect.Method;
 import java.util.LinkedList;
@@ -118,7 +118,7 @@ public class AVCommand {
     private Process startProcess(final List<String> pArgs) throws Exception {
         final ProcessBuilder builder = new ProcessBuilder(pArgs);
         if (isDebug()) {
-            LOGGER.info(AVTextUtils.join(pArgs));
+            LOGGER.info(AVUtils.join(pArgs));
 
             // Invoke "inheritIO" for Java 7+
             try {

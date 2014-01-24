@@ -1,6 +1,6 @@
 package com.avconv4java.core;
 
-import com.avconv4java.util.AVTextUtils;
+import com.avconv4java.util.AVUtils;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -22,7 +22,7 @@ public class AVGenericOptions {
 
     @Override
     public String toString() {
-        return AVTextUtils.join(build());
+        return AVUtils.join(build());
     }
 
 
@@ -62,7 +62,7 @@ public class AVGenericOptions {
     }
 
 
-    protected final String kb(final Integer value) {
+    protected final String kb(final Number value) {
         return value == null ? null : value + "k";
     }
 

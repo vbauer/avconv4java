@@ -1,18 +1,28 @@
 package com.avconv4java.util;
 
+import java.util.Arrays;
+
 /**
  * @author Vladislav Bauer
  */
 
-public final class AVTextUtils {
+public final class AVUtils {
 
     public static final String SPACE = " ";
 
 
-    private AVTextUtils() {
+    private AVUtils() {
         throw new UnsupportedOperationException();
     }
 
+
+    public static boolean isEmpty(Object... arguments) {
+        return arguments == null || arguments.length == 0;
+    }
+
+    public static String join(final String... arguments) {
+        return join(isEmpty(arguments) ? null : Arrays.asList(arguments), SPACE);
+    }
 
     public static String join(final Iterable<String> arguments) {
         return join(arguments, SPACE);
