@@ -20,16 +20,17 @@ public final class AVTextUtils {
 
     public static String join(final Iterable<String> arguments, final String delimiter) {
         final StringBuilder buf = new StringBuilder();
-        boolean first = true;
-
-        for (final String arg : arguments) {
-            if (arg != null) {
-                if (first) {
-                    first = false;
-                } else {
-                    buf.append(delimiter);
+        if (arguments != null) {
+            boolean first = true;
+            for (final String arg : arguments) {
+                if (arg != null) {
+                    if (first) {
+                        first = false;
+                    } else {
+                        buf.append(delimiter);
+                    }
+                    buf.append(arg);
                 }
-                buf.append(arg);
             }
         }
         return buf.toString();

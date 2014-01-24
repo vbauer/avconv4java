@@ -22,14 +22,14 @@ public class AVTextUtilsTest {
     public void testJoin() {
         final Collection<String> data = Arrays.asList(HELLO, WORLD);
 
-        Assert.assertEquals(SPACE, AVTextUtils.SPACE);
+        Assert.assertEquals(AVTextUtils.SPACE, SPACE);
 
-        Assert.assertEquals(AVTextUtils.join(data, AVTextUtils.SPACE), AVTextUtils.join(data));
-        Assert.assertEquals(HELLO_WORLD, AVTextUtils.join(data));
-        Assert.assertEquals(HELLO_WORLD, AVTextUtils.join(data));
+        Assert.assertEquals(AVTextUtils.join(data), AVTextUtils.join(data, AVTextUtils.SPACE));
+        Assert.assertEquals(AVTextUtils.join(data), HELLO_WORLD);
+        Assert.assertEquals(AVTextUtils.join(data), HELLO_WORLD);
 
-        Assert.assertEquals("", AVTextUtils.join(Arrays.<String>asList(null, null)));
-        Assert.assertEquals("", AVTextUtils.join(null));
+        Assert.assertEquals(AVTextUtils.join(Arrays.<String>asList(null, null)), "");
+        Assert.assertEquals(AVTextUtils.join(null), "");
     }
 
 }

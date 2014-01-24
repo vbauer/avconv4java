@@ -36,9 +36,9 @@ public class AVOptionsTest {
             );
 
         final String flags = options.toString();
-        Assert.assertEquals(
-            "-i input.avi -y -vf scale=w=trunc(800/2)*2:h=trunc(ow/a/2)*2 -vcodec libx264 -movflags faststart "
-            + "-acodec libvo_aacenc -ab 128k -ac 2 -ar 11025 -b 1000k output.mp4", flags
+        Assert.assertEquals(flags,
+            "-i input.avi -y -vf scale=w=800:h=trunc(ow/a/2)*2 -vcodec libx264 -movflags faststart "
+            + "-acodec libvo_aacenc -ab 128k -ac 2 -ar 11025 -b 1000k output.mp4"
         );
     }
 

@@ -42,15 +42,18 @@ public class AVVideoOptions extends AVGenericOptions {
     }
 
     public AVVideoOptions resize(final Integer width, final Integer height) {
-        final StringBuilder size = new StringBuilder();
-        if (width != null) {
-            size.append(String.valueOf(width));
+        if (width != null || height != null) {
+            final StringBuilder size = new StringBuilder();
+            if (width != null) {
+                size.append(String.valueOf(width));
+            }
+            size.append("x");
+            if (height != null) {
+                size.append(String.valueOf(height));
+            }
+            return flags("-s:v", size);
         }
-        size.append("x");
-        if (height != null) {
-            size.append(String.valueOf(height));
-        }
-        return flags("-s:v", size);
+        return this;
     }
 
     /**
@@ -60,11 +63,15 @@ public class AVVideoOptions extends AVGenericOptions {
      * This is an alias for -filter:v.
      */
     public AVVideoOptions filter(final String filter) {
-        return flags("-vf", String.format("%s", filter));
+        return flags("-vf", filter);
     }
 
     public AVVideoOptions proportionalResizeUsingWidth(final Integer width) {
-        return filter(String.format("scale=w=trunc(%d/2)*2:h=trunc(ow/a/2)*2", width));
+        if (width != null) {
+            final int correctWidth = width - width % 2;
+            return filter(String.format("scale=w=%d:h=trunc(ow/a/2)*2", correctWidth));
+        }
+        return this;
     }
 
     public AVVideoOptions frameRate(final Integer rate) {
