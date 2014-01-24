@@ -74,6 +74,14 @@ public class AVVideoOptions extends AVGenericOptions {
         return this;
     }
 
+    public AVVideoOptions proportionalResizeUsingHeight(final Integer height) {
+        if (height != null) {
+            final int correctHeight = height - height % 2;
+            return filter(String.format("scale=w=trunc(oh/a/2)*2:h=%d", correctHeight));
+        }
+        return this;
+    }
+
     public AVVideoOptions frameRate(final Integer rate) {
         return flags("-r", rate);
     }
