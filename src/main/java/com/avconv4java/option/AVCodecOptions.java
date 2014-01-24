@@ -3,6 +3,7 @@ package com.avconv4java.option;
 import com.avconv4java.core.AVGenericOptions;
 import com.avconv4java.model.AVCodecFlagType;
 import com.avconv4java.model.AVDebugInfoType;
+import com.avconv4java.model.AVMotionEstimationType;
 import com.avconv4java.model.AVStrictType;
 
 /**
@@ -51,6 +52,18 @@ public class AVCodecOptions extends AVGenericOptions {
      */
     public AVCodecOptions videoBitRateTolerance(final Integer bitRate) {
         return flags("-bt", kb(bitRate));
+    }
+
+    /**
+     * ‘-me_method[:stream_specifier] integer (output,video)’
+     * Set motion estimation method.
+     */
+    public AVCodecOptions motionEstimationMethod(final AVMotionEstimationType motionEstimationType) {
+        return motionEstimationMethod(motionEstimationType == null ? null : motionEstimationType.getName());
+    }
+
+    public AVCodecOptions motionEstimationMethod(final String motionEstimationTypeName) {
+        return flags("-me_method", motionEstimationTypeName);
     }
 
     /**

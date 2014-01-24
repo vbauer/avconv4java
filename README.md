@@ -25,7 +25,7 @@ Example
 First of all you need to configure options for avconv command. Builder pattern allows to do it as simple as possible:
 
 ```java
-final AVOptions options = AVOptions.create(inputFile, outputFile)
+final AVOptions options = AVOptions.create("input.avi", "output.mp4")
     .builders(
         AVMainOptions.create()
             .overwriteOutput(),
