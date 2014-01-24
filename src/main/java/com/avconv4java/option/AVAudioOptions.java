@@ -49,7 +49,7 @@ public class AVAudioOptions extends AVGenericOptions {
     }
 
     public AVAudioOptions audioBitRate(final int bitRate) {
-        return flags("-ab", bitRate + "k");
+        return flags("-ab", kb(bitRate));
     }
 
     /**

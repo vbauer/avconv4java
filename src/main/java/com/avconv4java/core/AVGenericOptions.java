@@ -22,7 +22,7 @@ public class AVGenericOptions {
 
     @Override
     public String toString() {
-        return AVTextUtils.join(arguments);
+        return AVTextUtils.join(build());
     }
 
 
@@ -59,6 +59,11 @@ public class AVGenericOptions {
             result.addAll(builder.build());
         }
         return result;
+    }
+
+
+    protected final String kb(final Integer value) {
+        return value == null ? null : value + "k";
     }
 
 }

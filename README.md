@@ -39,7 +39,7 @@ final AVOptions options = AVOptions.create(inputFile, outputFile)
             .audioChannelsCount(2)
             .sampleRate(11025),
         AVCodecOptions.create()
-            .videoBitRate(1000)
+            .bitRate(1000)
     )
 ```
 

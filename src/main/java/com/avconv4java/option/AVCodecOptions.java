@@ -1,6 +1,7 @@
 package com.avconv4java.option;
 
 import com.avconv4java.core.AVGenericOptions;
+import com.avconv4java.model.AVCodecFlagType;
 import com.avconv4java.model.AVDebugInfoType;
 import com.avconv4java.model.AVStrictType;
 
@@ -34,8 +35,22 @@ public class AVCodecOptions extends AVGenericOptions {
         return flags("-strict", strictTypeName);
     }
 
-    public AVCodecOptions videoBitRate(final Integer bitRate) {
-        return bitRate == null ? this : flags("-b", bitRate + "k");
+    /**
+     * ‘-b[:stream_specifier] integer (output,audio,video)’
+     * Set bitrate (in kbits/s).
+     */
+    public AVCodecOptions bitRate(final Integer bitRate) {
+        return flags("-b", kb(bitRate));
+    }
+
+    /**
+     * ‘-bt[:stream_specifier] integer (output,video)’
+     * Set video bitrate tolerance (in kbits/s). In 1-pass mode, bitrate tolerance specifies how far ratecontrol is
+     * willing to deviate from the target average bitrate value. This is not related to minimum/maximum bitrate.
+     * Lowering tolerance too much has an adverse effect on quality.
+     */
+    public AVCodecOptions videoBitRateTolerance(final Integer bitRate) {
+        return flags("-bt", kb(bitRate));
     }
 
     /**
@@ -48,6 +63,17 @@ public class AVCodecOptions extends AVGenericOptions {
 
     public AVCodecOptions debug(final String debugInfoTypeName) {
         return flags("-debug", debugInfoTypeName);
+    }
+
+    /**
+     * ‘-flags[:stream_specifier] flags (input/output,audio,video)’
+     */
+    public AVCodecOptions codecFlags(final AVCodecFlagType flagType) {
+        return codecFlags(flagType == null ? null : flagType.getName());
+    }
+
+    public AVCodecOptions codecFlags(final String flagTypeName) {
+        return flags("-flags", flagTypeName);
     }
 
 }
