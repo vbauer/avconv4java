@@ -64,7 +64,7 @@ This command is equivalent to the following:
 
 
 ```bash
-/usr/bin/avconv -i inputFile -y -vf scale=w=trunc(800/2)*2:h=trunc(ow/a/2)*2 -vcodec libx264 -movflags faststart -acodec libvo_aacenc -ab 128k -b 1000k -ac 2 -ar 11025 outputFile
+/usr/bin/avconv -i input.avi -y -vf scale=w=trunc(800/2)*2:h=trunc(ow/a/2)*2 -vcodec libx264 -movflags faststart -acodec libvo_aacenc -ab 128k -b 1000k -ac 2 -ar 11025 output.mp4
 ```
 
 
