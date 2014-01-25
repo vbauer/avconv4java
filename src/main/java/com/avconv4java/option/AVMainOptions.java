@@ -15,6 +15,9 @@ public class AVMainOptions extends AVGenericOptions {
     public static final String FLAG_SEEK = "-ss";
     public static final String FLAG_INPUT_TIME_OFFSET = "-itsoffset";
     public static final String FLAG_DATA_FRAMES = "-dframes";
+    public static final String FLAG_METADATA = "-metadata";
+
+    public static final String FORMAT_METADATA = "%s=\"%s\"";
 
 
     public static AVMainOptions create() {
@@ -103,6 +106,24 @@ public class AVMainOptions extends AVGenericOptions {
 
     public AVMainOptions inputTimeOffset(final Double position) {
         return inputTimeOffset(sec(position));
+    }
+
+    /**
+     * ‘-metadata[:metadata_specifier] key=value (output,per-metadata)’
+     * Set a metadata key/value pair.
+     *
+     * An optional metadata_specifier may be given to set metadata on streams or chapters. See -map_metadata
+     * documentation for details. This option overrides metadata set with -map_metadata. It is also possible to delete
+     * metadata by using an empty value.
+     *
+     * For example, for setting the title in the output file:
+     * avconv -i in.avi -metadata title="my title" out.flv
+     *
+     * To set the language of the first audio stream:
+     * avconv -i INPUT -metadata:s:a:0 language=eng OUTPUT
+     */
+    public AVMainOptions metadata(final String key, final Object value) {
+        return flags(FLAG_METADATA, format(FORMAT_METADATA, key, value));
     }
 
     /**

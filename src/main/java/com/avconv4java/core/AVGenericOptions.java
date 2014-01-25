@@ -62,12 +62,20 @@ public class AVGenericOptions {
     }
 
 
-    public final String kb(final Number value) {
+    protected final String kb(final Number value) {
         return value == null ? null : value + "k";
     }
 
-    public final String sec(final Double position) {
-        return position == null ? null : String.format("%.2f", position);
+    protected final String sec(final Double position) {
+        return format("%.2f", position);
+    }
+
+    protected final Integer even(final Integer value) {
+        return value == null ? null : (value - value % 2);
+    }
+
+    protected final String format(final String filter, final Object... params) {
+        return filter == null || AVUtils.hasNull(params) ? null : String.format(filter, params);
     }
 
 }

@@ -74,24 +74,16 @@ public class AVVideoOptions extends AVGenericOptions {
      * Use the option "-filters" to show all the available filters (including also sources and sinks).
      * This is an alias for -filter:v.
      */
-    public AVVideoOptions filter(final String filter) {
-        return flags(FLAG_FILTER, filter);
+    public AVVideoOptions filter(final String filter, final Object... params) {
+        return flags(FLAG_FILTER, format(filter, params));
     }
 
     public AVVideoOptions proportionalResizeUsingWidth(final Integer width) {
-        if (width != null) {
-            final int correctWidth = width - width % 2;
-            return filter(String.format(FILTER_SCALE_BY_WIDTH, correctWidth));
-        }
-        return this;
+        return filter(FILTER_SCALE_BY_WIDTH, even(width));
     }
 
     public AVVideoOptions proportionalResizeUsingHeight(final Integer height) {
-        if (height != null) {
-            final int correctHeight = height - height % 2;
-            return filter(String.format(FILTER_SCALE_BY_HEIGHT, correctHeight));
-        }
-        return this;
+        return filter(FILTER_SCALE_BY_HEIGHT, even(height));
     }
 
     public AVVideoOptions frameRate(final Integer rate) {

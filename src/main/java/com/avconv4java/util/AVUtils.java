@@ -1,6 +1,7 @@
 package com.avconv4java.util;
 
 import java.util.Arrays;
+import java.util.Map;
 
 /**
  * @author Vladislav Bauer
@@ -16,9 +17,35 @@ public final class AVUtils {
     }
 
 
+    public static boolean hasNull(final Object... arguments) {
+        if (!isEmpty(arguments)) {
+            for (final Object argument : arguments) {
+                if (argument == null) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        return true;
+    }
+
     public static boolean isEmpty(Object... arguments) {
         return arguments == null || arguments.length == 0;
     }
+
+    public static boolean isEmpty(final Map map) {
+        return map == null || map.isEmpty();
+    }
+
+
+    public static String trimToNull(final CharSequence text) {
+        if (text != null) {
+            final String trim = text.toString().trim();
+            return trim.length() > 0 ? trim : null;
+        }
+        return null;
+    }
+
 
     public static String join(final String... arguments) {
         return join(isEmpty(arguments) ? null : Arrays.asList(arguments), SPACE);
@@ -29,7 +56,7 @@ public final class AVUtils {
     }
 
     public static String join(final Iterable<String> arguments, final String delimiter) {
-        final StringBuilder buf = new StringBuilder();
+        final StringBuilder buffer = new StringBuilder();
         if (arguments != null) {
             boolean first = true;
             for (final String arg : arguments) {
@@ -37,13 +64,13 @@ public final class AVUtils {
                     if (first) {
                         first = false;
                     } else {
-                        buf.append(delimiter);
+                        buffer.append(delimiter);
                     }
-                    buf.append(arg);
+                    buffer.append(arg);
                 }
             }
         }
-        return buf.toString();
+        return trimToNull(buffer);
     }
 
 }
