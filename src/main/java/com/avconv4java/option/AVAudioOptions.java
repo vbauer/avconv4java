@@ -11,6 +11,14 @@ import com.avconv4java.model.AVAudioCodecType;
 
 public class AVAudioOptions extends AVGenericOptions {
 
+    public static final String FLAG_AUDIO_QUALITY = "-aq";
+    public static final String FLAG_AUDIO_CODEC = "-acodec";
+    public static final String FLAG_AUDIO_BIT_RATE = "-ab";
+    public static final String FLAG_DISABLE_AUDIO_RECORDING = "-an";
+    public static final String FLAG_AUDIO_FRAMES_COUNT = "-aframes";
+    public static final String FLAG_AUDIO_CHANNELS_COUNT = "-ac";
+    public static final String FLAG_SAMPLE_RATE = "-ar";
+
 
     public static AVAudioOptions create() {
         return new AVAudioOptions();
@@ -33,7 +41,7 @@ public class AVAudioOptions extends AVGenericOptions {
      * Set the audio quality (codec-specific, VBR). This is an alias for -q:a.
      */
     public AVAudioOptions audioQuality(final int quality) {
-        return flags("-aq", quality);
+        return flags(FLAG_AUDIO_QUALITY, quality);
     }
 
     /**
@@ -45,11 +53,11 @@ public class AVAudioOptions extends AVGenericOptions {
     }
 
     public AVAudioOptions audioCodec(final String codecTypeName) {
-        return flags("-acodec", codecTypeName);
+        return flags(FLAG_AUDIO_CODEC, codecTypeName);
     }
 
     public AVAudioOptions audioBitRate(final int bitRate) {
-        return flags("-ab", kb(bitRate));
+        return flags(FLAG_AUDIO_BIT_RATE, kb(bitRate));
     }
 
     /**
@@ -57,7 +65,7 @@ public class AVAudioOptions extends AVGenericOptions {
      * Disable audio recording.
      */
     public AVAudioOptions disableAudioRecording() {
-        return flags("-an");
+        return flags(FLAG_DISABLE_AUDIO_RECORDING);
     }
 
     /**
@@ -65,7 +73,7 @@ public class AVAudioOptions extends AVGenericOptions {
      * Set the number of audio frames to record. This is an alias for -frames:a.
      */
     public AVAudioOptions audioFramesCount(final Long count) {
-        return flags("-aframes", count);
+        return flags(FLAG_AUDIO_FRAMES_COUNT, count);
     }
 
     /**
@@ -75,7 +83,7 @@ public class AVAudioOptions extends AVGenericOptions {
      * corresponding demuxer options.
      */
     public AVAudioOptions audioChannelsCount(final Integer count) {
-        return flags("-ac", count);
+        return flags(FLAG_AUDIO_CHANNELS_COUNT, count);
     }
 
     /**
@@ -85,7 +93,7 @@ public class AVAudioOptions extends AVGenericOptions {
      * mapped to the corresponding demuxer options.
      */
     public AVAudioOptions sampleRate(final Integer sampleRate) {
-        return flags("-ar", sampleRate);
+        return flags(FLAG_SAMPLE_RATE, sampleRate);
     }
 
 }

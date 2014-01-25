@@ -12,6 +12,14 @@ import com.avconv4java.model.AVStrictType;
 
 public class AVCodecOptions extends AVGenericOptions {
 
+    public static final String FLAG_STRICT = "-strict";
+    public static final String FLAG_BIT_RATE = "-b";
+    public static final String FLAG_VIDEO_BIT_RATE_TOLERANCE = "-bt";
+    public static final String FLAG_MOTION_ESTIMATION_METHOD = "-me_method";
+    public static final String FLAG_DEBUG = "-debug";
+    public static final String FLAG_CODEC_FLAGS = "-flags";
+
+
     public static AVCodecOptions create() {
         return new AVCodecOptions();
     }
@@ -33,7 +41,7 @@ public class AVCodecOptions extends AVGenericOptions {
     }
 
     public AVCodecOptions strict(final String strictTypeName) {
-        return flags("-strict", strictTypeName);
+        return flags(FLAG_STRICT, strictTypeName);
     }
 
     /**
@@ -41,7 +49,7 @@ public class AVCodecOptions extends AVGenericOptions {
      * Set bitrate (in kbits/s).
      */
     public AVCodecOptions bitRate(final Integer bitRate) {
-        return flags("-b", kb(bitRate));
+        return flags(FLAG_BIT_RATE, kb(bitRate));
     }
 
     /**
@@ -51,7 +59,7 @@ public class AVCodecOptions extends AVGenericOptions {
      * Lowering tolerance too much has an adverse effect on quality.
      */
     public AVCodecOptions videoBitRateTolerance(final Integer bitRate) {
-        return flags("-bt", kb(bitRate));
+        return flags(FLAG_VIDEO_BIT_RATE_TOLERANCE, kb(bitRate));
     }
 
     /**
@@ -63,7 +71,7 @@ public class AVCodecOptions extends AVGenericOptions {
     }
 
     public AVCodecOptions motionEstimationMethod(final String motionEstimationTypeName) {
-        return flags("-me_method", motionEstimationTypeName);
+        return flags(FLAG_MOTION_ESTIMATION_METHOD, motionEstimationTypeName);
     }
 
     /**
@@ -75,7 +83,7 @@ public class AVCodecOptions extends AVGenericOptions {
     }
 
     public AVCodecOptions debug(final String debugInfoTypeName) {
-        return flags("-debug", debugInfoTypeName);
+        return flags(FLAG_DEBUG, debugInfoTypeName);
     }
 
     /**
@@ -86,7 +94,7 @@ public class AVCodecOptions extends AVGenericOptions {
     }
 
     public AVCodecOptions codecFlags(final String flagTypeName) {
-        return flags("-flags", flagTypeName);
+        return flags(FLAG_CODEC_FLAGS, flagTypeName);
     }
 
 }

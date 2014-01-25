@@ -62,8 +62,12 @@ public class AVGenericOptions {
     }
 
 
-    protected final String kb(final Number value) {
+    public final String kb(final Number value) {
         return value == null ? null : value + "k";
+    }
+
+    public final String sec(final Double position) {
+        return position == null ? null : String.format("%.2f", position);
     }
 
 }

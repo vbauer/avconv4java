@@ -13,6 +13,18 @@ import com.avconv4java.model.AVVideoCodecType;
 
 public class AVVideoOptions extends AVGenericOptions {
 
+    public static final String FLAG_VIDEO_CODEC = "-vcodec";
+    public static final String FLAG_RESIZE = "-s:v";
+    public static final String FLAG_FRAME_RATE = "-r";
+    public static final String FLAG_FILE_FORMAT = "-f";
+    public static final String FLAG_MOV_FLAGS = "-movflags";
+    public static final String FLAG_VIDEO_FRAMES_COUNT = "-vframes";
+    public static final String FLAG_FILTER = "-vf";
+
+    public static final String FILTER_SCALE_BY_WIDTH = "scale=w=%d:h=trunc(ow/a/2)*2";
+    public static final String FILTER_SCALE_BY_HEIGHT = "scale=w=trunc(oh/a/2)*2:h=%d";
+
+
     public static AVVideoOptions create() {
         return new AVVideoOptions();
     }
@@ -38,7 +50,7 @@ public class AVVideoOptions extends AVGenericOptions {
     }
 
     public AVVideoOptions videoCodec(final String codecTypeName) {
-        return flags("-vcodec", codecTypeName);
+        return flags(FLAG_VIDEO_CODEC, codecTypeName);
     }
 
     public AVVideoOptions resize(final Integer width, final Integer height) {
@@ -51,7 +63,7 @@ public class AVVideoOptions extends AVGenericOptions {
             if (height != null) {
                 size.append(String.valueOf(height));
             }
-            return flags("-s:v", size);
+            return flags(FLAG_RESIZE, size);
         }
         return this;
     }
@@ -63,13 +75,13 @@ public class AVVideoOptions extends AVGenericOptions {
      * This is an alias for -filter:v.
      */
     public AVVideoOptions filter(final String filter) {
-        return flags("-vf", filter);
+        return flags(FLAG_FILTER, filter);
     }
 
     public AVVideoOptions proportionalResizeUsingWidth(final Integer width) {
         if (width != null) {
             final int correctWidth = width - width % 2;
-            return filter(String.format("scale=w=%d:h=trunc(ow/a/2)*2", correctWidth));
+            return filter(String.format(FILTER_SCALE_BY_WIDTH, correctWidth));
         }
         return this;
     }
@@ -77,13 +89,13 @@ public class AVVideoOptions extends AVGenericOptions {
     public AVVideoOptions proportionalResizeUsingHeight(final Integer height) {
         if (height != null) {
             final int correctHeight = height - height % 2;
-            return filter(String.format("scale=w=trunc(oh/a/2)*2:h=%d", correctHeight));
+            return filter(String.format(FILTER_SCALE_BY_HEIGHT, correctHeight));
         }
         return this;
     }
 
     public AVVideoOptions frameRate(final Integer rate) {
-        return flags("-r", rate);
+        return flags(FLAG_FRAME_RATE, rate);
     }
 
     public AVVideoOptions fileFormat(final AVFileFormatType formatType) {
@@ -91,7 +103,7 @@ public class AVVideoOptions extends AVGenericOptions {
     }
 
     public AVVideoOptions fileFormat(final String formatTypeName) {
-        return flags("-f", formatTypeName);
+        return flags(FLAG_FILE_FORMAT, formatTypeName);
     }
 
     public AVVideoOptions movFlags(final AVMovFlagsType movFlagsType) {
@@ -99,7 +111,7 @@ public class AVVideoOptions extends AVGenericOptions {
     }
 
     public AVVideoOptions movFlags(final String movFlagsTypeName) {
-        return flags("-movflags", movFlagsTypeName);
+        return flags(FLAG_MOV_FLAGS, movFlagsTypeName);
     }
 
     /**
@@ -107,7 +119,7 @@ public class AVVideoOptions extends AVGenericOptions {
      * Set the number of video frames to record. This is an alias for -frames:v.
      */
     public AVVideoOptions videoFramesCount(final Integer frames) {
-        return flags("-vframes", frames);
+        return flags(FLAG_VIDEO_FRAMES_COUNT, frames);
     }
 
 }

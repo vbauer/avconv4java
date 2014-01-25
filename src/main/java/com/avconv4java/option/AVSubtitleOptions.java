@@ -8,6 +8,10 @@ import com.avconv4java.core.AVGenericOptions;
 
 public class AVSubtitleOptions extends AVGenericOptions {
 
+    public static final String FLAG_SUBTITLE_CODEC = "-scodec";
+    public static final String FLAG_DISABLE_SUBTITLE_RECORDING = "-sn";
+
+
     public static AVSubtitleOptions create() {
         return new AVSubtitleOptions();
     }
@@ -29,7 +33,7 @@ public class AVSubtitleOptions extends AVGenericOptions {
      * Set the subtitle codec. This is an alias for -codec:s.
      */
     public AVSubtitleOptions subtitleCodec(final String codecName) {
-        return flags("-scodec", codecName);
+        return flags(FLAG_SUBTITLE_CODEC, codecName);
     }
 
     /**
@@ -37,7 +41,7 @@ public class AVSubtitleOptions extends AVGenericOptions {
      * Disable subtitle recording.
      */
     public AVSubtitleOptions disableSubtitleRecording() {
-        return flags("-sn");
+        return flags(FLAG_DISABLE_SUBTITLE_RECORDING);
     }
 
 }
