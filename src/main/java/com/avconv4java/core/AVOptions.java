@@ -1,56 +1,81 @@
 package com.avconv4java.core;
 
+import com.avconv4java.util.AVUtils;
+
+import java.util.LinkedList;
 import java.util.List;
 
 /**
  * @author Vladislav Bauer
  */
 
-public class AVOptions extends AVGenericOptions {
+public class AVOptions {
 
-    private final String outputFile;
-
-
-    private AVOptions(final String inputFile, final String outputFile) {
-        this.outputFile = outputFile;
-        inputFile(inputFile);
-    }
+    private final List<AVOptions> builders = new LinkedList<AVOptions>();
+    private final List<String> arguments = new LinkedList<String>();
 
 
-    public static AVOptions create(final String inputFile, final String outputFile) {
-        return new AVOptions(inputFile, outputFile);
+    public static AVOptions create() {
+        return new AVOptions();
     }
 
 
     @Override
+    public String toString() {
+        return AVUtils.join(build());
+    }
+
+
     public AVOptions flags(final Object... flags) {
-        return (AVOptions) super.flags(flags);
+        if (flags != null && flags.length > 0) {
+            final List<String> newFlags = new LinkedList<String>();
+            for (final Object flag : flags) {
+                if (flag == null) {
+                    return this;
+                }
+                newFlags.add(String.valueOf(flag));
+            }
+            arguments.addAll(newFlags);
+        }
+        return this;
     }
 
-    @Override
-    public AVOptions builders(final AVGenericOptions... builders) {
-        return (AVOptions) super.builders(builders);
+    public AVOptions builders(final AVOptions... builders) {
+        if (builders != null && builders.length > 0) {
+            for (final AVOptions builder : builders) {
+                if (builder instanceof AVRootOptions) {
+                    throw new IllegalArgumentException("It's impossible to add root options as child node");
+                }
+                this.builders.add(builder);
+            }
+        }
+        return this;
     }
 
-    @Override
     public List<String> build() {
-        final List<String> result = super.build();
-        result.add(outputFile);
+        final List<String> result = new LinkedList<String>();
+        result.addAll(arguments);
+        for (final AVOptions builder : builders) {
+            result.addAll(builder.build());
+        }
         return result;
     }
 
 
-    public String getOutputFile() {
-        return outputFile;
+    protected final String kb(final Number value) {
+        return value == null ? null : value + "k";
     }
 
+    protected final String sec(final Double position) {
+        return format("%.2f", position);
+    }
 
-    /**
-     * ‘-i filename (input)’
-     * input file name
-     */
-    private AVOptions inputFile(final String filename) {
-        return flags("-i", filename);
+    protected final Integer even(final Integer value) {
+        return value == null ? null : (value - value % 2);
+    }
+
+    protected final String format(final String filter, final Object... params) {
+        return filter == null || AVUtils.hasNull(params) ? null : String.format(filter, params);
     }
 
 }

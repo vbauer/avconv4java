@@ -1,6 +1,6 @@
 package com.avconv4java.option;
 
-import com.avconv4java.core.AVGenericOptions;
+import com.avconv4java.core.AVOptions;
 import com.avconv4java.model.AVAudioCodecType;
 
 /**
@@ -9,7 +9,7 @@ import com.avconv4java.model.AVAudioCodecType;
  * @author Vladislav Bauer
  */
 
-public class AVAudioOptions extends AVGenericOptions {
+public class AVAudioOptions extends AVOptions {
 
     public static final String FLAG_AUDIO_QUALITY = "-aq";
     public static final String FLAG_AUDIO_CODEC = "-acodec";
@@ -31,7 +31,7 @@ public class AVAudioOptions extends AVGenericOptions {
     }
 
     @Override
-    public AVAudioOptions builders(final AVGenericOptions... builders) {
+    public AVAudioOptions builders(final AVOptions... builders) {
         return (AVAudioOptions) super.builders(builders);
     }
 

@@ -1,6 +1,6 @@
 package com.avconv4java.option;
 
-import com.avconv4java.core.AVGenericOptions;
+import com.avconv4java.core.AVOptions;
 import com.avconv4java.model.AVFileFormatType;
 import com.avconv4java.model.AVMovFlagsType;
 import com.avconv4java.model.AVVideoCodecType;
@@ -11,7 +11,7 @@ import com.avconv4java.model.AVVideoCodecType;
  * @author Vladislav Bauer
  */
 
-public class AVVideoOptions extends AVGenericOptions {
+public class AVVideoOptions extends AVOptions {
 
     public static final String FLAG_VIDEO_CODEC = "-vcodec";
     public static final String FLAG_RESIZE = "-s:v";
@@ -36,7 +36,7 @@ public class AVVideoOptions extends AVGenericOptions {
     }
 
     @Override
-    public AVVideoOptions builders(final AVGenericOptions... builders) {
+    public AVVideoOptions builders(final AVOptions... builders) {
         return (AVVideoOptions) super.builders(builders);
     }
 

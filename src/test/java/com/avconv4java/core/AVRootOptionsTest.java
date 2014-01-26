@@ -16,9 +16,12 @@ import org.testng.annotations.Test;
  */
 
 @Test
-public class AVOptionsTest {
+public class AVRootOptionsTest {
 
-    private static final String OPTION_FLAGS = "-i input.avi%soutput.mp4";
+    private static final String INPUT_FILE = "input.avi";
+    private static final String OUTPUT_FILE = "output.mp4";
+
+    private static final String OPTION_FLAGS = "-i " + INPUT_FILE + "%s" + OUTPUT_FILE;
     private static final String MAIN_FLAGS = "-y";
     private static final String VIDEO_FLAGS = "-vf scale=w=800:h=trunc(ow/a/2)*2 -vcodec libx264 -movflags faststart";
     private static final String AUDIO_FLAGS = "-acodec libvo_aacenc -ab 128k -ac 2 -ar 11025";
@@ -30,7 +33,7 @@ public class AVOptionsTest {
 
 
     public void testCombineOptions() {
-        final AVOptions options = createOptions();
+        final AVRootOptions options = createOptions();
         Assert.assertEquals(options.toString(), String.format(OPTION_FLAGS, AVUtils.SPACE));
 
         final AVMainOptions mainOptions = createMainOptions();
@@ -50,8 +53,8 @@ public class AVOptionsTest {
     }
 
 
-    private AVOptions createOptions() {
-        return AVOptions.create("input.avi", "output.mp4");
+    private AVRootOptions createOptions() {
+        return AVRootOptions.create(INPUT_FILE, OUTPUT_FILE);
     }
 
     private AVCodecOptions createCodecOptions() {

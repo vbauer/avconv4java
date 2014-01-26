@@ -1,12 +1,12 @@
 package com.avconv4java.option;
 
-import com.avconv4java.core.AVGenericOptions;
+import com.avconv4java.core.AVOptions;
 
 /**
  * @author Vladislav Bauer
  */
 
-public class AVSubtitleOptions extends AVGenericOptions {
+public class AVSubtitleOptions extends AVOptions {
 
     public static final String FLAG_SUBTITLE_CODEC = "-scodec";
     public static final String FLAG_DISABLE_SUBTITLE_RECORDING = "-sn";
@@ -23,7 +23,7 @@ public class AVSubtitleOptions extends AVGenericOptions {
     }
 
     @Override
-    public AVSubtitleOptions builders(final AVGenericOptions... builders) {
+    public AVSubtitleOptions builders(final AVOptions... builders) {
         return (AVSubtitleOptions) super.builders(builders);
     }
 

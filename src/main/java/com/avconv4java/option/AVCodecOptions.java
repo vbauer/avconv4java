@@ -1,6 +1,6 @@
 package com.avconv4java.option;
 
-import com.avconv4java.core.AVGenericOptions;
+import com.avconv4java.core.AVOptions;
 import com.avconv4java.model.AVCodecFlagType;
 import com.avconv4java.model.AVDebugInfoType;
 import com.avconv4java.model.AVMotionEstimationType;
@@ -10,7 +10,7 @@ import com.avconv4java.model.AVStrictType;
  * @author Vladislav Bauer
  */
 
-public class AVCodecOptions extends AVGenericOptions {
+public class AVCodecOptions extends AVOptions {
 
     public static final String FLAG_STRICT = "-strict";
     public static final String FLAG_BIT_RATE = "-b";
@@ -31,7 +31,7 @@ public class AVCodecOptions extends AVGenericOptions {
     }
 
     @Override
-    public AVCodecOptions builders(final AVGenericOptions... builders) {
+    public AVCodecOptions builders(final AVOptions... builders) {
         return (AVCodecOptions) super.builders(builders);
     }
 

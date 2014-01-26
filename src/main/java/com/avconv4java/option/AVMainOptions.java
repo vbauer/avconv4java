@@ -1,12 +1,12 @@
 package com.avconv4java.option;
 
-import com.avconv4java.core.AVGenericOptions;
+import com.avconv4java.core.AVOptions;
 
 /**
  * @author Vladislav Bauer
  */
 
-public class AVMainOptions extends AVGenericOptions {
+public class AVMainOptions extends AVOptions {
 
     public static final String FLAG_OVERWRITE_OUTPUT = "-y";
     public static final String FLAG_IMMEDIATELY_EXIT = "-n";
@@ -31,7 +31,7 @@ public class AVMainOptions extends AVGenericOptions {
     }
 
     @Override
-    public AVMainOptions builders(final AVGenericOptions... builders) {
+    public AVMainOptions builders(final AVOptions... builders) {
         return (AVMainOptions) super.builders(builders);
     }
 
