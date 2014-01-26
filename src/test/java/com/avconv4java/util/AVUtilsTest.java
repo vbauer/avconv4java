@@ -20,14 +20,27 @@ public class AVUtilsTest {
     private static final String HELLO_WORLD = HELLO + SPACE + WORLD;
 
 
-    public void isEmptyMap() {
+    public void testIsEmptyMap() {
         Assert.assertTrue(AVUtils.isEmpty((Map) null));
         Assert.assertFalse(AVUtils.isEmpty(Collections.singletonMap(HELLO, WORLD)));
     }
 
-    public void isEmptyArray() {
+    public void testIsEmptyArray() {
         Assert.assertTrue(AVUtils.isEmpty((Object[]) null));
         Assert.assertFalse(AVUtils.isEmpty(new String[]{HELLO, WORLD}));
+    }
+
+
+    public void testTrimToNull() {
+        Assert.assertEquals(AVUtils.trimToNull(null), null);
+        Assert.assertEquals(AVUtils.trimToNull(AVUtils.EMPTY), null);
+        Assert.assertEquals(AVUtils.trimToNull(AVUtils.SPACE), null);
+    }
+
+    public void testTrimToEmpty() {
+        Assert.assertEquals(AVUtils.trimToEmpty(null), AVUtils.EMPTY);
+        Assert.assertEquals(AVUtils.trimToEmpty(AVUtils.EMPTY), AVUtils.EMPTY);
+        Assert.assertEquals(AVUtils.trimToEmpty(AVUtils.SPACE), AVUtils.EMPTY);
     }
 
 

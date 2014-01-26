@@ -10,7 +10,9 @@ import java.util.Map;
 public final class AVUtils {
 
     public static String OS = System.getProperty("os.name").toLowerCase();
+
     public static final String SPACE = " ";
+    public static final String EMPTY = "";
 
 
     private AVUtils() {
@@ -39,7 +41,7 @@ public final class AVUtils {
     }
 
 
-    public static String trimToNull(final CharSequence text) {
+    public static String trimToNull(final Object text) {
         if (text != null) {
             final String trim = text.toString().trim();
             return trim.length() > 0 ? trim : null;
@@ -47,6 +49,9 @@ public final class AVUtils {
         return null;
     }
 
+    public static String trimToEmpty(final Object text) {
+        return text != null ? text.toString().trim() : EMPTY;
+    }
 
     public static String join(final String... arguments) {
         return join(isEmpty(arguments) ? null : Arrays.asList(arguments), SPACE);

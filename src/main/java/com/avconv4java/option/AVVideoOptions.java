@@ -4,6 +4,7 @@ import com.avconv4java.core.AVOptions;
 import com.avconv4java.model.AVFileFormatType;
 import com.avconv4java.model.AVMovFlagsType;
 import com.avconv4java.model.AVVideoCodecType;
+import com.avconv4java.util.AVUtils;
 
 /**
  * 5.7 Video Options.
@@ -54,18 +55,10 @@ public class AVVideoOptions extends AVOptions {
     }
 
     public AVVideoOptions resize(final Integer width, final Integer height) {
-        if (width != null || height != null) {
-            final StringBuilder size = new StringBuilder();
-            if (width != null) {
-                size.append(String.valueOf(width));
-            }
-            size.append("x");
-            if (height != null) {
-                size.append(String.valueOf(height));
-            }
-            return flags(FLAG_RESIZE, size);
-        }
-        return this;
+        final boolean shouldResize = width != null || height != null;
+        final String w = AVUtils.trimToEmpty(even(width));
+        final String h = AVUtils.trimToEmpty(even(height));
+        return flags(FLAG_RESIZE, shouldResize ? String.format("%sx%s", w, h) : null);
     }
 
     /**
