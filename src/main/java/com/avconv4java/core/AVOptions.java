@@ -1,5 +1,6 @@
 package com.avconv4java.core;
 
+import com.avconv4java.model.AVStreamType;
 import com.avconv4java.util.AVUtils;
 
 import java.util.LinkedList;
@@ -76,6 +77,10 @@ public class AVOptions {
 
     protected final String format(final String filter, final Object... params) {
         return filter == null || AVUtils.hasNull(params) ? null : String.format(filter, params);
+    }
+
+    protected final String specifyStream(final String flag, final AVStreamType streamType) {
+        return flag != null ? (streamType != null ? flag + ":" + streamType.getName() : flag) : null;
     }
 
 }

@@ -3,7 +3,9 @@ package com.avconv4java.option;
 import com.avconv4java.core.AVOptions;
 import com.avconv4java.model.AVFileFormatType;
 import com.avconv4java.model.AVMovFlagsType;
+import com.avconv4java.model.AVStreamType;
 import com.avconv4java.model.AVVideoCodecType;
+import com.avconv4java.model.AVVideoSizeType;
 import com.avconv4java.util.AVUtils;
 
 /**
@@ -15,7 +17,7 @@ import com.avconv4java.util.AVUtils;
 public class AVVideoOptions extends AVOptions {
 
     public static final String FLAG_VIDEO_CODEC = "-vcodec";
-    public static final String FLAG_RESIZE = "-s:v";
+    public static final String FLAG_RESIZE = "-s";
     public static final String FLAG_FRAME_RATE = "-r";
     public static final String FLAG_FILE_FORMAT = "-f";
     public static final String FLAG_MOV_FLAGS = "-movflags";
@@ -54,11 +56,20 @@ public class AVVideoOptions extends AVOptions {
         return flags(FLAG_VIDEO_CODEC, codecTypeName);
     }
 
-    public AVVideoOptions resize(final Integer width, final Integer height) {
+    public AVVideoOptions resize(final AVStreamType streamType, final Integer width, final Integer height) {
         final boolean shouldResize = width != null || height != null;
         final String w = AVUtils.trimToEmpty(even(width));
         final String h = AVUtils.trimToEmpty(even(height));
-        return flags(FLAG_RESIZE, shouldResize ? String.format("%sx%s", w, h) : null);
+        final String size = shouldResize ? String.format("%sx%s", w, h) : null;
+        return resize(streamType, size);
+    }
+
+    public AVVideoOptions resize(final AVStreamType streamType, final AVVideoSizeType videoSizeType) {
+        return flags(specifyStream(FLAG_RESIZE, streamType), videoSizeType == null ? null : videoSizeType.getName());
+    }
+
+    public AVVideoOptions resize(final AVStreamType streamType, final String size) {
+        return flags(specifyStream(FLAG_RESIZE, streamType), size);
     }
 
     /**
