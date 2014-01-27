@@ -40,7 +40,7 @@ public class AVSubtitleOptions extends AVOptions {
      * ‘-sn (output)’
      * Disable subtitle recording.
      */
-    public AVSubtitleOptions disableSubtitleRecording() {
+    public AVSubtitleOptions disableRecording() {
         return flags(FLAG_DISABLE_SUBTITLE_RECORDING);
     }
 

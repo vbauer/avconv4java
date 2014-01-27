@@ -67,7 +67,7 @@ public class AVAudioOptions extends AVOptions {
      * ‘-an (output)’
      * Disable audio recording.
      */
-    public AVAudioOptions disableAudioRecording() {
+    public AVAudioOptions disableRecording() {
         return flags(FLAG_DISABLE_AUDIO_RECORDING);
     }
 

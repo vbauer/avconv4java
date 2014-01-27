@@ -15,11 +15,13 @@ import com.avconv4java.util.AVUtils;
 
 public class AVVideoOptions extends AVOptions {
 
-    public static final String FLAG_VIDEO_CODEC = "-vcodec";
-    public static final String FLAG_RESIZE = "-s";
-    public static final String FLAG_FRAME_RATE = "-r";
-    public static final String FLAG_MOV_FLAGS = "-movflags";
     public static final String FLAG_VIDEO_FRAMES_COUNT = "-vframes";
+    public static final String FLAG_FRAME_RATE = "-r";
+    public static final String FLAG_RESIZE = "-s";
+    public static final String FLAG_ASPECT_RATIO = "-aspect";
+    public static final String FLAG_DISABLE_VIDEO_RECORDING = "-vn";
+    public static final String FLAG_VIDEO_CODEC = "-vcodec";
+    public static final String FLAG_MOV_FLAGS = "-movflags";
     public static final String FLAG_FILTER = "-vf";
 
     public static final String FILTER_SCALE_BY_WIDTH = "scale=w=%d:h=trunc(ow/a/2)*2";
@@ -124,6 +126,46 @@ public class AVVideoOptions extends AVOptions {
      */
     public AVVideoOptions videoFramesCount(final Integer frames) {
         return flags(FLAG_VIDEO_FRAMES_COUNT, frames);
+    }
+
+    /**
+     * ‘-aspect[:stream_specifier] aspect (output,per-stream)’
+     * Set the video display aspect ratio specified by aspect.
+     *
+     * aspect can be a floating point number string, or a string of the form num:den, where num and den are the
+     * numerator and denominator of the aspect ratio. For example "4:3", "16:9", "1.3333", and "1.7777" are valid
+     * argument values.
+     */
+    public AVVideoOptions aspectRatio(final AVStreamType streamType, final String ratio) {
+        return flags(specifyStream(FLAG_ASPECT_RATIO, streamType), ratio);
+    }
+
+    public AVVideoOptions aspectRatio(final String ratio) {
+        return aspectRatio(null, ratio);
+    }
+
+    public AVVideoOptions aspectRatio(final AVStreamType streamType, final Integer width, final Integer height) {
+        return aspectRatio(streamType, format("%d:%d", width, height));
+    }
+
+    public AVVideoOptions aspectRatio(final Integer width, final Integer height) {
+        return aspectRatio(null, width, height);
+    }
+
+    public AVVideoOptions aspectRatio(final AVStreamType streamType, final Double ratio) {
+        return aspectRatio(streamType, format("%.4f", ratio));
+    }
+
+    public AVVideoOptions aspectRatio(final Double ratio) {
+        return aspectRatio(null, ratio);
+    }
+
+    /**
+     * ‘-vn (output)’
+     * Disable video recording.
+     */
+    public AVVideoOptions disableRecording() {
+        return flags(FLAG_DISABLE_VIDEO_RECORDING);
     }
 
 }
