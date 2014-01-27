@@ -2,6 +2,7 @@ package com.avconv4java.option;
 
 import com.avconv4java.core.AVOptions;
 import com.avconv4java.model.AVFileFormatType;
+import com.avconv4java.model.AVTargetFileType;
 
 /**
  * @author Vladislav Bauer
@@ -16,8 +17,9 @@ public class AVMainOptions extends AVOptions {
     public static final String FLAG_FILE_SIZE_LIMIT = "-fs";
     public static final String FLAG_SEEK = "-ss";
     public static final String FLAG_INPUT_TIME_OFFSET = "-itsoffset";
-    public static final String FLAG_DATA_FRAMES = "-dframes";
     public static final String FLAG_METADATA = "-metadata";
+    public static final String FLAG_TARGET = "-target";
+    public static final String FLAG_DATA_FRAMES = "-dframes";
 
     public static final String FORMAT_METADATA = "%s=\"%s\"";
 
@@ -147,6 +149,27 @@ public class AVMainOptions extends AVOptions {
      */
     public AVMainOptions dataFrames(final Long dataFrames) {
         return flags(FLAG_DATA_FRAMES, dataFrames);
+    }
+
+    /**
+     * ‘-target type (output)’
+     * Specify target file type (vcd, svcd, dvd, dv, dv50). type may be prefixed with pal-, ntsc- or film- to use the
+     * corresponding standard. All the format options (bitrate, codecs, buffer sizes) are then set automatically.
+     *
+     * You can just type:
+     *      avconv -i myfile.avi -target vcd /tmp/vcd.mpg
+     *
+     * Nevertheless you can specify additional options as long as you know they do not conflict with the standard,
+     * as in:
+     *      avconv -i myfile.avi -target vcd -bf 2 /tmp/vcd.mpg
+     */
+    public AVMainOptions target(final AVTargetFileType targetFileType) {
+        final String targetFileTypeName = targetFileType == null ? null : targetFileType.getName();
+        return target(targetFileTypeName);
+    }
+
+    public AVMainOptions target(final String targetFileTypeName) {
+        return flags(FLAG_TARGET, targetFileTypeName);
     }
 
 }
