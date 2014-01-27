@@ -83,4 +83,14 @@ public enum AVDebugInfoType {
         return name;
     }
 
+
+    public static AVDebugInfoType findByName(final String name) {
+        for (final AVDebugInfoType type : values()) {
+            if (type.getName().equalsIgnoreCase(name)) {
+                return type;
+            }
+        }
+        return null;
+    }
+
 }

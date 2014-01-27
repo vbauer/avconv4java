@@ -69,4 +69,14 @@ public enum AVFileFormatType {
         return name;
     }
 
+
+    public static AVFileFormatType findByName(final String name) {
+        for (final AVFileFormatType type : values()) {
+            if (type.getName().equalsIgnoreCase(name)) {
+                return type;
+            }
+        }
+        return null;
+    }
+
 }

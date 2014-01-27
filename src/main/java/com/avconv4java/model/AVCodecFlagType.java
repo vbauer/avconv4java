@@ -127,4 +127,14 @@ public enum AVCodecFlagType {
         return name;
     }
 
+
+    public static AVCodecFlagType findByName(final String name) {
+        for (final AVCodecFlagType type : values()) {
+            if (type.getName().equalsIgnoreCase(name)) {
+                return type;
+            }
+        }
+        return null;
+    }
+
 }

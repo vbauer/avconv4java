@@ -89,4 +89,14 @@ public enum AVVideoSizeType {
         return height;
     }
 
+
+    public static AVVideoSizeType findByName(final String name) {
+        for (final AVVideoSizeType type : values()) {
+            if (type.getName().equalsIgnoreCase(name)) {
+                return type;
+            }
+        }
+        return null;
+    }
+
 }

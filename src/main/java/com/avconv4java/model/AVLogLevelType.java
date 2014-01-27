@@ -36,4 +36,13 @@ public enum AVLogLevelType {
     }
 
 
+    public static AVLogLevelType findByName(final String name) {
+        for (final AVLogLevelType type : values()) {
+            if (type.getName().equalsIgnoreCase(name)) {
+                return type;
+            }
+        }
+        return null;
+    }
+
 }

@@ -58,4 +58,14 @@ public enum AVMovFlagsType {
         return name;
     }
 
+
+    public static AVMovFlagsType findByName(final String name) {
+        for (final AVMovFlagsType type : values()) {
+            if (type.getName().equalsIgnoreCase(name)) {
+                return type;
+            }
+        }
+        return null;
+    }
+
 }

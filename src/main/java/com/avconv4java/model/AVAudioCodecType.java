@@ -35,4 +35,14 @@ public enum AVAudioCodecType {
         return name;
     }
 
+
+    public static AVAudioCodecType findByName(final String name) {
+        for (final AVAudioCodecType type : values()) {
+            if (type.getName().equalsIgnoreCase(name)) {
+                return type;
+            }
+        }
+        return null;
+    }
+
 }

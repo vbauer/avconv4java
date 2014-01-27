@@ -74,4 +74,14 @@ public enum AVMotionEstimationType {
         return name;
     }
 
+
+    public static AVMotionEstimationType findByName(final String name) {
+        for (final AVMotionEstimationType type : values()) {
+            if (type.getName().equalsIgnoreCase(name)) {
+                return type;
+            }
+        }
+        return null;
+    }
+
 }

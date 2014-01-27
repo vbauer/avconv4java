@@ -30,6 +30,16 @@ public enum  AVTargetFileType {
     }
 
 
+    public static AVTargetFileType findByName(final String name) {
+        for (final AVTargetFileType type : values()) {
+            if (type.getName().equalsIgnoreCase(name)) {
+                return type;
+            }
+        }
+        return null;
+    }
+
+
     /**
      * @author Vladislav Bauer
      */

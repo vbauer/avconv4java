@@ -23,4 +23,14 @@ public enum AVVideoCodecType {
         return name;
     }
 
+
+    public static AVVideoCodecType findByName(final String name) {
+        for (final AVVideoCodecType type : values()) {
+            if (type.getName().equalsIgnoreCase(name)) {
+                return type;
+            }
+        }
+        return null;
+    }
+
 }

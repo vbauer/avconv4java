@@ -25,4 +25,14 @@ public enum AVStreamType {
         return name;
     }
 
+
+    public static AVStreamType findByName(final String name) {
+        for (final AVStreamType type : values()) {
+            if (type.getName().equalsIgnoreCase(name)) {
+                return type;
+            }
+        }
+        return null;
+    }
+
 }

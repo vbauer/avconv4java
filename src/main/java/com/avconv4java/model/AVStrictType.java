@@ -46,4 +46,14 @@ public enum AVStrictType {
         return name;
     }
 
+
+    public static AVStrictType findByName(final String name) {
+        for (final AVStrictType type : values()) {
+            if (type.getName().equalsIgnoreCase(name)) {
+                return type;
+            }
+        }
+        return null;
+    }
+
 }
