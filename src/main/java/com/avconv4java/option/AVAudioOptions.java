@@ -124,8 +124,8 @@ public class AVAudioOptions extends AVOptions {
      * filter_graph is a description of the filter graph to apply to the input audio. Use the option "-filters" to
      * show all the available filters (including also sources and sinks). This is an alias for -filter:a.
      */
-    public AVAudioOptions filterGraph(final String filterGraph) {
-        return flags(FLAG_FILTER_GRAPH, filterGraph);
+    public AVAudioOptions filter(final String filter) {
+        return flags(FLAG_FILTER_GRAPH, filter);
     }
 
 }

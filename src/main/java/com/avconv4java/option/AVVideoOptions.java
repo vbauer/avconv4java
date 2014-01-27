@@ -1,7 +1,6 @@
 package com.avconv4java.option;
 
 import com.avconv4java.core.AVOptions;
-import com.avconv4java.model.AVFileFormatType;
 import com.avconv4java.model.AVMovFlagsType;
 import com.avconv4java.model.AVStreamType;
 import com.avconv4java.model.AVVideoCodecType;
@@ -19,7 +18,6 @@ public class AVVideoOptions extends AVOptions {
     public static final String FLAG_VIDEO_CODEC = "-vcodec";
     public static final String FLAG_RESIZE = "-s";
     public static final String FLAG_FRAME_RATE = "-r";
-    public static final String FLAG_FILE_FORMAT = "-f";
     public static final String FLAG_MOV_FLAGS = "-movflags";
     public static final String FLAG_VIDEO_FRAMES_COUNT = "-vframes";
     public static final String FLAG_FILTER = "-vf";
@@ -90,18 +88,28 @@ public class AVVideoOptions extends AVOptions {
         return filter(FILTER_SCALE_BY_HEIGHT, even(height));
     }
 
-    public AVVideoOptions frameRate(final Integer rate) {
+    /**
+     * ‘-r[:stream_specifier] fps (input/output,per-stream)’
+     * Set frame rate (Hz value, fraction or abbreviation).
+     *
+     * As an input option, ignore any timestamps stored in the file and instead generate timestamps assuming constant
+     * frame rate fps.
+     *
+     * As an output option, duplicate or drop input frames to achieve constant output frame rate fps
+     * (note that this actually causes the fps filter to be inserted to the end of the corresponding filtergraph).
+     */
+    public AVVideoOptions frameRate(final AVStreamType streamType, final Integer rate) {
         return flags(FLAG_FRAME_RATE, rate);
     }
 
-    public AVVideoOptions fileFormat(final AVFileFormatType formatType) {
-        return fileFormat(formatType == null ? null : formatType.getName());
+    public AVVideoOptions frameRate(final Integer rate) {
+        return frameRate(null, rate);
     }
 
-    public AVVideoOptions fileFormat(final String formatTypeName) {
-        return flags(FLAG_FILE_FORMAT, formatTypeName);
-    }
-
+    /**
+     * ‘-movflags frag_keyframe’
+     * Start a new fragment at each video keyframe.
+     */
     public AVVideoOptions movFlags(final AVMovFlagsType movFlagsType) {
         return movFlags(movFlagsType == null ? null : movFlagsType.getName());
     }

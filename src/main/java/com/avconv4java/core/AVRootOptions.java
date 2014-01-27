@@ -8,6 +8,9 @@ import java.util.List;
 
 public class AVRootOptions extends AVOptions {
 
+    public static final String FLAG_INPUT_FILE = "-i";
+
+
     private final String outputFile;
 
 
@@ -50,7 +53,7 @@ public class AVRootOptions extends AVOptions {
      * input file name
      */
     private AVRootOptions inputFile(final String filename) {
-        return flags("-i", filename);
+        return flags(FLAG_INPUT_FILE, filename);
     }
 
 }

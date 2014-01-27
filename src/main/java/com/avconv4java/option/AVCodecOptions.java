@@ -4,6 +4,7 @@ import com.avconv4java.core.AVOptions;
 import com.avconv4java.model.AVCodecFlagType;
 import com.avconv4java.model.AVDebugInfoType;
 import com.avconv4java.model.AVMotionEstimationType;
+import com.avconv4java.model.AVStreamType;
 import com.avconv4java.model.AVStrictType;
 
 /**
@@ -12,12 +13,12 @@ import com.avconv4java.model.AVStrictType;
 
 public class AVCodecOptions extends AVOptions {
 
-    public static final String FLAG_STRICT = "-strict";
     public static final String FLAG_BIT_RATE = "-b";
     public static final String FLAG_VIDEO_BIT_RATE_TOLERANCE = "-bt";
-    public static final String FLAG_MOTION_ESTIMATION_METHOD = "-me_method";
-    public static final String FLAG_DEBUG = "-debug";
     public static final String FLAG_CODEC_FLAGS = "-flags";
+    public static final String FLAG_MOTION_ESTIMATION_METHOD = "-me_method";
+    public static final String FLAG_STRICT = "-strict";
+    public static final String FLAG_DEBUG = "-debug";
 
 
     public static AVCodecOptions create() {
@@ -48,8 +49,12 @@ public class AVCodecOptions extends AVOptions {
      * ‘-b[:stream_specifier] integer (output,audio,video)’
      * Set bitrate (in kbits/s).
      */
+    public AVCodecOptions bitRate(final AVStreamType streamType, final Integer bitRate) {
+        return flags(specifyStream(FLAG_BIT_RATE, streamType), kb(bitRate));
+    }
+
     public AVCodecOptions bitRate(final Integer bitRate) {
-        return flags(FLAG_BIT_RATE, kb(bitRate));
+        return bitRate(null, bitRate);
     }
 
     /**
@@ -58,20 +63,35 @@ public class AVCodecOptions extends AVOptions {
      * willing to deviate from the target average bitrate value. This is not related to minimum/maximum bitrate.
      * Lowering tolerance too much has an adverse effect on quality.
      */
+    public AVCodecOptions videoBitRateTolerance(final AVStreamType streamType, final Integer bitRate) {
+        return flags(specifyStream(FLAG_VIDEO_BIT_RATE_TOLERANCE, streamType), kb(bitRate));
+    }
+
     public AVCodecOptions videoBitRateTolerance(final Integer bitRate) {
-        return flags(FLAG_VIDEO_BIT_RATE_TOLERANCE, kb(bitRate));
+        return videoBitRateTolerance(null, bitRate);
     }
 
     /**
      * ‘-me_method[:stream_specifier] integer (output,video)’
      * Set motion estimation method.
      */
-    public AVCodecOptions motionEstimationMethod(final AVMotionEstimationType motionEstimationType) {
-        return motionEstimationMethod(motionEstimationType == null ? null : motionEstimationType.getName());
+    public AVCodecOptions motionEstimationMethod(
+        final AVStreamType streamType, final AVMotionEstimationType motionEstimationType
+    ) {
+        final String motionEstimationTypeName = motionEstimationType == null ? null : motionEstimationType.getName();
+        return motionEstimationMethod(streamType, motionEstimationTypeName);
     }
 
-    public AVCodecOptions motionEstimationMethod(final String motionEstimationTypeName) {
-        return flags(FLAG_MOTION_ESTIMATION_METHOD, motionEstimationTypeName);
+    public AVCodecOptions motionEstimationMethod(final AVMotionEstimationType motionEstimationType) {
+        return motionEstimationMethod(null, motionEstimationType);
+    }
+
+    public AVCodecOptions motionEstimationMethod(final AVStreamType streamType, final String motionEstimationType) {
+        return flags(specifyStream(FLAG_MOTION_ESTIMATION_METHOD, streamType), motionEstimationType);
+    }
+
+    public AVCodecOptions motionEstimationMethod(final String motionEstimationType) {
+        return motionEstimationMethod(null, motionEstimationType);
     }
 
     /**
@@ -89,12 +109,20 @@ public class AVCodecOptions extends AVOptions {
     /**
      * ‘-flags[:stream_specifier] flags (input/output,audio,video)’
      */
+    public AVCodecOptions codecFlags(final AVStreamType streamType, final AVCodecFlagType flagType) {
+        return codecFlags(streamType, flagType == null ? null : flagType.getName());
+    }
+
     public AVCodecOptions codecFlags(final AVCodecFlagType flagType) {
-        return codecFlags(flagType == null ? null : flagType.getName());
+        return codecFlags(null, flagType);
+    }
+
+    public AVCodecOptions codecFlags(final AVStreamType streamType, final String flagTypeName) {
+        return flags(specifyStream(FLAG_CODEC_FLAGS, streamType), flagTypeName);
     }
 
     public AVCodecOptions codecFlags(final String flagTypeName) {
-        return flags(FLAG_CODEC_FLAGS, flagTypeName);
+        return codecFlags(null, flagTypeName);
     }
 
 }

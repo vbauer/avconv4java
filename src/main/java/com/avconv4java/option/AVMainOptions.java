@@ -1,6 +1,7 @@
 package com.avconv4java.option;
 
 import com.avconv4java.core.AVOptions;
+import com.avconv4java.model.AVFileFormatType;
 
 /**
  * @author Vladislav Bauer
@@ -8,6 +9,7 @@ import com.avconv4java.core.AVOptions;
 
 public class AVMainOptions extends AVOptions {
 
+    public static final String FLAG_FILE_FORMAT = "-f";
     public static final String FLAG_OVERWRITE_OUTPUT = "-y";
     public static final String FLAG_IMMEDIATELY_EXIT = "-n";
     public static final String FLAG_DURATION = "-t";
@@ -35,6 +37,19 @@ public class AVMainOptions extends AVOptions {
         return (AVMainOptions) super.builders(builders);
     }
 
+
+    /**
+     * ‘-f fmt (input/output)’
+     * Force input or output file format. The format is normally autodetected for input files and guessed from file
+     * extension for output files, so this option is not needed in most cases.
+     */
+    public AVMainOptions fileFormat(final AVFileFormatType formatType) {
+        return fileFormat(formatType == null ? null : formatType.getName());
+    }
+
+    public AVMainOptions fileFormat(final String formatTypeName) {
+        return flags(FLAG_FILE_FORMAT, formatTypeName);
+    }
 
     /**
      * ‘-y (global)’
