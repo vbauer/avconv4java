@@ -19,6 +19,8 @@ public class AVCodecOptions extends AVOptions {
     public static final String FLAG_MOTION_ESTIMATION_METHOD = "-me_method";
     public static final String FLAG_STRICT = "-strict";
     public static final String FLAG_DEBUG = "-debug";
+    public static final String FLAG_GROUP_OF_PICTURES = "-g";
+    public static final String FLAG_CUT_OFF_BANDWIDTH = "-cutoff";
 
 
     public static AVCodecOptions create() {
@@ -123,6 +125,30 @@ public class AVCodecOptions extends AVOptions {
 
     public AVCodecOptions codecFlags(final String flagTypeName) {
         return codecFlags(null, flagTypeName);
+    }
+
+    /**
+     * ‘-g[:stream_specifier] integer (output,video)’
+     * set the group of picture (GOP) size
+     */
+    public AVCodecOptions groupOfPictures(final AVStreamType streamType, final Integer gopSize) {
+        return flags(specifyStream(FLAG_GROUP_OF_PICTURES, streamType), gopSize);
+    }
+
+    public AVCodecOptions groupOfPictures(final Integer gopSize) {
+        return groupOfPictures(null, gopSize);
+    }
+
+    /**
+     * ‘-cutoff[:stream_specifier] integer (output,audio)’
+     * set cutoff bandwidth
+     */
+    public AVCodecOptions cutOffBandwidth(final AVStreamType streamType, final Integer bandwidth) {
+        return flags(specifyStream(FLAG_CUT_OFF_BANDWIDTH, streamType), bandwidth);
+    }
+
+    public AVCodecOptions cutOffBandwidth(final Integer bandwidth) {
+        return cutOffBandwidth(null, bandwidth);
     }
 
 }
