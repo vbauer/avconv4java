@@ -26,6 +26,8 @@ public class AVMainOptions extends AVOptions {
     public static final String FLAG_FILTER = "-filter";
     public static final String FLAG_FILTER_SCRIPT = "-filter_script";
     public static final String FLAG_PRESET = "-pre";
+    public static final String FLAG_ATTACHMENT = "-attach";
+    public static final String FLAG_DUMP_ATTACHMENT = "-dump_attachment";
 
     public static final String FORMAT_METADATA = "%s=\"%s\"";
 
@@ -241,6 +243,44 @@ public class AVMainOptions extends AVOptions {
 
     public AVMainOptions preset(final String preset) {
         return preset(null, preset);
+    }
+
+    /**
+     * ‘-attach filename (output)’
+     * Add an attachment to the output file. This is supported by a few formats like Matroska for e.g. fonts used
+     * in rendering subtitles. Attachments are implemented as a specific type of stream, so this option will add
+     * a new stream to the file. It is then possible to use per-stream options on this stream in the usual way.
+     * Attachment streams created with this option will be created after all the other streams
+     * (i.e. those created with -map or automatic mappings).
+     *
+     * Note that for Matroska you also have to set the mimetype metadata tag:
+     * avconv -i INPUT -attach DejaVuSans.ttf -metadata:s:2 mimetype=application/x-truetype-font out.mkv
+     * (assuming that the attachment stream will be third in the output file).
+     */
+    public AVMainOptions attachment(final String fileName) {
+        return flags(FLAG_ATTACHMENT, fileName);
+    }
+
+    /**
+     * ‘-dump_attachment[:stream_specifier] filename (input,per-stream)’
+     * Extract the matching attachment stream into a file named filename. If filename is empty, then the value of
+     * the filename metadata tag will be used.
+     *
+     * E.g. to extract the first attachment to a file named ’out.ttf’:
+     * avconv -dump_attachment:t:0 out.ttf INPUT
+     *
+     * To extract all attachments to files determined by the filename tag:
+     * avconv -dump_attachment:t "" INPUT
+     *
+     * Technical note – attachments are implemented as codec extradata, so this option can actually be used to
+     * extract extradata from any stream, not just attachments.
+     */
+    public AVMainOptions dumpAttachment(final AVStreamType streamType, final String fileName) {
+        return flags(specifyStream(FLAG_DUMP_ATTACHMENT, streamType), fileName);
+    }
+
+    public AVMainOptions dumpAttachment(final String fileName) {
+        return dumpAttachment(null, fileName);
     }
 
 }
