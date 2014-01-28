@@ -23,6 +23,9 @@ public class AVMainOptions extends AVOptions {
     public static final String FLAG_DATA_FRAMES = "-dframes";
     public static final String FLAG_FRAMES_COUNT = "-frames";
     public static final String FLAG_QUALITY_SCALE = "-q";
+    public static final String FLAG_FILTER = "-filter";
+    public static final String FLAG_FILTER_SCRIPT = "-filter_script";
+    public static final String FLAG_PRESET = "-pre";
 
     public static final String FORMAT_METADATA = "%s=\"%s\"";
 
@@ -198,6 +201,46 @@ public class AVMainOptions extends AVOptions {
 
     public AVMainOptions qualityScale(final Double quality) {
         return qualityScale(null, quality);
+    }
+
+    /**
+     * ‘-filter[:stream_specifier] filter_graph (output,per-stream)’
+     * filter_graph is a description of the filter graph to apply to the stream. Use -filters to show all the
+     * available filters (including also sources and sinks).
+     *
+     * See also the ‘-filter_complex’ option if you want to create filter graphs with multiple inputs and/or outputs.
+     */
+    public AVMainOptions filter(final AVStreamType streamType, final String filter, final Object... params) {
+        return flags(specifyStream(FLAG_FILTER, streamType), format(filter, params));
+    }
+
+    public AVMainOptions filter(final String filter, final Object... params) {
+        return filter(null, filter, params);
+    }
+
+    /**
+     * ‘-filter_script[:stream_specifier] filename (output,per-stream)’
+     * This option is similar to ‘-filter’, the only difference is that its argument is the name of the file from
+     * which a filtergraph description is to be read.
+     */
+    public AVMainOptions filterScript(final AVStreamType streamType, final String fileName) {
+        return flags(specifyStream(FLAG_FILTER_SCRIPT, streamType), fileName);
+    }
+
+    public AVMainOptions filterScript(final String fileName) {
+        return filterScript(null, fileName);
+    }
+
+    /**
+     * ‘-pre[:stream_specifier] preset_name (output,per-stream)’
+     * Specify the preset for matching stream(s).
+     */
+    public AVMainOptions preset(final AVStreamType streamType, final String preset) {
+        return flags(specifyStream(FLAG_PRESET, streamType), preset);
+    }
+
+    public AVMainOptions preset(final String preset) {
+        return preset(null, preset);
     }
 
 }
