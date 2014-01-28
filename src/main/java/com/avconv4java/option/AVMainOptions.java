@@ -2,6 +2,7 @@ package com.avconv4java.option;
 
 import com.avconv4java.core.AVOptions;
 import com.avconv4java.model.AVFileFormatType;
+import com.avconv4java.model.AVStreamType;
 import com.avconv4java.model.AVTargetFileType;
 
 /**
@@ -20,6 +21,8 @@ public class AVMainOptions extends AVOptions {
     public static final String FLAG_METADATA = "-metadata";
     public static final String FLAG_TARGET = "-target";
     public static final String FLAG_DATA_FRAMES = "-dframes";
+    public static final String FLAG_FRAMES_COUNT = "-frames";
+    public static final String FLAG_QUALITY_SCALE = "-q";
 
     public static final String FORMAT_METADATA = "%s=\"%s\"";
 
@@ -170,6 +173,31 @@ public class AVMainOptions extends AVOptions {
 
     public AVMainOptions target(final String targetFileTypeName) {
         return flags(FLAG_TARGET, targetFileTypeName);
+    }
+
+    /**
+     * ‘-frames[:stream_specifier] framecount (output,per-stream)’
+     * Stop writing to the stream after framecount frames.
+     */
+    public AVMainOptions framesCount(final AVStreamType streamType, final Long count) {
+        return flags(specifyStream(FLAG_FRAMES_COUNT, streamType), count);
+    }
+
+    public AVMainOptions framesCount(final Long count) {
+        return flags(null, count);
+    }
+
+    /**
+     * ‘-q[:stream_specifier] q (output,per-stream)’
+     * ‘-qscale[:stream_specifier] q (output,per-stream)’
+     * Use fixed quality scale (VBR). The meaning of q is codec-dependent.
+     */
+    public AVMainOptions qualityScale(final AVStreamType streamType, final Double quality) {
+        return flags(specifyStream(FLAG_QUALITY_SCALE, streamType), format("%.4f", quality));
+    }
+
+    public AVMainOptions qualityScale(final Double quality) {
+        return qualityScale(null, quality);
     }
 
 }

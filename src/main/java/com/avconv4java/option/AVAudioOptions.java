@@ -43,8 +43,8 @@ public class AVAudioOptions extends AVOptions {
      * ‘-aq q (output)’
      * Set the audio quality (codec-specific, VBR). This is an alias for -q:a.
      */
-    public AVAudioOptions audioQuality(final int quality) {
-        return flags(FLAG_AUDIO_QUALITY, quality);
+    public AVAudioOptions audioQuality(final Double quality) {
+        return flags(FLAG_AUDIO_QUALITY, format("%.4f", quality));
     }
 
     /**
@@ -59,7 +59,7 @@ public class AVAudioOptions extends AVOptions {
         return flags(FLAG_AUDIO_CODEC, codecTypeName);
     }
 
-    public AVAudioOptions audioBitRate(final int bitRate) {
+    public AVAudioOptions audioBitRate(final Integer bitRate) {
         return flags(FLAG_AUDIO_BIT_RATE, kb(bitRate));
     }
 
@@ -75,7 +75,7 @@ public class AVAudioOptions extends AVOptions {
      * ‘-aframes number (output)’
      * Set the number of audio frames to record. This is an alias for -frames:a.
      */
-    public AVAudioOptions audioFramesCount(final Long count) {
+    public AVAudioOptions framesCount(final Long count) {
         return flags(FLAG_AUDIO_FRAMES_COUNT, count);
     }
 
