@@ -177,12 +177,16 @@ public class AVVideoOptions extends AVOptions {
      * avconv -i foo.mov -c:v libxvid -pass 1 -an -f rawvideo -y NUL
      * avconv -i foo.mov -c:v libxvid -pass 1 -an -f rawvideo -y /dev/null
      */
-    public AVVideoOptions passCountEncoding(final AVStreamType streamType, final Integer pass) {
+    public AVVideoOptions passCount(final AVStreamType streamType, final Integer pass) {
         return flags(specifyStream(FLAG_PASS_COUNT, streamType), pass);
     }
 
+    public AVVideoOptions passCount(final Integer pass) {
+        return passCount(null, pass);
+    }
+
     public AVVideoOptions onePassEncoding(final AVStreamType streamType) {
-        return passCountEncoding(streamType, 1);
+        return passCount(streamType, 1);
     }
 
     public AVVideoOptions onePassEncoding() {
@@ -190,7 +194,7 @@ public class AVVideoOptions extends AVOptions {
     }
 
     public AVVideoOptions twoPassEncoding(final AVStreamType streamType) {
-        return passCountEncoding(streamType, 2);
+        return passCount(streamType, 2);
     }
 
     public AVVideoOptions twoPassEncoding() {
