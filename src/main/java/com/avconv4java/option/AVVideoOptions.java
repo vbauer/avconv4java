@@ -22,6 +22,8 @@ public class AVVideoOptions extends AVOptions {
     public static final String FLAG_DISABLE_VIDEO_RECORDING = "-vn";
     public static final String FLAG_VIDEO_CODEC = "-vcodec";
     public static final String FLAG_MOV_FLAGS = "-movflags";
+    public static final String FLAG_PASS_COUNT = "-pass";
+    public static final String FLAG_PASS_LOG_FILE_PREFIX = "-passlogfile";
     public static final String FLAG_FILTER = "-vf";
 
     public static final String FILTER_SCALE_BY_WIDTH = "scale=w=%d:h=trunc(ow/a/2)*2";
@@ -166,6 +168,46 @@ public class AVVideoOptions extends AVOptions {
      */
     public AVVideoOptions disableRecording() {
         return flags(FLAG_DISABLE_VIDEO_RECORDING);
+    }
+
+    /**
+     * ‘-pass[:stream_specifier] n (output,per-stream)’
+     * Select the pass number (1 or 2). It is used to do two-pass video encoding. The statistics of the video are recorded in the first pass into a log file (see also the option -passlogfile), and in the second pass that log file is used to generate the video at the exact requested bitrate. On pass 1, you may just deactivate audio and set output to null, examples for Windows and Unix:
+     *
+     * avconv -i foo.mov -c:v libxvid -pass 1 -an -f rawvideo -y NUL
+     * avconv -i foo.mov -c:v libxvid -pass 1 -an -f rawvideo -y /dev/null
+     */
+    public AVVideoOptions passCountEncoding(final AVStreamType streamType, final Integer pass) {
+        return flags(specifyStream(FLAG_PASS_COUNT, streamType), pass);
+    }
+
+    public AVVideoOptions onePassEncoding(final AVStreamType streamType) {
+        return passCountEncoding(streamType, 1);
+    }
+
+    public AVVideoOptions onePassEncoding() {
+        return onePassEncoding(null);
+    }
+
+    public AVVideoOptions twoPassEncoding(final AVStreamType streamType) {
+        return passCountEncoding(streamType, 2);
+    }
+
+    public AVVideoOptions twoPassEncoding() {
+        return twoPassEncoding(null);
+    }
+
+    /**
+     * ‘-passlogfile[:stream_specifier] prefix (output,per-stream)’
+     * Set two-pass log file name prefix to prefix, the default file name prefix is “av2pass”.
+     * The complete file name will be ‘PREFIX-N.log’, where N is a number specific to the output stream.
+     */
+    public AVVideoOptions passLogFilePrefix(final AVStreamType streamType, final String prefix) {
+        return flags(specifyStream(FLAG_PASS_LOG_FILE_PREFIX, streamType), prefix);
+    }
+
+    public AVVideoOptions passLogFilePrefix(final String prefix) {
+        return passLogFilePrefix(null, prefix);
     }
 
 }
