@@ -30,6 +30,12 @@ public class AVVideoOptions extends AVOptions {
     public static final String FILTER_SCALE_BY_HEIGHT = "scale=w=trunc(oh/a/2)*2:h=%d";
 
 
+    // Advanced video options
+
+    public static final String FLAG_PIXEL_FORMAT = "-pix_fmt";
+    public static final String FLAG_SW_SCALER_FLAGS = "-sws_flags";
+
+
     public static AVVideoOptions create() {
         return new AVVideoOptions();
     }
@@ -212,6 +218,26 @@ public class AVVideoOptions extends AVOptions {
 
     public AVVideoOptions passLogFilePrefix(final String prefix) {
         return passLogFilePrefix(null, prefix);
+    }
+
+    /**
+     * ‘-pix_fmt[:stream_specifier] format (input/output,per-stream)’
+     * Set pixel format. Use -pix_fmts to show all the supported pixel formats.
+     */
+    public AVVideoOptions pixelFormat(final AVStreamType streamType, final String format) {
+        return flags(specifyStream(FLAG_PIXEL_FORMAT, streamType), format);
+    }
+
+    public AVVideoOptions pixelFormat(final String format) {
+        return pixelFormat(null, format);
+    }
+
+    /**
+     * ‘-sws_flags flags (input/output)’
+     * Set SwScaler flags.
+     */
+    public AVVideoOptions swScalerFlags(final String flags) {
+        return flags(FLAG_SW_SCALER_FLAGS, flags);
     }
 
 }
