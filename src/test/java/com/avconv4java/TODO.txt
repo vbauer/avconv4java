@@ -1,0 +1,26 @@
+
+5.8 Advanced Video Options
+
+‘-rc_override[:stream_specifier] override (output,per-stream)’
+rate control override for specific intervals
+
+‘-top[:stream_specifier] n (output,per-stream)’
+top=1/bottom=0/auto=-1 field first
+
+‘-dc precision’
+Intra_dc_precision.
+
+‘-vtag fourcc/tag (output)’
+Force video tag/fourcc. This is an alias for -tag:v.
+
+‘-qphist (global)’
+Show QP histogram.
+
+‘-force_key_frames[:stream_specifier] time[,time...] (output,per-stream)’
+Force key frames at the specified timestamps, more precisely at the first frames after each specified time. This option can be useful to ensure that a seek point is present at a chapter mark or any other designated place in the output file. The timestamps must be specified in ascending order.
+
+‘-copyinkf[:stream_specifier] (output,per-stream)’
+When doing stream copy, copy also non-key frames found at the beginning.
+
+‘-hwaccel_device[:stream_specifier] hwaccel_device (input,per-stream)’
+Select a device to use for hardware acceleration.

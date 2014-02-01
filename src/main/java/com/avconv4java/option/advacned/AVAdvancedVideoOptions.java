@@ -1,6 +1,7 @@
 package com.avconv4java.option.advacned;
 
 import com.avconv4java.core.AVOptions;
+import com.avconv4java.model.AVHardwareAccelerationType;
 import com.avconv4java.model.AVStreamType;
 
 /**
@@ -13,6 +14,8 @@ public class AVAdvancedVideoOptions extends AVOptions {
     public static final String FLAG_SW_SCALER_FLAGS = "-sws_flags";
     public static final String FLAG_DISCARD_THRESHOLD = "-vdt";
     public static final String FLAG_DUMP_VIDEO_ENCODING_STATISTICS = "-vstats";
+    public static final String FLAG_DUMP_VIDEO_ENCODING_STATISTICS_FILE = "-vstats_file";
+    public static final String FLAG_HARDWARE_ACCELERATION = "-hwaccel";
 
 
     public static AVAdvancedVideoOptions create() {
@@ -59,16 +62,41 @@ public class AVAdvancedVideoOptions extends AVOptions {
         return flags(FLAG_DISCARD_THRESHOLD, threshold);
     }
 
-    // TODO:
-    // ‘-rc_override[:stream_specifier] override (output,per-stream)’
-    // rate control override for specific intervals
-
     /**
      * ‘-vstats’
      * Dump video coding statistics to ‘vstats_HHMMSS.log’.
      */
     public AVAdvancedVideoOptions dumpVideoEncodingStatistics() {
         return flags(FLAG_DUMP_VIDEO_ENCODING_STATISTICS);
+    }
+
+    /**
+     * ‘-vstats_file file’
+     * Dump video coding statistics to file.
+     */
+    public AVAdvancedVideoOptions dumpVideoEncodingStatistics(final String fileName) {
+        return flags(FLAG_DUMP_VIDEO_ENCODING_STATISTICS_FILE, fileName);
+    }
+
+    /**
+     * ‘-hwaccel[:stream_specifier] hwaccel (input,per-stream)’
+     * Use hardware acceleration to decode the matching stream(s).
+     *
+     * This option has no effect if the selected hwaccel is not available or not supported by the chosen decoder.
+     *
+     * Note that most acceleration methods are intended for playback and will not be faster than software decoding
+     * on modern CPUs. Additionally, avconv will usually need to copy the decoded frames from the GPU memory into
+     * the system memory, resulting in further performance loss. This option is thus mainly useful for testing.
+     */
+    public AVAdvancedVideoOptions hardwareAcceleration(
+        final AVStreamType streamType, final AVHardwareAccelerationType accelerationType
+    ) {
+        final String hardwareAccelerationTypeName = accelerationType.getName();
+        return hardwareAcceleration(streamType, hardwareAccelerationTypeName);
+    }
+
+    public AVAdvancedVideoOptions hardwareAcceleration(final AVStreamType streamType, final String accelerationType) {
+        return flags(specifyStream(FLAG_HARDWARE_ACCELERATION, streamType), accelerationType);
     }
 
 }
