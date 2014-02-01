@@ -46,11 +46,6 @@ public enum  AVTargetFileType {
 
     public static final class Constants {
 
-        private Constants() {
-            throw new UnsupportedOperationException();
-        }
-
-
         public static final String TYPE_VCD = "vcd";
         public static final String TYPE_SVCD = "svcd";
         public static final String TYPE_DVD = "dvd";
@@ -60,6 +55,11 @@ public enum  AVTargetFileType {
         public static final String PREFIX_PAL = "pal-";
         public static final String PREFIX_NTSC = "ntsc-";
         public static final String PREFIX_FILM = "film-";
+
+
+        private Constants() {
+            throw new UnsupportedOperationException();
+        }
 
     }
 

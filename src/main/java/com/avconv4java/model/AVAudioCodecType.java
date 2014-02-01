@@ -13,12 +13,14 @@ public enum AVAudioCodecType {
      * Not so stable yet and overall quality is very bad, but bundled with avconv
      */
     AAC("aac"),
+
     /**
-     * The best aac encoder so far, but separate lib
+     * The best aac encoder so far, but separate lib.
      */
     FDK_AAC("libfdk_aac"),
+
     /**
-     * Not bad encoder, bundled with daily windows builds
+     * Not bad encoder, bundled with daily windows builds.
      */
     VISUAL_ON_AAC("libvo_aacenc");
 

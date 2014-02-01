@@ -42,7 +42,7 @@ public enum AVVideoSizeType {
 
     WSXGA("wsxga", 1600, 1024),
 
-    WUXGA("wuxga", 1920,1200),
+    WUXGA("wuxga", 1920, 1200),
 
     WOXGA("woxga", 2560, 1600),
 

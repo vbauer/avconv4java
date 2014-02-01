@@ -14,7 +14,7 @@ public class AVRootOptions extends AVOptions {
     private final String outputFile;
 
 
-    private AVRootOptions(final String inputFile, final String outputFile) {
+    public AVRootOptions(final String inputFile, final String outputFile) {
         this.outputFile = outputFile;
         inputFile(inputFile);
     }
@@ -49,7 +49,7 @@ public class AVRootOptions extends AVOptions {
 
 
     /**
-     * ‘-i filename (input)’
+     * E‘-i filename (input)’
      * input file name
      */
     private AVRootOptions inputFile(final String filename) {

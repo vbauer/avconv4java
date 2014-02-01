@@ -9,7 +9,7 @@ import java.util.Map;
 
 public final class AVUtils {
 
-    public static String OS = System.getProperty("os.name").toLowerCase();
+    public static final String OS = System.getProperty("os.name").toLowerCase();
 
     public static final String SPACE = " ";
     public static final String EMPTY = "";
@@ -32,7 +32,7 @@ public final class AVUtils {
         return true;
     }
 
-    public static boolean isEmpty(Object... arguments) {
+    public static boolean isEmpty(final Object... arguments) {
         return arguments == null || arguments.length == 0;
     }
 

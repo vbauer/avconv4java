@@ -172,7 +172,10 @@ public class AVVideoOptions extends AVOptions {
 
     /**
      * ‘-pass[:stream_specifier] n (output,per-stream)’
-     * Select the pass number (1 or 2). It is used to do two-pass video encoding. The statistics of the video are recorded in the first pass into a log file (see also the option -passlogfile), and in the second pass that log file is used to generate the video at the exact requested bitrate. On pass 1, you may just deactivate audio and set output to null, examples for Windows and Unix:
+     * Select the pass number (1 or 2). It is used to do two-pass video encoding. The statistics of the video are
+     * recorded in the first pass into a log file (see also the option -passlogfile), and in the second pass that log
+     * file is used to generate the video at the exact requested bitrate. On pass 1, you may just deactivate audio
+     * and set output to null, examples for Windows and Unix:
      *
      * avconv -i foo.mov -c:v libxvid -pass 1 -an -f rawvideo -y NUL
      * avconv -i foo.mov -c:v libxvid -pass 1 -an -f rawvideo -y /dev/null
