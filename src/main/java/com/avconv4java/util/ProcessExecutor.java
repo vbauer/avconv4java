@@ -59,13 +59,13 @@ public final class ProcessExecutor {
             final Future<Integer> future = executor.submit(task);
             return future.get(timeout, TimeUnit.MILLISECONDS);
         } catch (final TimeoutException ignored) {
-            LOGGER.severe("Video converter will be killed by timeout. " + arguments);
             return EXIT_CODE_ERROR;
         } finally {
             try {
                 executor.shutdownNow();
+                LOGGER.severe(String.format("Command %s was killed by timeout.", arguments));
             } catch (final Exception ex) {
-                LOGGER.severe("Can't shutdown video converter watchdog service");
+                LOGGER.severe("Can't shutdown executor's watchdog service");
             }
         }
     }

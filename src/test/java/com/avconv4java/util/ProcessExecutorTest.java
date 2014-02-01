@@ -28,17 +28,21 @@ public class ProcessExecutorTest {
 
 
     public void testNixCommandWithTimeout() throws Exception {
-        Assert.assertEquals(runCommand(COMMAND_LS, 30000L), ProcessExecutor.EXIT_CODE_SUCCESS);
-        Assert.assertNotEquals(runCommand(COMMAND_SLEEP, 1L), ProcessExecutor.EXIT_CODE_SUCCESS);
+        Assert.assertEquals(runCommand(COMMAND_LS, 30000L, false), ProcessExecutor.EXIT_CODE_SUCCESS);
+        Assert.assertNotEquals(runCommand(COMMAND_SLEEP, 1L, false), ProcessExecutor.EXIT_CODE_SUCCESS);
+
+        Assert.assertEquals(runCommand(COMMAND_LS, 30000L, true), ProcessExecutor.EXIT_CODE_SUCCESS);
+        Assert.assertNotEquals(runCommand(COMMAND_SLEEP, 1L, true), ProcessExecutor.EXIT_CODE_SUCCESS);
     }
 
     public void testNixCommandWithoutTimeout() throws Exception {
-        Assert.assertEquals(runCommand(COMMAND_LS, null), ProcessExecutor.EXIT_CODE_SUCCESS);
+        Assert.assertEquals(runCommand(COMMAND_LS, null, false), ProcessExecutor.EXIT_CODE_SUCCESS);
+        Assert.assertEquals(runCommand(COMMAND_LS, null, true), ProcessExecutor.EXIT_CODE_SUCCESS);
     }
 
 
-    private int runCommand(final List<String> command, final Long timeout) throws Exception {
-        return ProcessExecutor.execute(command, timeout, false);
+    private int runCommand(final List<String> command, final Long timeout, boolean debug) throws Exception {
+        return ProcessExecutor.execute(command, timeout, debug);
     }
 
 }
