@@ -10,6 +10,7 @@ import com.avconv4java.model.AVLogLevelType;
 public class AVGenericOptions extends AVOptions {
 
     public static final String FLAG_LOG_LEVEL = "-loglevel";
+    public static final String FLAG_CPU_FLAGS = "-cpuflags";
 
 
     public static AVGenericOptions create() {
@@ -36,8 +37,12 @@ public class AVGenericOptions extends AVOptions {
         return logLevel(logLevelType == null ? null : logLevelType.getName());
     }
 
-    protected AVGenericOptions logLevel(final String logLevelName) {
+    public AVGenericOptions logLevel(final String logLevelName) {
         return flags(FLAG_LOG_LEVEL, logLevelName);
+    }
+
+    public AVGenericOptions cpuFlags(final String mask) {
+        return flags(FLAG_CPU_FLAGS, mask);
     }
 
 }
