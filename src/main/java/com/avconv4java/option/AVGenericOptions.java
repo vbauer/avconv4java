@@ -11,6 +11,7 @@ public class AVGenericOptions extends AVOptions {
 
     public static final String FLAG_LOG_LEVEL = "-loglevel";
     public static final String FLAG_CPU_FLAGS = "-cpuflags";
+    public static final String FLAG_SHOW_LICENSE = "-L";
 
 
     public static AVGenericOptions create() {
@@ -43,6 +44,10 @@ public class AVGenericOptions extends AVOptions {
 
     public AVGenericOptions cpuFlags(final String mask) {
         return flags(FLAG_CPU_FLAGS, mask);
+    }
+
+    public AVGenericOptions showLicense() {
+        return flags(FLAG_SHOW_LICENSE);
     }
 
 }

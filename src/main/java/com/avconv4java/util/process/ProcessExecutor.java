@@ -1,4 +1,6 @@
-package com.avconv4java.util;
+package com.avconv4java.util.process;
+
+import com.avconv4java.util.AVUtils;
 
 import java.lang.reflect.Method;
 import java.util.List;
@@ -28,7 +30,7 @@ public final class ProcessExecutor {
     }
 
 
-    public static int execute(
+    public static ProcessInfo execute(
         final List<String> arguments, final Long timeout, final boolean debug
     ) throws Exception {
         final Process process = runProcess(arguments, debug);
@@ -37,29 +39,31 @@ public final class ProcessExecutor {
     }
 
 
-    private static int waitWithoutTimeout(final Process process) throws Exception {
+    private static ProcessInfo waitWithoutTimeout(final Process process) throws Exception {
         try {
-            return process.waitFor();
+            final int statusCode = process.waitFor();
+            final String output = AVUtils.readFully(process.getInputStream());
+            return ProcessInfo.create(statusCode, output);
         } finally {
             process.destroy();
         }
     }
 
-    private static int waitWithTimeout(
+    private static ProcessInfo waitWithTimeout(
         final Process process, final List<String> arguments, final long timeout
     ) throws Exception {
         final ExecutorService executor = Executors.newSingleThreadExecutor();
         try {
-            final Callable<Integer> task = new Callable<Integer>() {
+            final Callable<ProcessInfo> task = new Callable<ProcessInfo>() {
                 @Override
-                public Integer call() throws Exception {
+                public ProcessInfo call() throws Exception {
                     return waitWithoutTimeout(process);
                 }
             };
-            final Future<Integer> future = executor.submit(task);
+            final Future<ProcessInfo> future = executor.submit(task);
             return future.get(timeout, TimeUnit.MILLISECONDS);
         } catch (final TimeoutException ignored) {
-            return EXIT_CODE_ERROR;
+            return ProcessInfo.create(EXIT_CODE_ERROR, null);
         } finally {
             try {
                 executor.shutdownNow();

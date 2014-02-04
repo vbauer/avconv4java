@@ -1,6 +1,7 @@
 package com.avconv4java.core;
 
-import com.avconv4java.util.ProcessExecutor;
+import com.avconv4java.util.process.ProcessExecutor;
+import com.avconv4java.util.process.ProcessInfo;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -25,12 +26,12 @@ public class AVCommand {
     }
 
 
-    public int run(final AVOptions operation) throws Exception {
+    public ProcessInfo run(final AVOptions operation) throws Exception {
         final List<String> flags = operation.build();
         return run(flags);
     }
 
-    public int run(final List<String> flags) throws Exception {
+    public ProcessInfo run(final List<String> flags) throws Exception {
         final List<String> arguments = prepareArguments(flags);
         return ProcessExecutor.execute(arguments, getTimeout(), isDebug());
     }

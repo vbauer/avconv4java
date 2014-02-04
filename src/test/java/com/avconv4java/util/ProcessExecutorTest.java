@@ -1,5 +1,7 @@
 package com.avconv4java.util;
 
+import com.avconv4java.util.process.ProcessExecutor;
+import com.avconv4java.util.process.ProcessInfo;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.BeforeClass;
@@ -42,7 +44,8 @@ public class ProcessExecutorTest {
 
 
     private int runCommand(final List<String> command, final Long timeout, boolean debug) throws Exception {
-        return ProcessExecutor.execute(command, timeout, debug);
+        final ProcessInfo processInfo = ProcessExecutor.execute(command, timeout, debug);
+        return processInfo.getStatusCode();
     }
 
 }

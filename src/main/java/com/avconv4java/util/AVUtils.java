@@ -1,5 +1,10 @@
 package com.avconv4java.util;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -94,6 +99,38 @@ public final class AVUtils {
 
     public static boolean isSolaris() {
         return OS.contains("sunos");
+    }
+
+    public static String readFully(final InputStream inputStream) {
+        final StringBuilder result = new StringBuilder();
+        BufferedReader reader = null;
+
+        try {
+            reader = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                result.append(line);
+                result.append(System.getProperty("line.separator"));
+            }
+        } catch (final IOException ex) {
+            return null;
+        } finally {
+            close(reader);
+        }
+        return result.toString();
+    }
+
+    public static boolean close(final Reader reader) {
+        if (reader != null) {
+            try {
+                reader.close();
+                return true;
+            } catch (final Exception ex) {
+                return false;
+            }
+        }
+        return false;
     }
 
 }
