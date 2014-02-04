@@ -18,10 +18,6 @@ import java.util.logging.Logger;
 
 public final class ProcessExecutor {
 
-    public static final int EXIT_CODE_ERROR = 1;
-    public static final int EXIT_CODE_SUCCESS = 0;
-
-
     private static final Logger LOGGER = Logger.getLogger(ProcessExecutor.class.getSimpleName());
 
 
@@ -43,7 +39,8 @@ public final class ProcessExecutor {
         try {
             final int statusCode = process.waitFor();
             final String output = AVUtils.readFully(process.getInputStream());
-            return ProcessInfo.create(statusCode, output);
+            final String errorOutput = AVUtils.readFully(process.getErrorStream());
+            return ProcessInfo.create(statusCode, output, errorOutput);
         } finally {
             process.destroy();
         }
@@ -62,14 +59,14 @@ public final class ProcessExecutor {
             };
             final Future<ProcessInfo> future = executor.submit(task);
             return future.get(timeout, TimeUnit.MILLISECONDS);
-        } catch (final TimeoutException ignored) {
-            return ProcessInfo.create(EXIT_CODE_ERROR, null);
+        } catch (final TimeoutException ex) {
+            return ProcessInfo.error(ex.getMessage());
         } finally {
             try {
                 executor.shutdownNow();
-                LOGGER.severe(String.format("Command %s was killed by timeout.", arguments));
+                LOGGER.fine(String.format("Command %s was killed by timeout.", arguments));
             } catch (final Exception ex) {
-                LOGGER.severe("Can't shutdown executor's watchdog service");
+                LOGGER.severe("Can't shutdown executor's watchdog service: " + ex.getMessage());
             }
         }
     }
@@ -84,7 +81,7 @@ public final class ProcessExecutor {
                 final Method inheritIO = ProcessBuilder.class.getDeclaredMethod("inheritIO");
                 inheritIO.invoke(builder);
             } catch (final Exception ignored) {
-                LOGGER.warning("Can't use debug mode. JRE version doesn't support ProcessBuilder.inheritIO");
+                LOGGER.fine("Can't use debug mode. JRE version doesn't support ProcessBuilder.inheritIO");
             }
         }
         return builder.start();

@@ -30,22 +30,27 @@ public class ProcessExecutorTest {
 
 
     public void testNixCommandWithTimeout() throws Exception {
-        Assert.assertEquals(runCommand(COMMAND_LS, 30000L, false), ProcessExecutor.EXIT_CODE_SUCCESS);
-        Assert.assertNotEquals(runCommand(COMMAND_SLEEP, 1L, false), ProcessExecutor.EXIT_CODE_SUCCESS);
+        Assert.assertTrue(runCommand(COMMAND_LS, 30000L, false).isSuccess());
+        Assert.assertTrue(runCommand(COMMAND_SLEEP, 1L, false).isError());
 
-        Assert.assertEquals(runCommand(COMMAND_LS, 30000L, true), ProcessExecutor.EXIT_CODE_SUCCESS);
-        Assert.assertNotEquals(runCommand(COMMAND_SLEEP, 1L, true), ProcessExecutor.EXIT_CODE_SUCCESS);
+        Assert.assertTrue(runCommand(COMMAND_LS, 30000L, true).isSuccess());
+        Assert.assertTrue(runCommand(COMMAND_SLEEP, 1L, true).isError());
     }
 
     public void testNixCommandWithoutTimeout() throws Exception {
-        Assert.assertEquals(runCommand(COMMAND_LS, null, false), ProcessExecutor.EXIT_CODE_SUCCESS);
-        Assert.assertEquals(runCommand(COMMAND_LS, null, true), ProcessExecutor.EXIT_CODE_SUCCESS);
+        Assert.assertTrue(runCommand(COMMAND_LS, null, false).isSuccess());
+        Assert.assertTrue(runCommand(COMMAND_LS, null, true).isSuccess());
     }
 
 
-    private int runCommand(final List<String> command, final Long timeout, boolean debug) throws Exception {
+    private ProcessInfo runCommand(final List<String> command, final Long timeout, boolean debug) throws Exception {
         final ProcessInfo processInfo = ProcessExecutor.execute(command, timeout, debug);
-        return processInfo.getStatusCode();
+        final int statusCode = processInfo.getStatusCode();
+        final String errorOutput = AVUtils.trimToNull(processInfo.getErrorOutput());
+        if (errorOutput != null) {
+            Assert.assertTrue(statusCode != ProcessInfo.EXIT_CODE_SUCCESS);
+        }
+        return processInfo;
     }
 
 }

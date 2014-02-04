@@ -45,6 +45,9 @@ public final class AVUtils {
         return map == null || map.isEmpty();
     }
 
+    public static boolean isBlank(final Object text) {
+        return trimToNull(text) == null;
+    }
 
     public static String trimToNull(final Object text) {
         if (text != null) {
