@@ -34,4 +34,14 @@ public enum AVHardwareAccelerationType {
         return name;
     }
 
+
+    public static AVHardwareAccelerationType findByName(final String name) {
+        for (final AVHardwareAccelerationType type : values()) {
+            if (type.getName().equalsIgnoreCase(name)) {
+                return type;
+            }
+        }
+        return null;
+    }
+
 }
