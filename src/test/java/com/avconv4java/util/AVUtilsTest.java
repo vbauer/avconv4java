@@ -27,7 +27,7 @@ public class AVUtilsTest {
 
     public void testIsEmptyArray() {
         Assert.assertTrue(AVUtils.isEmpty((Object[]) null));
-        Assert.assertFalse(AVUtils.isEmpty(new String[]{HELLO, WORLD}));
+        Assert.assertFalse(AVUtils.isEmpty(HELLO, WORLD));
     }
 
 
@@ -43,10 +43,18 @@ public class AVUtilsTest {
         Assert.assertEquals(AVUtils.trimToEmpty(AVUtils.SPACE), AVUtils.EMPTY);
     }
 
+    public void testIsBlank() {
+        Assert.assertTrue(AVUtils.isBlank(null));
+        Assert.assertTrue(AVUtils.isBlank(AVUtils.EMPTY));
+        Assert.assertTrue(AVUtils.isBlank(AVUtils.SPACE));
+        Assert.assertFalse(AVUtils.isBlank(" a "));
+        Assert.assertFalse(AVUtils.isBlank("a"));
+    }
+
 
     @SuppressWarnings({"unchecked", "NullArgumentToVariableArgMethod"})
     public void testHasNull() {
-        Assert.assertTrue(AVUtils.hasNull(null));
+        Assert.assertTrue(AVUtils.hasNull((Object) null));
         Assert.assertTrue(AVUtils.hasNull(null, null));
         Assert.assertTrue(AVUtils.hasNull(HELLO, null));
         Assert.assertFalse(AVUtils.hasNull(HELLO, WORLD));
@@ -69,6 +77,16 @@ public class AVUtilsTest {
         Assert.assertEquals(AVUtils.join((String) null), null);
         Assert.assertEquals(AVUtils.join((String[]) null), null);
         Assert.assertEquals(AVUtils.join(HELLO, WORLD), HELLO_WORLD);
+    }
+
+
+    public void testOs() {
+        Assert.assertTrue(
+            AVUtils.isUnix()
+            || AVUtils.isWindows()
+            || AVUtils.isMac()
+            || AVUtils.isSolaris()
+        );
     }
 
 }

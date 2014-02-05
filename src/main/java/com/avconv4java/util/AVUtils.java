@@ -62,7 +62,7 @@ public final class AVUtils {
     }
 
     public static String join(final String... arguments) {
-        return join(isEmpty(arguments) ? null : Arrays.asList(arguments), SPACE);
+        return join(isEmpty((Object[]) arguments) ? null : Arrays.asList(arguments), SPACE);
     }
 
     public static String join(final Iterable<String> arguments) {
