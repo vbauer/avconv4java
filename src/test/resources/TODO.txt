@@ -1,3 +1,4 @@
+[TO-DO]
 
 5.8 Advanced Video Options
 
@@ -24,3 +25,5 @@ When doing stream copy, copy also non-key frames found at the beginning.
 
 ‘-hwaccel_device[:stream_specifier] hwaccel_device (input,per-stream)’
 Select a device to use for hardware acceleration.
+
+[TO-DO]

@@ -3,6 +3,7 @@ package com.avconv4java.util;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Map;
@@ -18,6 +19,9 @@ public class AVUtilsTest {
     private static final String HELLO = "Hello,";
     private static final String SPACE = " ";
     private static final String HELLO_WORLD = HELLO + SPACE + WORLD;
+
+    private static final String TODO_MARKER = "[TO-DO]";
+    private static final String TODO_FILE = "TODO.txt";
 
 
     public void testIsEmptyMap() {
@@ -87,6 +91,16 @@ public class AVUtilsTest {
             || AVUtils.isMac()
             || AVUtils.isSolaris()
         );
+    }
+
+
+    public void testReadFully() throws Exception {
+        final InputStream inputStream = ClassLoader.getSystemResourceAsStream(TODO_FILE);
+        Assert.assertNotNull(inputStream);
+
+        final String data = AVUtils.trimToEmpty(AVUtils.readFully(inputStream));
+        Assert.assertTrue(data.startsWith(TODO_MARKER));
+        Assert.assertTrue(data.endsWith(TODO_MARKER));
     }
 
 }
