@@ -1,3 +1,4 @@
+
 [TO-DO]
 
 5.8 Advanced Video Options
@@ -25,5 +26,16 @@ When doing stream copy, copy also non-key frames found at the beginning.
 
 ‘-hwaccel_device[:stream_specifier] hwaccel_device (input,per-stream)’
 Select a device to use for hardware acceleration.
+
+
+5.12 Advanced options
+
+‘-map [-]input_file_id[:stream_specifier][,sync_file_id[:stream_specifier]] | [linklabel] (output)’
+
+‘-map_metadata[:metadata_spec_out] infile[:metadata_spec_in] (output,per-metadata)’
+Set metadata information of the next output file from infile. Note that those are file indices (zero-based), not filenames. Optional metadata_spec_in/out parameters specify, which metadata to copy. A metadata specifier can have the following forms:
+
+‘-map_chapters input_file_index (output)’
+Copy chapters from input file with index input_file_index to the next output file. If no chapter mapping is specified, then chapters are copied from the first input file with at least one chapter. Use a negative file index to disable any chapter copying.
 
 [TO-DO]
