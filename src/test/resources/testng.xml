@@ -1,8 +1,8 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="All tests" verbose="1" parallel="methods">
+<suite name="All tests" verbose="1" parallel="methods" thread-count="10">
 
-    <test name="Regression1">
+    <test name="Regression tests">
         <packages>
             <package name="com.avconv4java.util"/>
             <package name="com.avconv4java.core"/>
