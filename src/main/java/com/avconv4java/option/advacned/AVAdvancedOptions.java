@@ -10,6 +10,7 @@ public class AVAdvancedOptions extends AVOptions {
 
     public static final String FLAG_BENCHMARK = "-benchmark";
     public static final String FLAG_TIME_LIMIT = "-timelimit";
+    public static final String FLAG_DUMP = "-dump";
 
 
     public static AVAdvancedOptions create() {
@@ -41,8 +42,16 @@ public class AVAdvancedOptions extends AVOptions {
      * ‘-timelimit duration (global)’
      * Exit after avconv has been running for duration seconds.
      */
-    public AVOptions timeLimit(final Long limit) {
+    public AVAdvancedOptions timeLimit(final Long limit) {
         return flags(FLAG_TIME_LIMIT, limit);
+    }
+
+    /**
+     * ‘-dump (global)’
+     * Dump each input packet to stderr.
+     */
+    public AVAdvancedOptions dump() {
+        return flags(FLAG_DUMP);
     }
 
 }
