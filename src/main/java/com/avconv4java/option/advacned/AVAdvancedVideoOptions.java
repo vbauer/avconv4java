@@ -5,6 +5,8 @@ import com.avconv4java.model.AVHardwareAccelerationType;
 import com.avconv4java.model.AVStreamType;
 
 /**
+ * @see <a href="http://libav.org/avconv.html#Advanced-Video-Options">Official doc: "5.8 Advanced Video Options"</a>
+ *
  * @author Vladislav Bauer
  */
 

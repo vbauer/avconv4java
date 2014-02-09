@@ -8,7 +8,7 @@ import com.avconv4java.model.AVVideoSizeType;
 import com.avconv4java.util.AVUtils;
 
 /**
- * 5.7 Video Options.
+ * @see <a href="http://libav.org/avconv.html#Video-Options">Official doc: "5.7 Video Options"</a>
  *
  * @author Vladislav Bauer
  */

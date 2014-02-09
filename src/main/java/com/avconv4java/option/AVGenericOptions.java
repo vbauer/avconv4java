@@ -4,6 +4,8 @@ import com.avconv4java.core.AVOptions;
 import com.avconv4java.model.AVLogLevelType;
 
 /**
+ * @see <a href="http://libav.org/avconv.html#Generic-options">Official doc: "5.2 Generic options"</a>
+ *
  * @author Vladislav Bauer
  */
 

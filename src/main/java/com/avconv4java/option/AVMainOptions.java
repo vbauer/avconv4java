@@ -6,6 +6,8 @@ import com.avconv4java.model.AVStreamType;
 import com.avconv4java.model.AVTargetFileType;
 
 /**
+ * @see <a href="http://libav.org/avconv.html#Main-options">Official doc: "5.6 Main options"</a>
+ *
  * @author Vladislav Bauer
  */
 

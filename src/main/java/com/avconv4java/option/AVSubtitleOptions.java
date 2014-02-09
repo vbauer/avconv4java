@@ -3,6 +3,8 @@ package com.avconv4java.option;
 import com.avconv4java.core.AVOptions;
 
 /**
+ * @see <a href="http://libav.org/avconv.html#Subtitle-options_003a">Official doc: "5.11 Subtitle options"</a>
+ *
  * @author Vladislav Bauer
  */
 

@@ -8,6 +8,8 @@ import com.avconv4java.model.AVStreamType;
 import com.avconv4java.model.AVStrictType;
 
 /**
+ * @see <a href="http://libav.org/avconv.html#Codec-AVOptions">Official doc: "5.4 Codec AVOptions"</a>
+ *
  * @author Vladislav Bauer
  */
 

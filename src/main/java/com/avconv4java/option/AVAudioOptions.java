@@ -5,7 +5,7 @@ import com.avconv4java.model.AVAudioCodecType;
 import com.avconv4java.model.AVStreamType;
 
 /**
- * 5.9 Audio Options.
+ * @see <a href="http://libav.org/avconv.html#Audio-Options">Official doc: "5.9 Audio Options"</a>
  *
  * @author Vladislav Bauer
  */

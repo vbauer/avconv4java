@@ -3,6 +3,8 @@ package com.avconv4java.option.advacned;
 import com.avconv4java.core.AVOptions;
 
 /**
+ * @see <a href="http://libav.org/avconv.html#Advanced-options">Official doc: "5.12 Advanced options"</a>
+ *
  * @author Vladislav Bauer
  */
 
