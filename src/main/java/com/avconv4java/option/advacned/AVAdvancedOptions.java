@@ -11,6 +11,7 @@ public class AVAdvancedOptions extends AVOptions {
     public static final String FLAG_BENCHMARK = "-benchmark";
     public static final String FLAG_TIME_LIMIT = "-timelimit";
     public static final String FLAG_DUMP = "-dump";
+    public static final String FLAG_HEX = "-hex";
 
 
     public static AVAdvancedOptions create() {
@@ -52,6 +53,14 @@ public class AVAdvancedOptions extends AVOptions {
      */
     public AVAdvancedOptions dump() {
         return flags(FLAG_DUMP);
+    }
+
+    /**
+     * ‘-hex (global)’
+     * When dumping packets, also dump the payload.
+     */
+    public AVAdvancedOptions hex() {
+        return flags(FLAG_HEX);
     }
 
 }
