@@ -1,6 +1,7 @@
 package com.avconv4java.option.advacned;
 
 import com.avconv4java.core.AVOptions;
+import com.avconv4java.model.AVVideoSyncType;
 
 /**
  * @see <a href="http://libav.org/avconv.html#Advanced-options">Official doc: "5.12 Advanced options"</a>
@@ -14,6 +15,7 @@ public class AVAdvancedOptions extends AVOptions {
     public static final String FLAG_TIME_LIMIT = "-timelimit";
     public static final String FLAG_DUMP = "-dump";
     public static final String FLAG_HEX = "-hex";
+    public static final String FLAG_VIDEO_SYNC_METHOD = "-vsync";
 
 
     public static AVAdvancedOptions create() {
@@ -63,6 +65,18 @@ public class AVAdvancedOptions extends AVOptions {
      */
     public AVAdvancedOptions hex() {
         return flags(FLAG_HEX);
+    }
+
+    /**
+     * ‘-vsync parameter’
+     * Video sync method.
+     */
+    public AVAdvancedOptions videoSyncMethod(final AVVideoSyncType videoSyncType) {
+        return videoSyncMethod(videoSyncType == null ? null : videoSyncType.getName());
+    }
+
+    public AVAdvancedOptions videoSyncMethod(final String videoSyncTypeName) {
+        return flags(FLAG_VIDEO_SYNC_METHOD, videoSyncTypeName);
     }
 
 }
