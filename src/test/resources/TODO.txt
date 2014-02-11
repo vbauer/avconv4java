@@ -38,4 +38,10 @@ Set metadata information of the next output file from infile. Note that those ar
 ‘-map_chapters input_file_index (output)’
 Copy chapters from input file with index input_file_index to the next output file. If no chapter mapping is specified, then chapters are copied from the first input file with at least one chapter. Use a negative file index to disable any chapter copying.
 
+‘-re (input)’
+Read input at native frame rate. Mainly used to simulate a grab device or live input stream (e.g. when reading from a file). Should not be used with actual grab devices or live input streams (where it can cause packet loss).
+
+‘-async samples_per_second’
+Audio sync method. "Stretches/squeezes" the audio stream to match the timestamps, the parameter is the maximum samples per second by which the audio is changed. -async 1 is a special case where only the start of the audio stream is corrected without any later correction. This option has been deprecated. Use the asyncts audio filter instead.
+
 [TO-DO]

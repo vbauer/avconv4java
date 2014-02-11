@@ -16,6 +16,8 @@ public class AVAdvancedOptions extends AVOptions {
     public static final String FLAG_DUMP = "-dump";
     public static final String FLAG_HEX = "-hex";
     public static final String FLAG_VIDEO_SYNC_METHOD = "-vsync";
+    public static final String FLAG_COPY_TIMESTAMPS = "-copyts";
+    public static final String FLAG_COPY_TIME_BASE = "-copytb";
 
 
     public static AVAdvancedOptions create() {
@@ -77,6 +79,22 @@ public class AVAdvancedOptions extends AVOptions {
 
     public AVAdvancedOptions videoSyncMethod(final String videoSyncTypeName) {
         return flags(FLAG_VIDEO_SYNC_METHOD, videoSyncTypeName);
+    }
+
+    /**
+     * ‘-copyts’
+     * Copy timestamps from input to output.
+     */
+    public AVAdvancedOptions copyTimestamps() {
+        return flags(FLAG_COPY_TIMESTAMPS);
+    }
+
+    /**
+     * ‘-copytb’
+     * Copy input stream time base from input to output when stream copying.
+     */
+    public AVAdvancedOptions copyTimeBase() {
+        return flags(FLAG_COPY_TIME_BASE);
     }
 
 }
