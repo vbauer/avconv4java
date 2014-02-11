@@ -58,9 +58,7 @@
         <module name="IllegalInstantiation"/>
         <module name="IllegalThrows"/>
         <module name="IllegalTokenText"/>
-        <module name="IllegalType">
-            <property name="legalAbstractClassNames" value="AbstractIdEntity,AbstractIdDTO"/>
-        </module>
+        <module name="IllegalType"/>
         <module name="Indentation"/>
         <module name="InnerAssignment"/>
         <module name="InnerTypeLast"/>
