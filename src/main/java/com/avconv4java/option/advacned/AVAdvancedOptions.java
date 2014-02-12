@@ -18,6 +18,7 @@ public class AVAdvancedOptions extends AVOptions {
     public static final String FLAG_VIDEO_SYNC_METHOD = "-vsync";
     public static final String FLAG_COPY_TIMESTAMPS = "-copyts";
     public static final String FLAG_COPY_TIME_BASE = "-copytb";
+    public static final String FLAG_DISCONTINUITY_DELTA_THRESHOLD = "-dts_delta_threshold";
 
 
     public static AVAdvancedOptions create() {
@@ -95,6 +96,14 @@ public class AVAdvancedOptions extends AVOptions {
      */
     public AVAdvancedOptions copyTimeBase() {
         return flags(FLAG_COPY_TIME_BASE);
+    }
+
+    /**
+     * ‘-dts_delta_threshold’
+     * Timestamp discontinuity delta threshold.
+     */
+    public AVAdvancedOptions discontinuityDeltaThreshold() {
+        return flags(FLAG_DISCONTINUITY_DELTA_THRESHOLD);
     }
 
 }

@@ -44,4 +44,7 @@ Read input at native frame rate. Mainly used to simulate a grab device or live i
 ‘-async samples_per_second’
 Audio sync method. "Stretches/squeezes" the audio stream to match the timestamps, the parameter is the maximum samples per second by which the audio is changed. -async 1 is a special case where only the start of the audio stream is corrected without any later correction. This option has been deprecated. Use the asyncts audio filter instead.
 
+‘-shortest (output)’
+Finish encoding when the shortest input stream ends.
+
 [TO-DO]
