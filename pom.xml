@@ -29,6 +29,7 @@
         <maven.surefire.plugin.version>2.16</maven.surefire.plugin.version>
         <maven.checkstyle.plugin.version>2.11</maven.checkstyle.plugin.version>
         <maven.pmd.plugin.version>3.0.1</maven.pmd.plugin.version>
+        <maven.findbugs.plugin.version>2.5.2</maven.findbugs.plugin.version>
     </properties>
 
     <dependencies>
@@ -122,6 +123,31 @@
                         <configuration>
                             <failOnViolation>true</failOnViolation>
                             <printFailingErrors>true</printFailingErrors>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>findbugs</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>findbugs-maven-plugin</artifactId>
+                        <version>${maven.findbugs.plugin.version}</version>
+                        <configuration>
+                            <failOnError>true</failOnError>
+                            <findbugsXmlOutput>true</findbugsXmlOutput>
                         </configuration>
                         <executions>
                             <execution>

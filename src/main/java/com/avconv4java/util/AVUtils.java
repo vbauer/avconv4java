@@ -1,10 +1,7 @@
 package com.avconv4java.util;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.*;
+import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -109,7 +106,7 @@ public final class AVUtils {
         BufferedReader reader = null;
 
         try {
-            reader = new BufferedReader(new InputStreamReader(inputStream));
+            reader = new BufferedReader(new InputStreamReader(inputStream, Charset.defaultCharset()));
             String line;
 
             while ((line = reader.readLine()) != null) {
