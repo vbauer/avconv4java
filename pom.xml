@@ -28,6 +28,7 @@
         <maven.source.plugin.version>2.2.1</maven.source.plugin.version>
         <maven.surefire.plugin.version>2.16</maven.surefire.plugin.version>
         <maven.checkstyle.plugin.version>2.11</maven.checkstyle.plugin.version>
+        <maven.pmd.plugin.version>3.0.1</maven.pmd.plugin.version>
     </properties>
 
     <dependencies>
@@ -100,6 +101,31 @@
                         <executions>
                             <execution>
                                 <phase>verify</phase>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>pmd</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-pmd-plugin</artifactId>
+                        <version>${maven.pmd.plugin.version}</version>
+                        <configuration>
+                            <failOnViolation>true</failOnViolation>
+                            <printFailingErrors>true</printFailingErrors>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
                                 <goals>
                                     <goal>check</goal>
                                 </goals>

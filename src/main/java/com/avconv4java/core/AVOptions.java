@@ -72,7 +72,7 @@ public class AVOptions {
     }
 
     protected final Integer even(final Integer value) {
-        return value == null ? null : (value - value % 2);
+        return value == null ? null : value - value % 2;
     }
 
     protected final String format(final String filter, final Object... params) {
@@ -80,7 +80,7 @@ public class AVOptions {
     }
 
     protected final String specifyStream(final String flag, final AVStreamType streamType) {
-        return flag != null ? (streamType != null ? flag + ":" + streamType.getName() : flag) : null;
+        return flag != null ? streamType != null ? flag + ":" + streamType.getName() : flag : null;
     }
 
 }
