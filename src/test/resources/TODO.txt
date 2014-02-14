@@ -47,4 +47,33 @@ Audio sync method. "Stretches/squeezes" the audio stream to match the timestamps
 ‘-shortest (output)’
 Finish encoding when the shortest input stream ends.
 
+‘-muxdelay seconds (input)’
+Set the maximum demux-decode delay.
+
+‘-muxpreload seconds (input)’
+Set the initial demux-decode delay.
+
+‘-streamid output-stream-index:new-value (output)’
+Assign a new stream-id value to an output stream. This option should be specified prior to the output filename to which it applies. For the situation where multiple output files exist, a streamid may be reassigned to a different value.
+
+For example, to set the stream 0 PID to 33 and the stream 1 PID to 36 for an output mpegts file:
+
+
+avconv -i infile -streamid 0:33 -streamid 1:36 out.ts
+‘-bsf[:stream_specifier] bitstream_filters (output,per-stream)’
+Set bitstream filters for matching streams. bistream_filters is a comma-separated list of bitstream filters. Use the -bsfs option to get the list of bitstream filters.
+
+
+avconv -i h264.mp4 -c:v copy -bsf:v h264_mp4toannexb -an out.h264
+
+avconv -i file.mov -an -vn -bsf:s mov2textsub -c:s copy -f rawvideo sub.txt
+‘-tag[:stream_specifier] codec_tag (output,per-stream)’
+Force a tag/fourcc for matching streams.
+
+‘-filter_complex filtergraph (global)’
+Define a complex filter graph, i.e. one with arbitrary number of inputs and/or outputs. For simple graphs – those with one input and one output of the same type – see the ‘-filter’ options. filtergraph is a description of the filter graph, as described in Filtergraph syntax.
+
+‘-accurate_seek (input)’
+This option enables or disables accurate seeking in input files with the ‘-ss’ option. It is enabled by default, so seeking is accurate when transcoding. Use ‘-noaccurate_seek’ to disable it, which may be useful e.g. when copying some streams and transcoding the others.
+
 [TO-DO]
