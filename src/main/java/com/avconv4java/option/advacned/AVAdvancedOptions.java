@@ -19,6 +19,7 @@ public class AVAdvancedOptions extends AVOptions {
     public static final String FLAG_COPY_TIMESTAMPS = "-copyts";
     public static final String FLAG_COPY_TIME_BASE = "-copytb";
     public static final String FLAG_DISCONTINUITY_DELTA_THRESHOLD = "-dts_delta_threshold";
+    public static final String FLAG_FILTER_COMPLEX_SCRIPT = "-filter_complex_script";
 
 
     public static AVAdvancedOptions create() {
@@ -104,6 +105,15 @@ public class AVAdvancedOptions extends AVOptions {
      */
     public AVAdvancedOptions discontinuityDeltaThreshold() {
         return flags(FLAG_DISCONTINUITY_DELTA_THRESHOLD);
+    }
+
+    /**
+     * ‘-filter_complex_script filename (global)’
+     * This option is similar to ‘-filter_complex’, the only difference is that its argument is the name of the file
+     * from which a complex filtergraph description is to be read.
+     */
+    public AVAdvancedOptions filterComplexScript(final String fileName) {
+        return flags(FLAG_FILTER_COMPLEX_SCRIPT, fileName);
     }
 
 }
