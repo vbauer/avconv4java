@@ -8,7 +8,9 @@ import com.avconv4java.core.AVOptions;
 
 public class AVFormatOptions extends AVOptions {
 
-    public static final String FLOAG_PROBE_SIZE = "-probesize";
+    public static final String FLAG_PROBE_SIZE = "-probesize";
+    public static final String FLAG_PACKET_SIZE = "-packetsize";
+
 
     public static AVFormatOptions create() {
         return new AVFormatOptions();
@@ -31,7 +33,15 @@ public class AVFormatOptions extends AVOptions {
      * set probing size
      */
     public AVFormatOptions probeSize(final Long size) {
-        return flags(FLOAG_PROBE_SIZE, size);
+        return flags(FLAG_PROBE_SIZE, size);
+    }
+
+    /**
+     * ‘-packetsize integer (output)’
+     * set packet size
+     */
+    public AVFormatOptions packetSize(final Long size) {
+        return flags(FLAG_PACKET_SIZE, size);
     }
 
 }
