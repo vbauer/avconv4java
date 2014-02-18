@@ -4,6 +4,8 @@ import com.avconv4java.core.AVOptions;
 import com.avconv4java.model.AVFormatFlagType;
 
 /**
+ * @see <a href="http://libav.org/avconv.html#Format-AVOptions">Official doc: "5.5 Format AVOptions"</a>
+ *
  * @author Vladislav Bauer
  */
 
