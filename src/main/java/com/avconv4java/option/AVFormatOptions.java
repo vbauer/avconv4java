@@ -15,6 +15,7 @@ public class AVFormatOptions extends AVOptions {
     public static final String FLAG_PACKET_SIZE = "-packetsize";
     public static final String FLAG_FORMAT_FLAGS = "-fflags";
     public static final String FLAG_ANALYZE_DURATION = "-analyzeduration";
+    public static final String FLAG_DECRYPTION_KEY = "-cryptokey";
 
 
     public static AVFormatOptions create() {
@@ -66,6 +67,14 @@ public class AVFormatOptions extends AVOptions {
      */
     public AVFormatOptions analyzeDuration(final Long duration) {
         return flags(FLAG_ANALYZE_DURATION, duration);
+    }
+
+    /**
+     * ‘-cryptokey hexadecimal string (input)’
+     * decryption key
+     */
+    public AVFormatOptions decryptionKey(final String key) {
+        return flags(FLAG_DECRYPTION_KEY, key);
     }
 
 }
