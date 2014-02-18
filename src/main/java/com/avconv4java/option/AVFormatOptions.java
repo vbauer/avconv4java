@@ -16,6 +16,7 @@ public class AVFormatOptions extends AVOptions {
     public static final String FLAG_FORMAT_FLAGS = "-fflags";
     public static final String FLAG_ANALYZE_DURATION = "-analyzeduration";
     public static final String FLAG_DECRYPTION_KEY = "-cryptokey";
+    public static final String FLAG_TIMESTAMP_INDEX_MAX_MEMORY = "-indexmem";
 
 
     public static AVFormatOptions create() {
@@ -75,6 +76,14 @@ public class AVFormatOptions extends AVOptions {
      */
     public AVFormatOptions decryptionKey(final String key) {
         return flags(FLAG_DECRYPTION_KEY, key);
+    }
+
+    /**
+     * ‘-indexmem integer (input)’
+     * max memory used for timestamp index (per stream)
+     */
+    public AVFormatOptions timestampIndexMaxMemory(final Long maxMemory) {
+        return flags(FLAG_TIMESTAMP_INDEX_MAX_MEMORY, maxMemory);
     }
 
 }
