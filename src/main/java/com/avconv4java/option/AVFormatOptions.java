@@ -16,7 +16,8 @@ public class AVFormatOptions extends AVOptions {
     public static final String FLAG_FORMAT_FLAGS = "-fflags";
     public static final String FLAG_ANALYZE_DURATION = "-analyzeduration";
     public static final String FLAG_DECRYPTION_KEY = "-cryptokey";
-    public static final String FLAG_TIMESTAMP_INDEX_MAX_MEMORY = "-indexmem";
+    public static final String FLAG_TIMESTAMP_INDEX_SIZE = "-indexmem";
+    public static final String FLAG_REAL_TIME_BUFFER_SIZE = "-rtbufsize";
 
 
     public static AVFormatOptions create() {
@@ -82,8 +83,16 @@ public class AVFormatOptions extends AVOptions {
      * ‘-indexmem integer (input)’
      * max memory used for timestamp index (per stream)
      */
-    public AVFormatOptions timestampIndexMaxMemory(final Long maxMemory) {
-        return flags(FLAG_TIMESTAMP_INDEX_MAX_MEMORY, maxMemory);
+    public AVFormatOptions timestampIndexSize(final Long maxMemory) {
+        return flags(FLAG_TIMESTAMP_INDEX_SIZE, maxMemory);
+    }
+
+    /**
+     * ‘-rtbufsize integer (input)’
+     * max memory used for buffering real-time frames
+     */
+    public AVFormatOptions realTimeBufferSize(final Long maxMemory) {
+        return flags(FLAG_REAL_TIME_BUFFER_SIZE, maxMemory);
     }
 
 }
