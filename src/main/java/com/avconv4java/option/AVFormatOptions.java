@@ -1,6 +1,7 @@
 package com.avconv4java.option;
 
 import com.avconv4java.core.AVOptions;
+import com.avconv4java.model.AVFormatDebugInfoType;
 import com.avconv4java.model.AVFormatFlagType;
 
 /**
@@ -18,6 +19,7 @@ public class AVFormatOptions extends AVOptions {
     public static final String FLAG_DECRYPTION_KEY = "-cryptokey";
     public static final String FLAG_TIMESTAMP_INDEX_SIZE = "-indexmem";
     public static final String FLAG_REAL_TIME_BUFFER_SIZE = "-rtbufsize";
+    public static final String FLAG_DEBUG_INFO = "-fdebug";
 
 
     public static AVFormatOptions create() {
@@ -93,6 +95,18 @@ public class AVFormatOptions extends AVOptions {
      */
     public AVFormatOptions realTimeBufferSize(final Long maxMemory) {
         return flags(FLAG_REAL_TIME_BUFFER_SIZE, maxMemory);
+    }
+
+    /**
+     * ‘-fdebug flags (input/output)’
+     * print specific debug info
+     */
+    public AVFormatOptions debugInfo(final AVFormatDebugInfoType debugInfoType) {
+        return debugInfo(debugInfoType == null ? null : debugInfoType.getName());
+    }
+
+    public AVFormatOptions debugInfo(final String debugInfoTypeName) {
+        return flags(FLAG_DEBUG_INFO, debugInfoTypeName);
     }
 
 }
