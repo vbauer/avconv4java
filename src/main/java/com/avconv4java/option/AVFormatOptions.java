@@ -20,6 +20,7 @@ public class AVFormatOptions extends AVOptions {
     public static final String FLAG_TIMESTAMP_INDEX_SIZE = "-indexmem";
     public static final String FLAG_REAL_TIME_BUFFER_SIZE = "-rtbufsize";
     public static final String FLAG_DEBUG_INFO = "-fdebug";
+    public static final String FLAG_MAX_DELAY = "-max_delay";
 
 
     public static AVFormatOptions create() {
@@ -107,6 +108,14 @@ public class AVFormatOptions extends AVOptions {
 
     public AVFormatOptions debugInfo(final String debugInfoTypeName) {
         return flags(FLAG_DEBUG_INFO, debugInfoTypeName);
+    }
+
+    /**
+     * ‘-max_delay integer (input/output)’
+     * maximum muxing or demuxing delay in microseconds
+     */
+    public AVFormatOptions maxDelay(final Long delay) {
+        return flags(FLAG_MAX_DELAY, delay);
     }
 
 }
