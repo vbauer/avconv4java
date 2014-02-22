@@ -21,6 +21,7 @@ public class AVFormatOptions extends AVOptions {
     public static final String FLAG_REAL_TIME_BUFFER_SIZE = "-rtbufsize";
     public static final String FLAG_DEBUG_INFO = "-fdebug";
     public static final String FLAG_MAX_DELAY = "-max_delay";
+    public static final String FLAG_FPS_PROBE_SIZE = "-fpsprobesize";
 
 
     public static AVFormatOptions create() {
@@ -116,6 +117,14 @@ public class AVFormatOptions extends AVOptions {
      */
     public AVFormatOptions maxDelay(final Long delay) {
         return flags(FLAG_MAX_DELAY, delay);
+    }
+
+    /**
+     * ‘-fpsprobesize integer (input)’
+     * number of frames used to probe fps
+     */
+    public AVFormatOptions fpsProbeSize(final Long size) {
+        return flags(FLAG_FPS_PROBE_SIZE, size);
     }
 
 }
