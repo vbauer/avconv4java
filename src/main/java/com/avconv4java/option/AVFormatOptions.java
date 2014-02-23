@@ -23,7 +23,7 @@ public class AVFormatOptions extends AVOptions {
     public static final String FLAG_DEBUG_INFO = "-fdebug";
     public static final String FLAG_MAX_DELAY = "-max_delay";
     public static final String FLAG_FPS_PROBE_SIZE = "-fpsprobesize";
-    public static final String FLAG_ERROR_DETECTION = "-f_err_detect";
+    public static final String FLAG_ERROR_DETECTION = "-err_detect";
 
 
     public static AVFormatOptions create() {
