@@ -2,12 +2,18 @@
 # Eclipse files and directories
 .project
 .classpath
-.settings
+.settings/
 
 # Idea files and directories
-.idea
+.idea/
 *.iml
 *.ipr
 
 # Maven files and directories
-target
+target/
+
+# OSX files and directories
+.DS_Store
+
+# Windows files and directories
+Thumbs.db
