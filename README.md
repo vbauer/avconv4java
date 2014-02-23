@@ -15,8 +15,8 @@ Features
 * Options and operators translate into similar method-names, e.g.
     * -vcodec libx264 -> .videoCodec(AVVideoCodecType.H264)
     * -vcodec libtheora -> .videoCodec(AVVideoCodecType.THEORA)
+    * -vcodec libtheora -> .videoCodec("libtheora")
 * Parallel processing out of box
-* Architecture supports arbitrary commandline-tools
 
 
 Example
