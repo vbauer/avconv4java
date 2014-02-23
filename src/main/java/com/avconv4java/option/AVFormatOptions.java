@@ -1,6 +1,7 @@
 package com.avconv4java.option;
 
 import com.avconv4java.core.AVOptions;
+import com.avconv4java.model.AVErrorDetectionType;
 import com.avconv4java.model.AVFormatDebugInfoType;
 import com.avconv4java.model.AVFormatFlagType;
 
@@ -22,6 +23,7 @@ public class AVFormatOptions extends AVOptions {
     public static final String FLAG_DEBUG_INFO = "-fdebug";
     public static final String FLAG_MAX_DELAY = "-max_delay";
     public static final String FLAG_FPS_PROBE_SIZE = "-fpsprobesize";
+    public static final String FLAG_ERROR_DETECTION = "-f_err_detect";
 
 
     public static AVFormatOptions create() {
@@ -125,6 +127,18 @@ public class AVFormatOptions extends AVOptions {
      */
     public AVFormatOptions fpsProbeSize(final Long size) {
         return flags(FLAG_FPS_PROBE_SIZE, size);
+    }
+
+    /**
+     * ‘-f_err_detect flags (input)’
+     * set error detection flags (deprecated; use err_detect, save via avconv)
+     */
+    public AVFormatOptions errorDetection(final AVErrorDetectionType errorDetectionType) {
+        return errorDetection(errorDetectionType == null ? null : errorDetectionType.getName());
+    }
+
+    public AVFormatOptions errorDetection(final String errorDetectionTypeName) {
+        return flags(FLAG_ERROR_DETECTION, errorDetectionTypeName);
     }
 
 }
