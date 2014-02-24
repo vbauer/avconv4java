@@ -52,7 +52,6 @@ public final class ProcessExecutor {
         final ExecutorService executor = Executors.newSingleThreadExecutor();
         try {
             final Callable<ProcessInfo> task = new Callable<ProcessInfo>() {
-                @Override
                 public ProcessInfo call() throws Exception {
                     return waitWithoutTimeout(process);
                 }
