@@ -24,6 +24,7 @@ public class AVFormatOptions extends AVOptions {
     public static final String FLAG_MAX_DELAY = "-max_delay";
     public static final String FLAG_FPS_PROBE_SIZE = "-fpsprobesize";
     public static final String FLAG_ERROR_DETECTION = "-err_detect";
+    public static final String FLAG_INTERLEAVING_BUFFER_SIZE = "-max_interleave_delta";
 
 
     public static AVFormatOptions create() {
@@ -139,6 +140,10 @@ public class AVFormatOptions extends AVOptions {
 
     public AVFormatOptions errorDetection(final String errorDetectionTypeName) {
         return flags(FLAG_ERROR_DETECTION, errorDetectionTypeName);
+    }
+
+    public AVFormatOptions interleavingBufferSize(final Long size) {
+        return flags(FLAG_INTERLEAVING_BUFFER_SIZE, size);
     }
 
 }
