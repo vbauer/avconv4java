@@ -11,10 +11,11 @@ import java.util.Map;
 
 public final class AVUtils {
 
-    public static final String OS = System.getProperty("os.name").toLowerCase();
-
+    public static final String SYSTEM_PROPERTY_OS_NAME = "os.name";
     public static final String SPACE = " ";
     public static final String EMPTY = "";
+
+    private static final String OS = System.getProperty(SYSTEM_PROPERTY_OS_NAME).toLowerCase();
 
 
     private AVUtils() {
@@ -99,6 +100,15 @@ public final class AVUtils {
 
     public static boolean isSolaris() {
         return OS.contains("sunos");
+    }
+
+    public static String getSystemProperty(final String key) {
+        final String envProperty = System.getenv(key);
+        return trimToNull(envProperty == null ? System.getProperty(key) : envProperty);
+    }
+
+    public static <T> T defaultValue(final T value, final T defaultValue) {
+        return value == null ? defaultValue : value;
     }
 
     public static String readFully(final InputStream inputStream) {

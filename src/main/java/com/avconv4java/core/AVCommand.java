@@ -1,5 +1,6 @@
 package com.avconv4java.core;
 
+import com.avconv4java.util.AVUtils;
 import com.avconv4java.util.process.ProcessExecutor;
 import com.avconv4java.util.process.ProcessInfo;
 
@@ -12,14 +13,20 @@ import java.util.List;
 
 public class AVCommand {
 
-    public static final String DEFAULT_PATH = "/usr/bin/avconv";
+    public static final String DEFAULT_TOOL_PATH = "/usr/bin/avconv";
+    public static final String SYSTEM_PROPERTY_TOOL_PATH = "AVCONV4JAVA_TOOLPATH";
 
-    private static String globalToolPath = DEFAULT_PATH;
+    private static volatile String globalToolPath = getDefaultToolPath();
+
 
     private boolean debug;
     private String toolPath;
     private Long timeout;
 
+
+    public static String getDefaultToolPath() {
+        return AVUtils.defaultValue(AVUtils.getSystemProperty(SYSTEM_PROPERTY_TOOL_PATH), DEFAULT_TOOL_PATH);
+    }
 
     public static void setGlobalToolPath(final String toolPath) {
         AVCommand.globalToolPath = toolPath;
@@ -64,8 +71,8 @@ public class AVCommand {
     }
 
 
-    private List<String> prepareArguments(final List<String> flags) {
-        final String path = toolPath == null ? AVCommand.globalToolPath : toolPath;
+    protected List<String> prepareArguments(final List<String> flags) {
+        final String path = calculateToolPath();
         final List<String> parameters = new LinkedList<String>();
 
         parameters.add(path);
@@ -73,6 +80,11 @@ public class AVCommand {
             parameters.addAll(flags);
         }
         return parameters;
+    }
+
+    protected String calculateToolPath() {
+        final String toolPath = getToolPath();
+        return toolPath == null ? AVCommand.globalToolPath : toolPath;
     }
 
 }

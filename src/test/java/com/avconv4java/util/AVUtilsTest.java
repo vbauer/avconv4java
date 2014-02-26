@@ -93,6 +93,16 @@ public class AVUtilsTest {
         );
     }
 
+    public void testGetSystemProperty() {
+        Assert.assertNotNull(AVUtils.getSystemProperty("java.io.tmpdir"));
+    }
+
+    public void testDefault() {
+        Assert.assertNull(AVUtils.defaultValue(null, null));
+        Assert.assertEquals(AVUtils.defaultValue(null, 1), Integer.valueOf(1));
+        Assert.assertEquals(AVUtils.defaultValue(2, null), Integer.valueOf(2));
+        Assert.assertEquals(AVUtils.defaultValue(3, 4), Integer.valueOf(3));
+    }
 
     public void testReadFully() throws Exception {
         final InputStream inputStream = ClassLoader.getSystemResourceAsStream(TODO_FILE);
