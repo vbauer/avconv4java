@@ -12,6 +12,8 @@ import java.util.Map;
 public final class AVUtils {
 
     public static final String SYSTEM_PROPERTY_OS_NAME = "os.name";
+    public static final String SYSTEM_PROPERTY_LINE_SEPARATOR = "line.separator";
+
     public static final String SPACE = " ";
     public static final String EMPTY = "";
 
@@ -121,7 +123,7 @@ public final class AVUtils {
 
             while ((line = reader.readLine()) != null) {
                 result.append(line);
-                result.append(System.getProperty("line.separator"));
+                result.append(getSystemProperty(SYSTEM_PROPERTY_LINE_SEPARATOR));
             }
         } catch (final IOException ex) {
             return null;
