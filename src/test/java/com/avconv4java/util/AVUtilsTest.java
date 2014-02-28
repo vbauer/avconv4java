@@ -94,7 +94,8 @@ public class AVUtilsTest {
     }
 
     public void testGetSystemProperty() {
-        Assert.assertNotNull(AVUtils.getSystemProperty("java.io.tmpdir"));
+        Assert.assertNotNull(AVUtils.getSystemProperty(AVUtils.SYSTEM_PROPERTY_OS_NAME));
+        Assert.assertNotNull(AVUtils.getSystemProperty(AVUtils.SYSTEM_PROPERTY_LINE_SEPARATOR));
     }
 
     public void testDefault() {

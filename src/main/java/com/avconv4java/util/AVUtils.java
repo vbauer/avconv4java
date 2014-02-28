@@ -17,7 +17,8 @@ public final class AVUtils {
     public static final String SPACE = " ";
     public static final String EMPTY = "";
 
-    private static final String OS = System.getProperty(SYSTEM_PROPERTY_OS_NAME).toLowerCase();
+    private static final String OS = getSystemProperty(SYSTEM_PROPERTY_OS_NAME).toLowerCase();
+    private static final String LINE_SEPARATOR = getSystemProperty(SYSTEM_PROPERTY_LINE_SEPARATOR);
 
 
     private AVUtils() {
@@ -106,7 +107,7 @@ public final class AVUtils {
 
     public static String getSystemProperty(final String key) {
         final String envProperty = System.getenv(key);
-        return trimToNull(envProperty == null ? System.getProperty(key) : envProperty);
+        return envProperty == null ? System.getProperty(key) : envProperty;
     }
 
     public static <T> T defaultValue(final T value, final T defaultValue) {
@@ -121,9 +122,10 @@ public final class AVUtils {
             reader = new BufferedReader(new InputStreamReader(inputStream, Charset.defaultCharset()));
             String line;
 
+            final String separator = LINE_SEPARATOR;
             while ((line = reader.readLine()) != null) {
                 result.append(line);
-                result.append(getSystemProperty(SYSTEM_PROPERTY_LINE_SEPARATOR));
+                result.append(separator);
             }
         } catch (final IOException ex) {
             return null;
