@@ -20,6 +20,7 @@ public class AVAdvancedOptions extends AVOptions {
     public static final String FLAG_COPY_TIME_BASE = "-copytb";
     public static final String FLAG_DISCONTINUITY_DELTA_THRESHOLD = "-dts_delta_threshold";
     public static final String FLAG_FILTER_COMPLEX_SCRIPT = "-filter_complex_script";
+    public static final String FLAG_SHORTEST = "-shortest";
 
 
     public static AVAdvancedOptions create() {
@@ -114,6 +115,14 @@ public class AVAdvancedOptions extends AVOptions {
      */
     public AVAdvancedOptions filterComplexScript(final String fileName) {
         return flags(FLAG_FILTER_COMPLEX_SCRIPT, fileName);
+    }
+
+    /**
+     * ‘-shortest (output)’
+     * Finish encoding when the shortest input stream ends.
+     */
+    public AVAdvancedOptions shortest() {
+        return flags(FLAG_SHORTEST);
     }
 
 }
