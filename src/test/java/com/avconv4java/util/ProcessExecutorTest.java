@@ -16,28 +16,25 @@ import java.util.List;
 @Test
 public class ProcessExecutorTest {
 
-    private static final List<String> COMMAND_LS = Arrays.asList("ls");
-    private static final List<String> COMMAND_SLEEP = Arrays.asList("sleep", "1");
-
-    private static final String MESSAGE_OS_TYPE = "Test is only for Unix OS";
+    private static final String MESSAGE_OS_TYPE = "Test is only for Solaris, Unix, Windows and Mac";
 
 
     public void testNixCommandWithEnoughTimeout() throws Exception {
-        assumeOS();
-        Assert.assertTrue(runCommand(COMMAND_LS, 30000L, false).isSuccess());
-        Assert.assertTrue(runCommand(COMMAND_LS, 30000L, true).isSuccess());
+        final List<String> command = getDirListCmd();
+        Assert.assertTrue(runCommand(command, 30000L, false).isSuccess());
+        Assert.assertTrue(runCommand(command, 30000L, true).isSuccess());
     }
 
     public void testNixCommandWithNotEnoughTimeout() throws Exception {
-        assumeOS();
-        Assert.assertTrue(runCommand(COMMAND_SLEEP, 1L, false).isError());
-        Assert.assertTrue(runCommand(COMMAND_SLEEP, 1L, true).isError());
+        final List<String> command = getSleepCmd();
+        Assert.assertTrue(runCommand(command, 1L, false).isError());
+        Assert.assertTrue(runCommand(command, 1L, true).isError());
     }
 
     public void testNixCommandWithoutTimeout() throws Exception {
-        assumeOS();
-        Assert.assertTrue(runCommand(COMMAND_LS, null, false).isSuccess());
-        Assert.assertTrue(runCommand(COMMAND_LS, null, true).isSuccess());
+        final List<String> command = getDirListCmd();
+        Assert.assertTrue(runCommand(command, null, false).isSuccess());
+        Assert.assertTrue(runCommand(command, null, true).isSuccess());
     }
 
     public void testErrorProcessInfo() {
@@ -67,8 +64,22 @@ public class ProcessExecutorTest {
         return processInfo;
     }
 
-    private void assumeOS() {
-        if (!(AVUtils.isUnix() || AVUtils.isSolaris() || AVUtils.isMac())) {
+    private List<String> getDirListCmd() {
+        if (AVUtils.isMac() || AVUtils.isSolaris() || AVUtils.isUnix()) {
+            return Arrays.asList("ls");
+        } else if (AVUtils.isWindows()) {
+            return Arrays.asList("dir");
+        } else {
+            throw new SkipException(MESSAGE_OS_TYPE);
+        }
+    }
+
+    private List<String> getSleepCmd() {
+        if (AVUtils.isMac() || AVUtils.isSolaris() || AVUtils.isUnix()) {
+            return Arrays.asList("sleep", "1");
+        } else if (AVUtils.isWindows()) {
+            return Arrays.asList("ping", "1.1.1.1", "-n", "1", "-w", "3000");
+        } else {
             throw new SkipException(MESSAGE_OS_TYPE);
         }
     }
