@@ -68,7 +68,7 @@ public class ProcessExecutorTest {
     }
 
     private void assumeOS() {
-        if (!AVUtils.isUnix()) {
+        if (!(AVUtils.isUnix() || AVUtils.isSolaris() || AVUtils.isMac())) {
             throw new SkipException(MESSAGE_OS_TYPE);
         }
     }
