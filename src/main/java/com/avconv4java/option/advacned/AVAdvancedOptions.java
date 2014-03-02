@@ -21,6 +21,7 @@ public class AVAdvancedOptions extends AVOptions {
     public static final String FLAG_DISCONTINUITY_DELTA_THRESHOLD = "-dts_delta_threshold";
     public static final String FLAG_FILTER_COMPLEX_SCRIPT = "-filter_complex_script";
     public static final String FLAG_SHORTEST = "-shortest";
+    public static final String FLAG_MAX_DEMUX_DELAY = "-muxdelay";
 
 
     public static AVAdvancedOptions create() {
@@ -123,6 +124,14 @@ public class AVAdvancedOptions extends AVOptions {
      */
     public AVAdvancedOptions shortest() {
         return flags(FLAG_SHORTEST);
+    }
+
+    /**
+     * ‘-muxdelay seconds (input)’
+     * Set the maximum demux-decode delay.
+     */
+    public AVAdvancedOptions maxDemuxDelay(final Long seconds) {
+        return flags(FLAG_MAX_DEMUX_DELAY, seconds);
     }
 
 }
