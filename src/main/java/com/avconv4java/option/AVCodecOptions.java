@@ -19,10 +19,11 @@ public class AVCodecOptions extends AVOptions {
     public static final String FLAG_VIDEO_BIT_RATE_TOLERANCE = "-bt";
     public static final String FLAG_CODEC_FLAGS = "-flags";
     public static final String FLAG_MOTION_ESTIMATION_METHOD = "-me_method";
-    public static final String FLAG_STRICT = "-strict";
-    public static final String FLAG_DEBUG = "-debug";
     public static final String FLAG_GROUP_OF_PICTURES = "-g";
     public static final String FLAG_CUT_OFF_BANDWIDTH = "-cutoff";
+    public static final String FLAG_FRAME_SIZE = "-frame_size";
+    public static final String FLAG_STRICT = "-strict";
+    public static final String FLAG_DEBUG = "-debug";
 
 
     public static AVCodecOptions create() {
@@ -151,6 +152,14 @@ public class AVCodecOptions extends AVOptions {
 
     public AVCodecOptions cutOffBandwidth(final Integer bandwidth) {
         return cutOffBandwidth(null, bandwidth);
+    }
+
+    public AVCodecOptions frameSize(final AVStreamType streamType, final Integer size) {
+        return flags(specifyStream(FLAG_FRAME_SIZE, streamType), size);
+    }
+
+    public AVCodecOptions frameSize(final Integer size) {
+        return frameSize(null, size);
     }
 
 }
