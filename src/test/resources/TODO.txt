@@ -44,9 +44,6 @@ Read input at native frame rate. Mainly used to simulate a grab device or live i
 ‘-async samples_per_second’
 Audio sync method. "Stretches/squeezes" the audio stream to match the timestamps, the parameter is the maximum samples per second by which the audio is changed. -async 1 is a special case where only the start of the audio stream is corrected without any later correction. This option has been deprecated. Use the asyncts audio filter instead.
 
-‘-muxpreload seconds (input)’
-Set the initial demux-decode delay.
-
 ‘-streamid output-stream-index:new-value (output)’
 Assign a new stream-id value to an output stream. This option should be specified prior to the output filename to which it applies. For the situation where multiple output files exist, a streamid may be reassigned to a different value.
 

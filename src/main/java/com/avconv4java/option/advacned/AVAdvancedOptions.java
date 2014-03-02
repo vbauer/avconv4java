@@ -22,6 +22,7 @@ public class AVAdvancedOptions extends AVOptions {
     public static final String FLAG_FILTER_COMPLEX_SCRIPT = "-filter_complex_script";
     public static final String FLAG_SHORTEST = "-shortest";
     public static final String FLAG_MAX_DEMUX_DELAY = "-muxdelay";
+    public static final String FLAG_DEMUX_PRELOAD_DELAY = "-muxpreload";
 
 
     public static AVAdvancedOptions create() {
@@ -132,6 +133,14 @@ public class AVAdvancedOptions extends AVOptions {
      */
     public AVAdvancedOptions maxDemuxDelay(final Long seconds) {
         return flags(FLAG_MAX_DEMUX_DELAY, seconds);
+    }
+
+    /**
+     * ‘-muxpreload seconds (input)’
+     * Set the initial demux-decode delay.
+     */
+    public AVAdvancedOptions demuxPreLoadDelay(final Long seconds) {
+        return flags(FLAG_DEMUX_PRELOAD_DELAY, seconds);
     }
 
 }
