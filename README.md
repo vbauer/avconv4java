@@ -68,6 +68,15 @@ This command is equivalent to the following:
 ```
 
 
+FAQ
+===
+
+<dl>
+    <dt>What is the default avconv path value?</dt>
+    <dd>Environment variable "AVCONV4JAVA_TOOLPATH" will be checked in priority, otherwise it will be "/usr/bin/avconv".</dd>
+</dl>
+
+
 License
 =======
 
@@ -86,4 +95,3 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
-
