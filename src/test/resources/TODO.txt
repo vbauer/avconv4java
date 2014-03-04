@@ -41,9 +41,6 @@ Copy chapters from input file with index input_file_index to the next output fil
 ‘-re (input)’
 Read input at native frame rate. Mainly used to simulate a grab device or live input stream (e.g. when reading from a file). Should not be used with actual grab devices or live input streams (where it can cause packet loss).
 
-‘-async samples_per_second’
-Audio sync method. "Stretches/squeezes" the audio stream to match the timestamps, the parameter is the maximum samples per second by which the audio is changed. -async 1 is a special case where only the start of the audio stream is corrected without any later correction. This option has been deprecated. Use the asyncts audio filter instead.
-
 ‘-streamid output-stream-index:new-value (output)’
 Assign a new stream-id value to an output stream. This option should be specified prior to the output filename to which it applies. For the situation where multiple output files exist, a streamid may be reassigned to a different value.
 
