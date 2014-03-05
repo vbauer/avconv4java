@@ -61,7 +61,4 @@ Force a tag/fourcc for matching streams.
 ‘-filter_complex filtergraph (global)’
 Define a complex filter graph, i.e. one with arbitrary number of inputs and/or outputs. For simple graphs – those with one input and one output of the same type – see the ‘-filter’ options. filtergraph is a description of the filter graph, as described in Filtergraph syntax.
 
-‘-accurate_seek (input)’
-This option enables or disables accurate seeking in input files with the ‘-ss’ option. It is enabled by default, so seeking is accurate when transcoding. Use ‘-noaccurate_seek’ to disable it, which may be useful e.g. when copying some streams and transcoding the others.
-
 [TO-DO]

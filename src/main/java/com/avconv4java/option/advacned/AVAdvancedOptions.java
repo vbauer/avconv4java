@@ -23,6 +23,8 @@ public class AVAdvancedOptions extends AVOptions {
     public static final String FLAG_SHORTEST = "-shortest";
     public static final String FLAG_MAX_DEMUX_DELAY = "-muxdelay";
     public static final String FLAG_DEMUX_PRELOAD_DELAY = "-muxpreload";
+    public static final String FLAG_ACCURATE_SEEK = "-accurate_seek";
+    public static final String FLAG_NO_ACCURATE_SEEK = "-noaccurate_seek";
 
 
     public static AVAdvancedOptions create() {
@@ -141,6 +143,16 @@ public class AVAdvancedOptions extends AVOptions {
      */
     public AVAdvancedOptions demuxPreLoadDelay(final Long seconds) {
         return flags(FLAG_DEMUX_PRELOAD_DELAY, seconds);
+    }
+
+    /**
+     * ‘-accurate_seek (input)’
+     * This option enables or disables accurate seeking in input files with the ‘-ss’ option.
+     * It is enabled by default, so seeking is accurate when transcoding. Use ‘-noaccurate_seek’ to disable it,
+     * which may be useful e.g. when copying some streams and transcoding the others.
+     */
+    public AVAdvancedOptions accurateSeek(final boolean accurate) {
+        return flags(accurate ? FLAG_ACCURATE_SEEK : FLAG_NO_ACCURATE_SEEK);
     }
 
 }
