@@ -8,7 +8,10 @@
     <artifactId>avconv4java</artifactId>
     <version>1.0.0</version>
 
+    <description>Pure-java interface to the avconv commandline</description>
+    <url>https://github.com/vbauer/avconv4java</url>
     <inceptionYear>2013</inceptionYear>
+
     <developers>
         <developer>
             <id>vbauer</id>
