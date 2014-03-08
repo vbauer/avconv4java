@@ -4,6 +4,7 @@
 
     <test name="Regression tests">
         <packages>
+            <package name="com.avconv4java.model"/>
             <package name="com.avconv4java.util"/>
             <package name="com.avconv4java.core"/>
         </packages>

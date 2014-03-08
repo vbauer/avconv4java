@@ -6,23 +6,23 @@ package com.avconv4java.model;
 
 public enum AVAudioCodecType {
 
-    VORBIS("libvorbis"),
+    VORBIS(Constants.VORBIS),
 
     /**
      * May be used only with -strict experimental.
      * Not so stable yet and overall quality is very bad, but bundled with avconv
      */
-    AAC("aac"),
+    AAC(Constants.AAC),
 
     /**
      * The best aac encoder so far, but separate lib.
      */
-    FDK_AAC("libfdk_aac"),
+    FDK_AAC(Constants.FDK_AAC),
 
     /**
      * Not bad encoder, bundled with daily windows builds.
      */
-    VISUAL_ON_AAC("libvo_aacenc");
+    VISUAL_ON_AAC(Constants.VISUAL_ON_ACC);
 
 
     private final String name;
@@ -45,6 +45,25 @@ public enum AVAudioCodecType {
             }
         }
         return null;
+    }
+
+
+    /**
+     * @author Vladislav Bauer
+     */
+
+    public static final class Constants {
+
+        public static final String VORBIS = "libvorbis";
+        public static final String AAC = "aac";
+        public static final String FDK_AAC = "libfdk_aac";
+        public static final String VISUAL_ON_ACC = "libvo_aacenc";
+
+
+        private Constants() {
+            throw new UnsupportedOperationException();
+        }
+
     }
 
 }
