@@ -15,4 +15,9 @@ public class ModelTest {
         Assert.assertNull(AVAudioCodecType.findByName(null));
     }
 
+    public void testAVCodecFlagType() {
+        Assert.assertEquals(AVCodecFlagType.findByName(AVCodecFlagType.Constants.AIC), AVCodecFlagType.AIC);
+        Assert.assertNull(AVCodecFlagType.findByName(null));
+    }
+
 }
