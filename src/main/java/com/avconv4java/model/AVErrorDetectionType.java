@@ -9,22 +9,22 @@ public enum AVErrorDetectionType {
     /**
      * Verify embedded CRCs.
      */
-    CRC_CHECK("crccheck"),
+    CRC_CHECK(Constants.CRC_CHECK),
 
     /**
      * Detect bitstream specification deviations.
      */
-    BIT_STREAM("bitstream"),
+    BIT_STREAM(Constants.BIT_STREAM),
 
     /**
      * Detect improper bitstream length.
      */
-    BUFFER("buffer"),
+    BUFFER(Constants.BUFFER),
 
     /**
      * Abort decoding on minor error detection.
      */
-    EXPLODE("explode");
+    EXPLODE(Constants.EXPLODE);
 
 
     private final String name;
@@ -47,6 +47,25 @@ public enum AVErrorDetectionType {
             }
         }
         return null;
+    }
+
+
+    /**
+     * @author Vladislav Bauer
+     */
+
+    public static final class Constants {
+
+        public static final String CRC_CHECK = "crccheck";
+        public static final String BIT_STREAM = "bitstream";
+        public static final String BUFFER = "buffer";
+        public static final String EXPLODE = "explode";
+
+
+        private Constants() {
+            throw new UnsupportedOperationException();
+        }
+
     }
 
 }

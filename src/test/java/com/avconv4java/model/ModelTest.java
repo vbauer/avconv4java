@@ -33,4 +33,13 @@ public class ModelTest {
         Assert.assertNull(AVDebugInfoType.findByName(null));
     }
 
+    public void testAVErrorDetectionType() {
+        Assert.assertEquals(
+            AVErrorDetectionType.findByName(AVErrorDetectionType.Constants.BUFFER),
+            AVErrorDetectionType.BUFFER
+        );
+        Assert.assertNull(AVErrorDetectionType.findByName(FAKE_VALUE));
+        Assert.assertNull(AVErrorDetectionType.findByName(null));
+    }
+
 }
