@@ -9,52 +9,52 @@ public enum AVFileFormatType {
     /**
      * Image file muxer.
      */
-    IMAGE("image2"),
+    IMAGE(Constants.IMAGE),
 
     /**
      * CRC (Cyclic Redundancy Check) testing format.
      */
-    CRC("crc"),
+    CRC(Constants.CRC),
 
     /**
      * Per-frame CRC (Cyclic Redundancy Check) testing format.
      */
-    FRAME_CRC("framecrc"),
+    FRAME_CRC(Constants.FRAME_CRC),
 
     /**
      * Apple HTTP Live Streaming muxer that segments MPEG-TS according to the HTTP Live Streaming specification.
      */
-    HLS("hls"),
+    HLS(Constants.HLS),
 
     /**
      * MPEG transport stream muxer.
      */
-    MPEG_TRANSPORT("mpegts"),
+    MPEG_TRANSPORT(Constants.MPEG_TRANSPORT),
 
     /**
      * Null muxer.
      */
-    NULL("null"),
+    NULL(Constants.NULL),
 
     /**
      * Matroska container muxer.
      */
-    MATROSKA("matroska"),
+    MATROSKA(Constants.MATROSKA),
 
     /**
      * Basic stream segmenter.
      */
-    SEGMENT("segment"),
+    SEGMENT(Constants.SEGMENT),
 
     /**
      * MP3 container muxer.
      */
-    MP3("mp3"),
+    MP3(Constants.MP3),
 
     /**
      * Ogg container muxer.
      */
-    OGG("ogg");
+    OGG(Constants.OGG);
 
 
     private final String name;
@@ -77,6 +77,31 @@ public enum AVFileFormatType {
             }
         }
         return null;
+    }
+
+
+    /**
+     * @author Vladislav Bauer
+     */
+
+    public static final class Constants {
+
+        public static final String IMAGE = "image2";
+        public static final String CRC = "crc";
+        public static final String FRAME_CRC = "framecrc";
+        public static final String HLS = "hls";
+        public static final String MPEG_TRANSPORT = "mpegts";
+        public static final String NULL = "null";
+        public static final String MATROSKA = "matroska";
+        public static final String SEGMENT = "segment";
+        public static final String MP3 = "mp3";
+        public static final String OGG = "ogg";
+
+
+        private Constants() {
+            throw new UnsupportedOperationException();
+        }
+
     }
 
 }

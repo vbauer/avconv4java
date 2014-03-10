@@ -12,7 +12,7 @@ import java.util.UUID;
 @Test
 public class ModelTest {
 
-    private static final String FAKE_VALUE = UUID.randomUUID().toString();
+    private static final String FAKE_VALUE = "FAKE_" + UUID.randomUUID().toString();
 
 
     public void testAVAudioCodecType() {
@@ -40,6 +40,12 @@ public class ModelTest {
         );
         Assert.assertNull(AVErrorDetectionType.findByName(FAKE_VALUE));
         Assert.assertNull(AVErrorDetectionType.findByName(null));
+    }
+
+    public void testAVFileFormatType() {
+        Assert.assertEquals(AVFileFormatType.findByName(AVFileFormatType.Constants.CRC), AVFileFormatType.CRC);
+        Assert.assertNull(AVFileFormatType.findByName(FAKE_VALUE));
+        Assert.assertNull(AVFileFormatType.findByName(null));
     }
 
 }
