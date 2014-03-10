@@ -48,4 +48,13 @@ public class ModelTest {
         Assert.assertNull(AVFileFormatType.findByName(null));
     }
 
+    public void testAVFormatDebugInfoType() {
+        Assert.assertEquals(
+            AVFormatDebugInfoType.findByName(AVFormatDebugInfoType.Constants.TS),
+            AVFormatDebugInfoType.TS
+        );
+        Assert.assertNull(AVFormatDebugInfoType.findByName(FAKE_VALUE));
+        Assert.assertNull(AVFormatDebugInfoType.findByName(null));
+    }
+
 }

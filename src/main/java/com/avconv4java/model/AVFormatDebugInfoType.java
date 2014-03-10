@@ -6,7 +6,7 @@ package com.avconv4java.model;
 
 public enum AVFormatDebugInfoType {
 
-    TS("ts");
+    TS(Constants.TS);
 
 
     private final String name;
@@ -31,5 +31,20 @@ public enum AVFormatDebugInfoType {
         return null;
     }
 
+
+    /**
+     * @author Vladislav Bauer
+     */
+
+    public static final class Constants {
+
+        public static final String TS = "ts";
+
+
+        private Constants() {
+            throw new UnsupportedOperationException();
+        }
+
+    }
 
 }
