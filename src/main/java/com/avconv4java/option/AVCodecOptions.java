@@ -24,6 +24,7 @@ public class AVCodecOptions extends AVOptions {
     public static final String FLAG_FRAME_SIZE = "-frame_size";
     public static final String FLAG_STRICT = "-strict";
     public static final String FLAG_DEBUG = "-debug";
+    public static final String FLAG_PRESET = "-pre";
 
 
     public static AVCodecOptions create() {
@@ -160,6 +161,10 @@ public class AVCodecOptions extends AVOptions {
 
     public AVCodecOptions frameSize(final Integer size) {
         return frameSize(null, size);
+    }
+
+    public AVCodecOptions preset(final AVStreamType streamType, final String fileName) {
+        return flags(specifyStream(FLAG_PRESET, streamType), fileName);
     }
 
 }
