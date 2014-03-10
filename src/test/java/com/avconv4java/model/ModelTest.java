@@ -57,4 +57,13 @@ public class ModelTest {
         Assert.assertNull(AVFormatDebugInfoType.findByName(null));
     }
 
+    public void testAVFormatFlagType() {
+        Assert.assertEquals(
+            AVFormatFlagType.findByName(AVFormatFlagType.Constants.NO_BUFFER),
+            AVFormatFlagType.NO_BUFFER
+        );
+        Assert.assertNull(AVFormatFlagType.findByName(FAKE_VALUE));
+        Assert.assertNull(AVFormatFlagType.findByName(null));
+    }
+
 }
