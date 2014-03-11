@@ -66,4 +66,13 @@ public class ModelTest {
         Assert.assertNull(AVFormatFlagType.findByName(null));
     }
 
+    public void testAVHardwareAccelerationType() {
+        Assert.assertEquals(
+            AVHardwareAccelerationType.findByName(AVHardwareAccelerationType.Constants.VDPAU),
+            AVHardwareAccelerationType.VDPAU
+        );
+        Assert.assertNull(AVHardwareAccelerationType.findByName(FAKE_VALUE));
+        Assert.assertNull(AVHardwareAccelerationType.findByName(null));
+    }
+
 }
