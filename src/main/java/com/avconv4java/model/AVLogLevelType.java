@@ -6,21 +6,21 @@ package com.avconv4java.model;
 
 public enum AVLogLevelType {
 
-    QUIET("quiet"),
+    QUIET(Constants.QUIET),
 
-    PANIC("panic"),
+    PANIC(Constants.PANIC),
 
-    FATAL("fatal"),
+    FATAL(Constants.FATAL),
 
-    ERROR("error"),
+    ERROR(Constants.ERROR),
 
-    WARNING("warning"),
+    WARNING(Constants.WARNING),
 
-    INFO("info"),
+    INFO(Constants.INFO),
 
-    VERBOSE("verbose"),
+    VERBOSE(Constants.VERBOSE),
 
-    DEBUG("debug");
+    DEBUG(Constants.DEBUG);
 
 
     private final String name;
@@ -43,6 +43,29 @@ public enum AVLogLevelType {
             }
         }
         return null;
+    }
+
+
+    /**
+     * @author Vladislav Bauer
+     */
+
+    public static final class Constants {
+
+        public static final String QUIET = "quiet";
+        public static final String PANIC = "panic";
+        public static final String FATAL = "fatal";
+        public static final String ERROR = "error";
+        public static final String WARNING = "warning";
+        public static final String INFO = "info";
+        public static final String VERBOSE = "verbose";
+        public static final String DEBUG = "debug";
+
+
+        private Constants() {
+            throw new UnsupportedOperationException();
+        }
+
     }
 
 }

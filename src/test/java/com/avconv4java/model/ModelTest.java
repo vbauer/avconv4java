@@ -75,4 +75,10 @@ public class ModelTest {
         Assert.assertNull(AVHardwareAccelerationType.findByName(null));
     }
 
+    public void testAVLogLevelType() {
+        Assert.assertEquals(AVLogLevelType.findByName(AVLogLevelType.Constants.INFO), AVLogLevelType.INFO);
+        Assert.assertNull(AVLogLevelType.findByName(FAKE_VALUE));
+        Assert.assertNull(AVLogLevelType.findByName(null));
+    }
+
 }
