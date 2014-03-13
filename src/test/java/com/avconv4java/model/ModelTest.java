@@ -81,4 +81,13 @@ public class ModelTest {
         Assert.assertNull(AVLogLevelType.findByName(null));
     }
 
+    public void testAVMotionEstimationType() {
+        Assert.assertEquals(
+            AVMotionEstimationType.findByName(AVMotionEstimationType.Constants.LOG),
+            AVMotionEstimationType.LOG
+        );
+        Assert.assertNull(AVMotionEstimationType.findByName(FAKE_VALUE));
+        Assert.assertNull(AVMotionEstimationType.findByName(null));
+    }
+
 }
