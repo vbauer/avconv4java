@@ -90,4 +90,10 @@ public class ModelTest {
         Assert.assertNull(AVMotionEstimationType.findByName(null));
     }
 
+    public void testAVMovFlagsType() {
+        Assert.assertEquals(AVMovFlagsType.findByName(AVMovFlagsType.Constants.FAST_START), AVMovFlagsType.FAST_START);
+        Assert.assertNull(AVMovFlagsType.findByName(FAKE_VALUE));
+        Assert.assertNull(AVMovFlagsType.findByName(null));
+    }
+
 }

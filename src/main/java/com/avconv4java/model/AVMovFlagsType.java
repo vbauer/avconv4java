@@ -9,14 +9,14 @@ public enum AVMovFlagsType {
     /**
      * Start a new fragment at each video keyframe.
      */
-    FRAG_KEY_FRAME("frag_keyframe"),
+    FRAG_KEY_FRAME(Constants.FRAG_KEY_FRAME),
 
     /**
      * Allow the caller to manually choose when to cut fragments, by calling av_write_frame(ctx, NULL)
      * to write a fragment with the packets written so far. (This is only useful with other applications
      * integrating libavformat, not from avconv.)
      */
-    FRAG_CUSTOM("frag_custom"),
+    FRAG_CUSTOM(Constants.FRAG_CUSTOM),
 
     /**
      * Write an initial moov atom directly at the start of the file, without describing any samples in it.
@@ -27,7 +27,7 @@ public enum AVMovFlagsType {
      * Files written with this option set do not work in QuickTime.
      * This option is implicitly set when writing ismv (Smooth Streaming) files.
      */
-    EMPTY_MOOV("empty_moov"),
+    EMPTY_MOOV(Constants.EMPTY_MOOV),
 
     /**
      * Write a separate moof (movie fragment) atom for each track. Normally, packets for all tracks are written
@@ -36,14 +36,14 @@ public enum AVMovFlagsType {
      *
      * This option is implicitly set when writing ismv (Smooth Streaming) files.
      */
-    SEPARATE_MOOF("separate_moof"),
+    SEPARATE_MOOF(Constants.SEPARATE_MOOF),
 
     /**
      * Run a second pass moving the index (moov atom) to the beginning of the file.
      * This operation can take a while, and will not work in various situations such as fragmented output,
      * thus it is not enabled by default.
      */
-    FAST_START("faststart");
+    FAST_START(Constants.FAST_START);
 
 
     private final String name;
@@ -66,6 +66,26 @@ public enum AVMovFlagsType {
             }
         }
         return null;
+    }
+
+
+    /**
+     * @author Vladislav Bauer
+     */
+
+    public static final class Constants {
+
+        public static final String FRAG_KEY_FRAME = "frag_keyframe";
+        public static final String FRAG_CUSTOM = "frag_custom";
+        public static final String EMPTY_MOOV = "empty_moov";
+        public static final String SEPARATE_MOOF = "separate_moof";
+        public static final String FAST_START = "faststart";
+
+
+        private Constants() {
+            throw new UnsupportedOperationException();
+        }
+
     }
 
 }
