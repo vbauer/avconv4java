@@ -96,4 +96,10 @@ public class ModelTest {
         Assert.assertNull(AVMovFlagsType.findByName(null));
     }
 
+    public void testAVStreamType() {
+        Assert.assertEquals(AVStreamType.findByName(AVStreamType.Constants.AUDIO), AVStreamType.AUDIO);
+        Assert.assertNull(AVStreamType.findByName(FAKE_VALUE));
+        Assert.assertNull(AVStreamType.findByName(null));
+    }
+
 }

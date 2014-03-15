@@ -6,11 +6,11 @@ package com.avconv4java.model;
 
 public enum AVStreamType {
 
-    AUDIO("a"),
+    AUDIO(Constants.AUDIO),
 
-    VIDEO("v"),
+    VIDEO(Constants.VIDEO),
 
-    SUBTITLE("s");
+    SUBTITLE(Constants.SUBTITLE);
 
 
     private final String name;
@@ -33,6 +33,24 @@ public enum AVStreamType {
             }
         }
         return null;
+    }
+
+
+    /**
+     * @author Vladislav Bauer
+     */
+
+    public static final class Constants {
+
+        public static final String AUDIO = "a";
+        public static final String VIDEO = "v";
+        public static final String SUBTITLE = "s";
+
+
+        private Constants() {
+            throw new UnsupportedOperationException();
+        }
+
     }
 
 }
