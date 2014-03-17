@@ -102,4 +102,10 @@ public class ModelTest {
         Assert.assertNull(AVStreamType.findByName(null));
     }
 
+    public void testAVStrictType() {
+        Assert.assertEquals(AVStrictType.findByName(AVStrictType.Constants.VERY), AVStrictType.VERY);
+        Assert.assertNull(AVStrictType.findByName(FAKE_VALUE));
+        Assert.assertNull(AVStrictType.findByName(null));
+    }
+
 }
