@@ -6,15 +6,15 @@ package com.avconv4java.model;
 
 public enum  AVTargetFileType {
 
-    VCD(Constants.TYPE_VCD),
+    VCD(Constants.VCD),
 
-    SVCD(Constants.TYPE_SVCD),
+    SVCD(Constants.SVCD),
 
-    DVD(Constants.TYPE_DVD),
+    DVD(Constants.DVD),
 
-    DV(Constants.TYPE_DV),
+    DV(Constants.DV),
 
-    DV50(Constants.TYPE_DV50);
+    DV50(Constants.DV50);
 
 
     private final String name;
@@ -46,11 +46,11 @@ public enum  AVTargetFileType {
 
     public static final class Constants {
 
-        public static final String TYPE_VCD = "vcd";
-        public static final String TYPE_SVCD = "svcd";
-        public static final String TYPE_DVD = "dvd";
-        public static final String TYPE_DV = "dv";
-        public static final String TYPE_DV50 = "dv50";
+        public static final String VCD = "vcd";
+        public static final String SVCD = "svcd";
+        public static final String DVD = "dvd";
+        public static final String DV = "dv";
+        public static final String DV50 = "dv50";
 
         public static final String PREFIX_PAL = "pal-";
         public static final String PREFIX_NTSC = "ntsc-";

@@ -108,4 +108,10 @@ public class ModelTest {
         Assert.assertNull(AVStrictType.findByName(null));
     }
 
+    public void testAVTargetFileType() {
+        Assert.assertEquals(AVTargetFileType.findByName(AVTargetFileType.Constants.DV), AVTargetFileType.DV);
+        Assert.assertNull(AVTargetFileType.findByName(FAKE_VALUE));
+        Assert.assertNull(AVTargetFileType.findByName(null));
+    }
+
 }
