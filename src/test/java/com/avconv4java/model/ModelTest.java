@@ -114,4 +114,10 @@ public class ModelTest {
         Assert.assertNull(AVTargetFileType.findByName(null));
     }
 
+    public void testAVVideoCodecType() {
+        Assert.assertEquals(AVVideoCodecType.findByName(AVVideoCodecType.Constants.H264), AVVideoCodecType.H264);
+        Assert.assertNull(AVVideoCodecType.findByName(FAKE_VALUE));
+        Assert.assertNull(AVVideoCodecType.findByName(null));
+    }
+
 }

@@ -6,9 +6,9 @@ package com.avconv4java.model;
 
 public enum AVVideoCodecType {
 
-    H264("libx264"),
+    H264(Constants.H264),
 
-    THEORA("libtheora");
+    THEORA(Constants.THEORA);
 
 
     private final String name;
@@ -31,6 +31,23 @@ public enum AVVideoCodecType {
             }
         }
         return null;
+    }
+
+
+    /**
+     * @author Vladislav Bauer
+     */
+
+    public static final class Constants {
+
+        public static final String H264 = "libx264";
+        public static final String THEORA = "libtheora";
+
+
+        private Constants() {
+            throw new UnsupportedOperationException();
+        }
+
     }
 
 }
