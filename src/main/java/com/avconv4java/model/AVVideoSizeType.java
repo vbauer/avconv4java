@@ -6,63 +6,63 @@ package com.avconv4java.model;
 
 public enum AVVideoSizeType {
 
-    SQCIF("sqcif", 128, 96),
+    SQCIF(Constants.SQCIF, 128, 96),
 
-    QCIF("qcif", 176, 144),
+    QCIF(Constants.QCIF, 176, 144),
 
-    CIF("cif", 352, 288),
+    CIF(Constants.CIF, 352, 288),
 
-    CIF4("4cif", 704, 576),
+    CIF4(Constants.CIF4, 704, 576),
 
-    CIF16("16cif", 1408, 1152),
+    CIF16(Constants.CIF16, 1408, 1152),
 
-    QQVGA("qqvga", 160, 120),
+    QQVGA(Constants.QQVGA, 160, 120),
 
-    QVGA("qvga", 320, 240),
+    QVGA(Constants.QVGA, 320, 240),
 
-    VGA("vga", 640, 480),
+    VGA(Constants.VGA, 640, 480),
 
-    SVGA("svga", 800, 600),
+    SVGA(Constants.SVGA, 800, 600),
 
-    XGA("xga", 1024, 768),
+    XGA(Constants.XGA, 1024, 768),
 
-    UXGA("uxga", 1600, 1200),
+    UXGA(Constants.UXGA, 1600, 1200),
 
-    QXGA("qxga", 2048, 1536),
+    QXGA(Constants.QXGA, 2048, 1536),
 
-    SXGA("sxga", 1280, 1024),
+    SXGA(Constants.SXGA, 1280, 1024),
 
-    QSXGA("qsxga", 2560, 2048),
+    QSXGA(Constants.QSXGA, 2560, 2048),
 
-    HSXGA("hsxga", 5120, 4096),
+    HSXGA(Constants.HSXGA, 5120, 4096),
 
-    WVGA("wvga", 852, 480),
+    WVGA(Constants.WVGA, 852, 480),
 
-    WXGA("wxga", 1366, 768),
+    WXGA(Constants.WXGA, 1366, 768),
 
-    WSXGA("wsxga", 1600, 1024),
+    WSXGA(Constants.WSXGA, 1600, 1024),
 
-    WUXGA("wuxga", 1920, 1200),
+    WUXGA(Constants.WUXGA, 1920, 1200),
 
-    WOXGA("woxga", 2560, 1600),
+    WOXGA(Constants.WOXGA, 2560, 1600),
 
-    WQSXGA("wqsxga", 3200, 2048),
+    WQSXGA(Constants.WQSXGA, 3200, 2048),
 
-    WQUXGA("wquxga", 3840, 2400),
+    WQUXGA(Constants.WQUXGA, 3840, 2400),
 
-    WHSXGA("whsxga", 6400, 4096),
+    WHSXGA(Constants.WHSXGA, 6400, 4096),
 
-    WHUXGA("whuxga", 7680, 4800),
+    WHUXGA(Constants.WHUXGA, 7680, 4800),
 
-    CGA("cga", 320, 200),
+    CGA(Constants.CGA, 320, 200),
 
-    EGA("ega", 640, 350),
+    EGA(Constants.EGA, 640, 350),
 
-    HD480("hd480", 852, 480),
+    HD480(Constants.HD480, 852, 480),
 
-    HD720("hd720", 1280, 720),
+    HD720(Constants.HD720, 1280, 720),
 
-    HD1080("hd1080", 1920, 1080);
+    HD1080(Constants.HD1080, 1920, 1080);
 
 
     private final String name;
@@ -97,6 +97,50 @@ public enum AVVideoSizeType {
             }
         }
         return null;
+    }
+
+
+    /**
+     * @author Vladislav Bauer
+     */
+
+    public static final class Constants {
+
+        public static final String SQCIF = "sqcif";
+        public static final String QCIF = "qcif";
+        public static final String CIF = "cif";
+        public static final String CIF4 = "4cif";
+        public static final String CIF16 = "16cif";
+        public static final String QQVGA = "qqvga";
+        public static final String QVGA = "qvga";
+        public static final String VGA = "vga";
+        public static final String SVGA = "svga";
+        public static final String XGA = "xga";
+        public static final String UXGA = "uxga";
+        public static final String QXGA = "qxga";
+        public static final String SXGA = "sxga";
+        public static final String QSXGA = "qsxga";
+        public static final String HSXGA = "hsxga";
+        public static final String WVGA = "wvga";
+        public static final String WXGA = "wxga";
+        public static final String WSXGA = "wsxga";
+        public static final String WUXGA = "wuxga";
+        public static final String WOXGA = "woxga";
+        public static final String WQSXGA = "wqsxga";
+        public static final String WQUXGA = "wquxga";
+        public static final String WHSXGA = "whsxga";
+        public static final String WHUXGA = "whuxga";
+        public static final String CGA = "cga";
+        public static final String EGA = "ega";
+        public static final String HD480 = "hd480";
+        public static final String HD720 = "hd720";
+        public static final String HD1080 = "hd1080";
+
+
+        private Constants() {
+            throw new UnsupportedOperationException();
+        }
+
     }
 
 }

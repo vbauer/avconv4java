@@ -120,4 +120,10 @@ public class ModelTest {
         Assert.assertNull(AVVideoCodecType.findByName(null));
     }
 
+    public void testAVVideoSizeType() {
+        Assert.assertEquals(AVVideoSizeType.findByName(AVVideoSizeType.Constants.VGA), AVVideoSizeType.VGA);
+        Assert.assertNull(AVVideoSizeType.findByName(FAKE_VALUE));
+        Assert.assertNull(AVVideoSizeType.findByName(null));
+    }
+
 }
