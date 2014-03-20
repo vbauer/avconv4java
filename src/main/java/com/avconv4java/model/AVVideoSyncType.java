@@ -9,22 +9,22 @@ public enum AVVideoSyncType {
     /**
      * Each frame is passed with its timestamp from the demuxer to the muxer.
      */
-    PASS_THROUGH("passthrough"),
+    PASS_THROUGH(Constants.PASS_THROUGH),
 
     /**
      * Frames will be duplicated and dropped to achieve exactly the requested constant framerate.
      */
-    CRF("cfr"),
+    CRF(Constants.CFR),
 
     /**
      * Frames are passed through with their timestamp or dropped so as to prevent 2 frames from having same timestamp.
      */
-    VFR("vfr"),
+    VFR(Constants.VFR),
 
     /**
      * Chooses between 1 and 2 depending on muxer capabilities. This is the default method.
      */
-    AUTO("auto");
+    AUTO(Constants.AUTO);
 
 
     private final String name;
@@ -47,6 +47,25 @@ public enum AVVideoSyncType {
             }
         }
         return null;
+    }
+
+
+    /**
+     * @author Vladislav Bauer
+     */
+
+    public static final class Constants {
+
+        public static final String PASS_THROUGH = "passthrough";
+        public static final String CFR = "cfr";
+        public static final String VFR = "vfr";
+        public static final String AUTO = "auto";
+
+
+        private Constants() {
+            throw new UnsupportedOperationException();
+        }
+
     }
 
 }

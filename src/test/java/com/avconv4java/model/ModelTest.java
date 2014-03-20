@@ -126,4 +126,10 @@ public class ModelTest {
         Assert.assertNull(AVVideoSizeType.findByName(null));
     }
 
+    public void testAVVideoSyncType() {
+        Assert.assertEquals(AVVideoSyncType.findByName(AVVideoSyncType.Constants.CFR), AVVideoSyncType.CRF);
+        Assert.assertNull(AVVideoSyncType.findByName(FAKE_VALUE));
+        Assert.assertNull(AVVideoSyncType.findByName(null));
+    }
+
 }
