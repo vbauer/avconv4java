@@ -3,6 +3,8 @@ package com.avconv4java.util.process;
 import com.avconv4java.util.AVUtils;
 
 /**
+ * Process info that was returned as result.
+ *
  * @author Vladislav Bauer
  */
 

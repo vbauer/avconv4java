@@ -3,6 +3,8 @@ package com.avconv4java.core;
 import java.util.List;
 
 /**
+ * Root options. All other options should be use as part of it.
+ *
  * @author Vladislav Bauer
  */
 

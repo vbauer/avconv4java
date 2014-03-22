@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.Map;
 
 /**
+ * Generic utils.
+ *
  * @author Vladislav Bauer
  */
 

@@ -13,6 +13,8 @@ import java.util.concurrent.TimeoutException;
 import java.util.logging.Logger;
 
 /**
+ * Process executor allows to run new OS application in separate process.
+ *
  * @author Vladislav Bauer
  */
 

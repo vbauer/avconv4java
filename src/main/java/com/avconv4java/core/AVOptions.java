@@ -7,6 +7,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
+ * Basic class for options.
+ *
  * @author Vladislav Bauer
  */
 
