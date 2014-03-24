@@ -8,6 +8,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
+ * Class that represents a avconv command.
+ *
  * @author Vladislav Bauer
  */
 

@@ -124,6 +124,12 @@ public class ModelTest {
         Assert.assertEquals(AVVideoSizeType.findByName(AVVideoSizeType.Constants.VGA), AVVideoSizeType.VGA);
         Assert.assertNull(AVVideoSizeType.findByName(FAKE_VALUE));
         Assert.assertNull(AVVideoSizeType.findByName(null));
+
+        for (final AVVideoSizeType type : AVVideoSizeType.values()) {
+            Assert.assertNotNull(type.getName());
+            Assert.assertTrue(type.getWidth() > 0);
+            Assert.assertTrue(type.getHeight() > 0);
+        }
     }
 
     public void testAVVideoSyncType() {
