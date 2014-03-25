@@ -1,8 +1,10 @@
 package com.avconv4java.model;
 
+import com.avconv4java.util.AVUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.lang.reflect.Method;
 import java.util.UUID;
 
 /**
@@ -14,128 +16,103 @@ public class ModelTest {
 
     private static final String FAKE_VALUE = "FAKE_" + UUID.randomUUID().toString();
 
+    private static final String METHOD_FIND_BY_NAME = "findByName";
+    private static final String METHOD_VALUES = "values";
+    private static final String METHOD_GET_NAME = "getName";
 
-    public void testAVAudioCodecType() {
-        Assert.assertEquals(AVAudioCodecType.findByName(AVAudioCodecType.Constants.AAC), AVAudioCodecType.AAC);
-        Assert.assertNull(AVAudioCodecType.findByName(FAKE_VALUE));
-        Assert.assertNull(AVAudioCodecType.findByName(null));
+
+    public void testAVAudioCodecType() throws Exception {
+        makeBasicCheck(AVAudioCodecType.Constants.AAC, AVAudioCodecType.AAC);
     }
 
-    public void testAVCodecFlagType() {
-        Assert.assertEquals(AVCodecFlagType.findByName(AVCodecFlagType.Constants.AIC), AVCodecFlagType.AIC);
-        Assert.assertNull(AVCodecFlagType.findByName(FAKE_VALUE));
-        Assert.assertNull(AVCodecFlagType.findByName(null));
+    public void testAVCodecFlagType() throws Exception {
+        makeBasicCheck(AVCodecFlagType.Constants.AIC, AVCodecFlagType.AIC);
     }
 
-    public void testAVDebugInfoType() {
-        Assert.assertEquals(AVDebugInfoType.findByName(AVDebugInfoType.Constants.ER), AVDebugInfoType.ER);
-        Assert.assertNull(AVDebugInfoType.findByName(FAKE_VALUE));
-        Assert.assertNull(AVDebugInfoType.findByName(null));
+    public void testAVDebugInfoType() throws Exception {
+        makeBasicCheck(AVDebugInfoType.Constants.ER, AVDebugInfoType.ER);
     }
 
-    public void testAVErrorDetectionType() {
-        Assert.assertEquals(
-            AVErrorDetectionType.findByName(AVErrorDetectionType.Constants.BUFFER),
-            AVErrorDetectionType.BUFFER
-        );
-        Assert.assertNull(AVErrorDetectionType.findByName(FAKE_VALUE));
-        Assert.assertNull(AVErrorDetectionType.findByName(null));
+    public void testAVErrorDetectionType() throws Exception {
+        makeBasicCheck(AVErrorDetectionType.Constants.BUFFER, AVErrorDetectionType.BUFFER);
     }
 
-    public void testAVFileFormatType() {
-        Assert.assertEquals(AVFileFormatType.findByName(AVFileFormatType.Constants.CRC), AVFileFormatType.CRC);
-        Assert.assertNull(AVFileFormatType.findByName(FAKE_VALUE));
-        Assert.assertNull(AVFileFormatType.findByName(null));
+    public void testAVFileFormatType() throws Exception {
+        makeBasicCheck(AVFileFormatType.Constants.CRC, AVFileFormatType.CRC);
     }
 
-    public void testAVFormatDebugInfoType() {
-        Assert.assertEquals(
-            AVFormatDebugInfoType.findByName(AVFormatDebugInfoType.Constants.TS),
-            AVFormatDebugInfoType.TS
-        );
-        Assert.assertNull(AVFormatDebugInfoType.findByName(FAKE_VALUE));
-        Assert.assertNull(AVFormatDebugInfoType.findByName(null));
+    public void testAVFormatDebugInfoType() throws Exception {
+        makeBasicCheck(AVFormatDebugInfoType.Constants.TS, AVFormatDebugInfoType.TS);
     }
 
-    public void testAVFormatFlagType() {
-        Assert.assertEquals(
-            AVFormatFlagType.findByName(AVFormatFlagType.Constants.NO_BUFFER),
-            AVFormatFlagType.NO_BUFFER
-        );
-        Assert.assertNull(AVFormatFlagType.findByName(FAKE_VALUE));
-        Assert.assertNull(AVFormatFlagType.findByName(null));
+    public void testAVFormatFlagType() throws Exception {
+        makeBasicCheck(AVFormatFlagType.Constants.NO_BUFFER, AVFormatFlagType.NO_BUFFER);
     }
 
-    public void testAVHardwareAccelerationType() {
-        Assert.assertEquals(
-            AVHardwareAccelerationType.findByName(AVHardwareAccelerationType.Constants.VDPAU),
-            AVHardwareAccelerationType.VDPAU
-        );
-        Assert.assertNull(AVHardwareAccelerationType.findByName(FAKE_VALUE));
-        Assert.assertNull(AVHardwareAccelerationType.findByName(null));
+    public void testAVHardwareAccelerationType() throws Exception {
+        makeBasicCheck(AVHardwareAccelerationType.Constants.VDPAU, AVHardwareAccelerationType.VDPAU);
     }
 
-    public void testAVLogLevelType() {
-        Assert.assertEquals(AVLogLevelType.findByName(AVLogLevelType.Constants.INFO), AVLogLevelType.INFO);
-        Assert.assertNull(AVLogLevelType.findByName(FAKE_VALUE));
-        Assert.assertNull(AVLogLevelType.findByName(null));
+    public void testAVLogLevelType() throws Exception {
+        makeBasicCheck(AVLogLevelType.Constants.INFO, AVLogLevelType.INFO);
     }
 
-    public void testAVMotionEstimationType() {
-        Assert.assertEquals(
-            AVMotionEstimationType.findByName(AVMotionEstimationType.Constants.LOG),
-            AVMotionEstimationType.LOG
-        );
-        Assert.assertNull(AVMotionEstimationType.findByName(FAKE_VALUE));
-        Assert.assertNull(AVMotionEstimationType.findByName(null));
+    public void testAVMotionEstimationType() throws Exception {
+        makeBasicCheck(AVMotionEstimationType.Constants.LOG, AVMotionEstimationType.LOG);
     }
 
-    public void testAVMovFlagsType() {
-        Assert.assertEquals(AVMovFlagsType.findByName(AVMovFlagsType.Constants.FAST_START), AVMovFlagsType.FAST_START);
-        Assert.assertNull(AVMovFlagsType.findByName(FAKE_VALUE));
-        Assert.assertNull(AVMovFlagsType.findByName(null));
+    public void testAVMovFlagsType() throws Exception {
+        makeBasicCheck(AVMovFlagsType.Constants.FAST_START, AVMovFlagsType.FAST_START);
     }
 
-    public void testAVStreamType() {
-        Assert.assertEquals(AVStreamType.findByName(AVStreamType.Constants.AUDIO), AVStreamType.AUDIO);
-        Assert.assertNull(AVStreamType.findByName(FAKE_VALUE));
-        Assert.assertNull(AVStreamType.findByName(null));
+    public void testAVStreamType() throws Exception {
+        makeBasicCheck(AVStreamType.Constants.AUDIO, AVStreamType.AUDIO);
     }
 
-    public void testAVStrictType() {
-        Assert.assertEquals(AVStrictType.findByName(AVStrictType.Constants.VERY), AVStrictType.VERY);
-        Assert.assertNull(AVStrictType.findByName(FAKE_VALUE));
-        Assert.assertNull(AVStrictType.findByName(null));
+    public void testAVStrictType() throws Exception {
+        makeBasicCheck(AVStrictType.Constants.VERY, AVStrictType.VERY);
     }
 
-    public void testAVTargetFileType() {
-        Assert.assertEquals(AVTargetFileType.findByName(AVTargetFileType.Constants.DV), AVTargetFileType.DV);
-        Assert.assertNull(AVTargetFileType.findByName(FAKE_VALUE));
-        Assert.assertNull(AVTargetFileType.findByName(null));
+    public void testAVTargetFileType() throws Exception {
+        makeBasicCheck(AVTargetFileType.Constants.DV, AVTargetFileType.DV);
     }
 
-    public void testAVVideoCodecType() {
-        Assert.assertEquals(AVVideoCodecType.findByName(AVVideoCodecType.Constants.H264), AVVideoCodecType.H264);
-        Assert.assertNull(AVVideoCodecType.findByName(FAKE_VALUE));
-        Assert.assertNull(AVVideoCodecType.findByName(null));
+    public void testAVVideoCodecType() throws Exception {
+        makeBasicCheck(AVVideoCodecType.Constants.H264, AVVideoCodecType.H264);
     }
 
-    public void testAVVideoSizeType() {
-        Assert.assertEquals(AVVideoSizeType.findByName(AVVideoSizeType.Constants.VGA), AVVideoSizeType.VGA);
-        Assert.assertNull(AVVideoSizeType.findByName(FAKE_VALUE));
-        Assert.assertNull(AVVideoSizeType.findByName(null));
-
+    public void testAVVideoSizeType() throws Exception {
+        makeBasicCheck(AVVideoSizeType.Constants.VGA, AVVideoSizeType.VGA);
         for (final AVVideoSizeType type : AVVideoSizeType.values()) {
-            Assert.assertNotNull(type.getName());
             Assert.assertTrue(type.getWidth() > 0);
             Assert.assertTrue(type.getHeight() > 0);
         }
     }
 
-    public void testAVVideoSyncType() {
-        Assert.assertEquals(AVVideoSyncType.findByName(AVVideoSyncType.Constants.CFR), AVVideoSyncType.CRF);
-        Assert.assertNull(AVVideoSyncType.findByName(FAKE_VALUE));
-        Assert.assertNull(AVVideoSyncType.findByName(null));
+    public void testAVVideoSyncType() throws Exception {
+        makeBasicCheck(AVVideoSyncType.Constants.CFR, AVVideoSyncType.CRF);
+    }
+
+
+    private void makeBasicCheck(final String choiceName, final Object choice) throws Exception {
+        final Method findByName = findMethod(choice, METHOD_FIND_BY_NAME, String.class);
+        Assert.assertEquals(findByName.invoke(null, choiceName), choice);
+        Assert.assertNull(findByName.invoke(null, FAKE_VALUE));
+        Assert.assertNull(findByName.invoke(null, AVUtils.EMPTY));
+        Assert.assertNull(findByName.invoke(null, (String) null));
+
+        final Method valuesMethod = findMethod(choice, METHOD_VALUES);
+        final Object[] values = (Object[]) valuesMethod.invoke(null);
+        for (final Object value : values) {
+            final Method method = findMethod(value, METHOD_GET_NAME);
+            final String name = (String) method.invoke(value);
+            Assert.assertFalse(AVUtils.isBlank(name));
+        }
+    }
+
+    private Method findMethod(final Object object, final String name, final Class<?>... paramTypes) throws Exception {
+        final Class<?> entryClass = object.getClass();
+        return entryClass.getDeclaredMethod(name, paramTypes);
     }
 
 }
