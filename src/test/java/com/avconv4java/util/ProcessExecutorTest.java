@@ -77,10 +77,7 @@ public class ProcessExecutorTest {
         if (AVUtils.isMac() || AVUtils.isSolaris() || AVUtils.isUnix()) {
             return Arrays.asList("sleep", "1");
         }
-//        TODO: This test doesn't work on Windows.
-//        else if (AVUtils.isWindows()) {
-//            return Arrays.asList("ping", "1.1.1.1", "-n", "1", "-w", "3000");
-//        }
+        // XXX: Test is not run on Windows, because OS does not have command "sleep".
         throw new SkipException(MESSAGE_OS_TYPE);
     }
 
