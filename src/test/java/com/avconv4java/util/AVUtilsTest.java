@@ -114,4 +114,8 @@ public class AVUtilsTest {
         Assert.assertTrue(data.endsWith(TODO_MARKER));
     }
 
+    public void testClose() {
+        Assert.assertFalse(AVUtils.close(null));
+    }
+
 }
