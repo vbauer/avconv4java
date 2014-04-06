@@ -34,6 +34,10 @@ public class AVCommand {
         AVCommand.globalToolPath = toolPath;
     }
 
+    public static String getGlobalToolPath() {
+        return AVCommand.globalToolPath;
+    }
+
 
     public ProcessInfo run(final AVOptions operation) throws Exception {
         final List<String> flags = operation.build();
@@ -86,7 +90,7 @@ public class AVCommand {
 
     protected String calculateToolPath() {
         final String toolPath = getToolPath();
-        return toolPath == null ? AVCommand.globalToolPath : toolPath;
+        return toolPath == null ? getGlobalToolPath() : toolPath;
     }
 
 }
