@@ -124,20 +124,19 @@ public final class AVUtils {
             reader = new BufferedReader(new InputStreamReader(inputStream, Charset.defaultCharset()));
             String line;
 
-            final String separator = LINE_SEPARATOR;
             while ((line = reader.readLine()) != null) {
                 result.append(line);
-                result.append(separator);
+                result.append(LINE_SEPARATOR);
             }
         } catch (final IOException ex) {
             return null;
         } finally {
-            close(reader);
+            closeQuietly(reader);
         }
         return result.toString();
     }
 
-    public static boolean close(final Reader reader) {
+    public static boolean closeQuietly(final Reader reader) {
         if (reader != null) {
             try {
                 reader.close();
