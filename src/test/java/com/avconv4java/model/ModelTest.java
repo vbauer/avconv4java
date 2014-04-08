@@ -21,76 +21,28 @@ public class ModelTest {
     private static final String METHOD_GET_NAME = "getName";
 
 
-    public void testAVAudioCodecType() throws Exception {
+    public void testModelTypes() throws Exception {
         makeBasicCheck(AVAudioCodecType.Constants.AAC, AVAudioCodecType.AAC);
-    }
-
-    public void testAVCodecFlagType() throws Exception {
         makeBasicCheck(AVCodecFlagType.Constants.AIC, AVCodecFlagType.AIC);
-    }
-
-    public void testAVDebugInfoType() throws Exception {
         makeBasicCheck(AVDebugInfoType.Constants.ER, AVDebugInfoType.ER);
-    }
-
-    public void testAVErrorDetectionType() throws Exception {
         makeBasicCheck(AVErrorDetectionType.Constants.BUFFER, AVErrorDetectionType.BUFFER);
-    }
-
-    public void testAVFileFormatType() throws Exception {
         makeBasicCheck(AVFileFormatType.Constants.CRC, AVFileFormatType.CRC);
-    }
-
-    public void testAVFormatDebugInfoType() throws Exception {
         makeBasicCheck(AVFormatDebugInfoType.Constants.TS, AVFormatDebugInfoType.TS);
-    }
-
-    public void testAVFormatFlagType() throws Exception {
         makeBasicCheck(AVFormatFlagType.Constants.NO_BUFFER, AVFormatFlagType.NO_BUFFER);
-    }
-
-    public void testAVHardwareAccelerationType() throws Exception {
         makeBasicCheck(AVHardwareAccelerationType.Constants.VDPAU, AVHardwareAccelerationType.VDPAU);
-    }
-
-    public void testAVLogLevelType() throws Exception {
         makeBasicCheck(AVLogLevelType.Constants.INFO, AVLogLevelType.INFO);
-    }
-
-    public void testAVMotionEstimationType() throws Exception {
         makeBasicCheck(AVMotionEstimationType.Constants.LOG, AVMotionEstimationType.LOG);
-    }
-
-    public void testAVMovFlagsType() throws Exception {
         makeBasicCheck(AVMovFlagsType.Constants.FAST_START, AVMovFlagsType.FAST_START);
-    }
-
-    public void testAVStreamType() throws Exception {
         makeBasicCheck(AVStreamType.Constants.AUDIO, AVStreamType.AUDIO);
-    }
-
-    public void testAVStrictType() throws Exception {
         makeBasicCheck(AVStrictType.Constants.VERY, AVStrictType.VERY);
-    }
-
-    public void testAVTargetFileType() throws Exception {
         makeBasicCheck(AVTargetFileType.Constants.DV, AVTargetFileType.DV);
-    }
-
-    public void testAVVideoCodecType() throws Exception {
         makeBasicCheck(AVVideoCodecType.Constants.H264, AVVideoCodecType.H264);
-    }
-
-    public void testAVVideoSizeType() throws Exception {
+        makeBasicCheck(AVVideoSyncType.Constants.CFR, AVVideoSyncType.CRF);
         makeBasicCheck(AVVideoSizeType.Constants.VGA, AVVideoSizeType.VGA);
         for (final AVVideoSizeType type : AVVideoSizeType.values()) {
             Assert.assertTrue(type.getWidth() > 0);
             Assert.assertTrue(type.getHeight() > 0);
         }
-    }
-
-    public void testAVVideoSyncType() throws Exception {
-        makeBasicCheck(AVVideoSyncType.Constants.CFR, AVVideoSyncType.CRF);
     }
 
 
