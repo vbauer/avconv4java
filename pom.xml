@@ -101,6 +101,7 @@
                         <configuration>
                             <consoleOutput>true</consoleOutput>
                             <configLocation>src/test/resources/checkstyle.xml</configLocation>
+                            <includeTestSourceDirectory>false</includeTestSourceDirectory>
                         </configuration>
                         <executions>
                             <execution>
@@ -126,6 +127,7 @@
                         <configuration>
                             <failOnViolation>true</failOnViolation>
                             <printFailingErrors>true</printFailingErrors>
+                            <includeTests>true</includeTests>
                         </configuration>
                         <executions>
                             <execution>
@@ -151,6 +153,7 @@
                         <configuration>
                             <failOnError>true</failOnError>
                             <findbugsXmlOutput>true</findbugsXmlOutput>
+                            <includeTests>true</includeTests>
                         </configuration>
                         <executions>
                             <execution>
