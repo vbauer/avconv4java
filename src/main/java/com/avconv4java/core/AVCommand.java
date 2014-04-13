@@ -72,8 +72,9 @@ public class AVCommand {
         return toolPath;
     }
 
-    public void setToolPath(final String toolPath) {
+    public AVCommand setToolPath(final String toolPath) {
         this.toolPath = toolPath;
+        return this;
     }
 
 

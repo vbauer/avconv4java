@@ -24,11 +24,10 @@ public class ProcessInfo {
     }
 
     public static ProcessInfo create(final int statusCode, final String output, final String errorOutput) {
-        final ProcessInfo result = new ProcessInfo();
-        result.setStatusCode(statusCode);
-        result.setOutput(output);
-        result.setErrorOutput(errorOutput);
-        return result;
+        return new ProcessInfo()
+            .setStatusCode(statusCode)
+            .setOutput(output)
+            .setErrorOutput(errorOutput);
     }
 
 
@@ -36,24 +35,27 @@ public class ProcessInfo {
         return statusCode;
     }
 
-    public void setStatusCode(final int statusCode) {
+    public ProcessInfo setStatusCode(final int statusCode) {
         this.statusCode = statusCode;
+        return this;
     }
 
     public String getOutput() {
         return output;
     }
 
-    public void setOutput(final String output) {
+    public ProcessInfo setOutput(final String output) {
         this.output = output;
+        return this;
     }
 
     public String getErrorOutput() {
         return errorOutput;
     }
 
-    public void setErrorOutput(final String errorOutput) {
+    public ProcessInfo setErrorOutput(final String errorOutput) {
         this.errorOutput = errorOutput;
+        return this;
     }
 
     public boolean isSuccess() {
