@@ -30,7 +30,7 @@ public class AVOptions {
 
 
     public AVOptions flags(final Object... flags) {
-        if (flags != null && flags.length > 0) {
+        if (!AVUtils.isEmpty(flags)) {
             final List<String> newFlags = new LinkedList<String>();
             for (final Object flag : flags) {
                 if (flag == null) {
@@ -44,7 +44,7 @@ public class AVOptions {
     }
 
     public AVOptions builders(final AVOptions... builders) {
-        if (builders != null && builders.length > 0) {
+        if (!AVUtils.isEmpty(builders)) {
             for (final AVOptions builder : builders) {
                 if (builder instanceof AVRootOptions) {
                     throw new IllegalArgumentException("It's impossible to add root options as child node");
