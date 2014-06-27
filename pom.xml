@@ -12,12 +12,24 @@
     <url>https://github.com/vbauer/avconv4java</url>
     <inceptionYear>2013</inceptionYear>
 
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>manual</distribution>
+        </license>
+    </licenses>
+
     <developers>
         <developer>
             <id>vbauer</id>
             <name>Vladislav Bauer</name>
             <email>bauer.vlad@gmail.com</email>
             <url>http://linkedin.com/in/vladislavbauer</url>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
         </developer>
     </developers>
 
@@ -29,10 +41,10 @@
 
         <maven.compiler.plugin.version>3.1</maven.compiler.plugin.version>
         <maven.source.plugin.version>2.2.1</maven.source.plugin.version>
-        <maven.surefire.plugin.version>2.16</maven.surefire.plugin.version>
-        <maven.checkstyle.plugin.version>2.11</maven.checkstyle.plugin.version>
-        <maven.pmd.plugin.version>3.0.1</maven.pmd.plugin.version>
-        <maven.findbugs.plugin.version>2.5.2</maven.findbugs.plugin.version>
+        <maven.surefire.plugin.version>2.17</maven.surefire.plugin.version>
+        <maven.checkstyle.plugin.version>2.12.1</maven.checkstyle.plugin.version>
+        <maven.pmd.plugin.version>3.1</maven.pmd.plugin.version>
+        <maven.findbugs.plugin.version>2.5.4</maven.findbugs.plugin.version>
     </properties>
 
     <dependencies>
