@@ -2,9 +2,9 @@
 Introduction
 ============
 
-Project "avconv4java" is a pure-java interface to the avconv commandline.
+[Libav](http://libav.org) is a friendly and community-driven effort to provide its users with a set of portable, functional and high-performance libraries for dealing with multimedia formats of all sorts. It originates from the FFmpeg codebase.
 
-Official avconv documentation could be found here: http://libav.org/avconv.html
+Project "avconv4java" is a pure-java interface to the [avconv](http://libav.org/avconv.html) commandline.
 
 
 Features
