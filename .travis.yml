@@ -1,9 +1,9 @@
 language: java
 script: mvn install -P checkstyle,findbugs,pmd
 jdk:
-  - openjdk5
-  - openjdk6
-  - openjdk7
+  - oraclejdk5
+  - oraclejdk6
+  - oraclejdk7
 branches:
   only:
   - master
