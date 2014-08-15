@@ -1,5 +1,6 @@
 
-[![Build Status](https://travis-ci.org/vbauer/avconv4java.svg?branch=master)](https://travis-ci.org/vbauer/avconv4java)
+[![License](http://img.shields.io/badge/License-Apache%2C%20Version%202.0-blue.svg?style=flat)](http://opensource.org/licenses/Apache-2.0)
+[![Build Status](http://img.shields.io/travis/vbauer/avconv4java.svg?style=flat)](https://travis-ci.org/vbauer/avconv4java)
 
 Introduction
 ============
