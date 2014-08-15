@@ -1,4 +1,6 @@
 
+[![Build Status](https://travis-ci.org/vbauer/avconv4java.svg?branch=master)](https://travis-ci.org/vbauer/avconv4java)
+
 Introduction
 ============
 
