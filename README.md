@@ -22,6 +22,37 @@ Features
 * Parallel processing out of box
 
 
+Setup
+=====
+
+Maven:
+```xml
+<repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+</repository>
+
+<dependency>
+    <groupId>com.github.vbauer</groupId>
+    <artifactId>avconv4java</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+Gradle:
+```groovy
+repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}
+
+dependencies {
+    compile 'com.github.vbauer:avconv4java:1.0.0'
+}
+```
+
+
 Example
 =======
 
