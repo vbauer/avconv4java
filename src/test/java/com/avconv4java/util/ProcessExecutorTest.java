@@ -67,9 +67,8 @@ public class ProcessExecutorTest {
     private List<String> getDirListCmd() {
         if (AVUtils.isMac() || AVUtils.isSolaris() || AVUtils.isUnix()) {
             return Arrays.asList("ls");
-        } else if (AVUtils.isWindows()) {
-            return Arrays.asList("cmd", "dir");
         }
+        // XXX: Test is not run on Windows.
         throw new SkipException(MESSAGE_OS_TYPE);
     }
 
