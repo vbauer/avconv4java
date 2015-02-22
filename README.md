@@ -1,17 +1,19 @@
 
+# avconv4java
+
 [![License](http://img.shields.io/badge/License-Apache%2C%20Version%202.0-blue.svg?style=flat)](http://opensource.org/licenses/Apache-2.0)
 [![Build Status](http://img.shields.io/travis/vbauer/avconv4java.svg?style=flat)](https://travis-ci.org/vbauer/avconv4java)
+[![Maven](https://img.shields.io/github/tag/vbauer/avconv4java.svg?label=maven)](https://jitpack.io/#vbauer/avconv4java)
 
-Introduction
-============
+
+## Introduction
 
 [Libav](http://libav.org) is a friendly and community-driven effort to provide its users with a set of portable, functional and high-performance libraries for dealing with multimedia formats of all sorts. It originates from the FFmpeg codebase.
 
 Project "avconv4java" is a pure-java interface to the [avconv](http://libav.org/avconv.html) commandline.
 
 
-Features
-========
+## Features
 
 * Supports most avconv commands
 * Reuse a commandline multiple times for different set of parameters
@@ -22,8 +24,7 @@ Features
 * Parallel processing out of box
 
 
-Setup
-=====
+## Setup
 
 Maven:
 ```xml
@@ -35,7 +36,7 @@ Maven:
 <dependency>
     <groupId>com.github.vbauer</groupId>
     <artifactId>avconv4java</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 
@@ -48,13 +49,12 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.vbauer:avconv4java:1.0.1'
+    compile 'com.github.vbauer:avconv4java:1.0.2'
 }
 ```
 
 
-Example
-=======
+## Example
 
 First of all you need to configure options for avconv command. Builder pattern allows to do it as simple as possible:
 
@@ -102,8 +102,7 @@ This command is equivalent to the following:
 ```
 
 
-FAQ
-===
+## FAQ
 
 <dl>
     <dt>What is the default avconv path value?</dt>
@@ -111,8 +110,13 @@ FAQ
 </dl>
 
 
-License
-=======
+## Might also like
+
+* [houdini](https://github.com/vbauer/houdini) - Type conversion system for Spring framework.
+* [commons-vfs2-cifs](https://github.com/vbauer/commons-vfs2-cifs) - SMB/CIFS provider for Commons VFS.
+
+
+## License
 
 ```
 Copyright 2014 Vladislav Bauer
