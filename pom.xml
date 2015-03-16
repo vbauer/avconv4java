@@ -25,6 +25,12 @@
         <url>https://github.com/vbauer/avconv4java/issues</url>
     </issueManagement>
 
+    <ciManagement>
+        <system>Travis</system>
+        <url>https://travis-ci.org/vbauer/avconv4java</url>
+        <notifiers/>
+    </ciManagement>
+
     <developers>
         <developer>
             <id>vbauer</id>
