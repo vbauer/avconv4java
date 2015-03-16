@@ -28,7 +28,6 @@
     <ciManagement>
         <system>Travis</system>
         <url>https://travis-ci.org/vbauer/avconv4java</url>
-        <notifiers/>
     </ciManagement>
 
     <developers>
