@@ -112,6 +112,7 @@ This command is equivalent to the following:
 
 ## Might also like
 
+* [jackdaw](https://github.com/vbauer/jackdaw) - Java Annotation Processor which allows to simplify development.
 * [houdini](https://github.com/vbauer/houdini) - Type conversion system for Spring framework.
 * [herald](https://github.com/vbauer/herald) - Logging annotation for Spring framework.
 * [caesar](https://github.com/vbauer/caesar) - Library that allows to create async beans from sync beans.
