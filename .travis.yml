@@ -3,6 +3,7 @@ script: mvn install -DskipTests=false -P strict
 jdk:
   - openjdk6
   - oraclejdk7
+  - oraclejdk8
 branches:
   only:
   - master
