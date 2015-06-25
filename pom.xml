@@ -51,7 +51,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.5</java.version>
 
-        <testng.version>6.8.21</testng.version>
+        <testng.version>6.9.4</testng.version>
 
         <maven.compiler.plugin.version>3.3</maven.compiler.plugin.version>
         <maven.source.plugin.version>2.4</maven.source.plugin.version>
@@ -149,7 +149,7 @@
                         <configuration>
                             <failOnViolation>true</failOnViolation>
                             <printFailingErrors>true</printFailingErrors>
-                            <includeTests>true</includeTests>
+                            <includeTests>false</includeTests>
                         </configuration>
                         <executions>
                             <execution>
@@ -168,13 +168,13 @@
                         <configuration>
                             <signature>
                                 <groupId>org.codehaus.mojo.signature</groupId>
-                                <artifactId>java15-sun</artifactId>
+                                <artifactId>java15</artifactId>
                                 <version>1.0</version>
                             </signature>
                         </configuration>
                         <executions>
                             <execution>
-                                <id>check-java15-sun</id>
+                                <id>check-java15</id>
                                 <phase>test</phase>
                                 <goals>
                                     <goal>check</goal>

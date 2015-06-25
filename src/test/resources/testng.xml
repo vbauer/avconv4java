@@ -2,11 +2,12 @@
 
 <suite name="All tests" verbose="1" parallel="methods" thread-count="10">
 
-    <test name="Regression tests">
+    <test name="Unit tests">
         <packages>
-            <package name="com.avconv4java.model"/>
-            <package name="com.avconv4java.util"/>
-            <package name="com.avconv4java.core"/>
+            <package name="com.github.vbauer.avconv4java.core"/>
+            <package name="com.github.vbauer.avconv4java.model"/>
+            <package name="com.github.vbauer.avconv4java.option"/>
+            <package name="com.github.vbauer.avconv4java.util"/>
         </packages>
     </test>
 
