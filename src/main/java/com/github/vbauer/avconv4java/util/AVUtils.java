@@ -3,6 +3,7 @@ package com.github.vbauer.avconv4java.util;
 import java.io.*;
 import java.nio.charset.Charset;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Map;
 
 /**
@@ -46,6 +47,10 @@ public final class AVUtils {
 
     public static boolean isEmpty(final Map map) {
         return map == null || map.isEmpty();
+    }
+
+    public static boolean isEmpty(final Collection list) {
+        return list == null || list.isEmpty();
     }
 
     public static boolean isBlank(final Object text) {
@@ -128,7 +133,7 @@ public final class AVUtils {
                 result.append(line);
                 result.append(LINE_SEPARATOR);
             }
-        } catch (final IOException ex) {
+        } catch (final Throwable ex) {
             return null;
         } finally {
             closeQuietly(reader);
@@ -141,7 +146,7 @@ public final class AVUtils {
             try {
                 reader.close();
                 return true;
-            } catch (final Exception ex) {
+            } catch (final Throwable ex) {
                 return false;
             }
         }

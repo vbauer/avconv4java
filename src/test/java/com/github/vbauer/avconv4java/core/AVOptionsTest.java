@@ -17,7 +17,6 @@ import org.testng.annotations.Test;
  * @author Vladislav Bauer
  */
 
-@Test
 public class AVOptionsTest {
 
     private static final String INPUT_FILE = "input.avi";
@@ -35,6 +34,7 @@ public class AVOptionsTest {
     );
 
 
+    @Test
     public void testCombineOptions() {
         final AVRootOptions options = createOptions();
         Assert.assertEquals(options.toString(), String.format(OPTION_FLAGS, AVUtils.SPACE));

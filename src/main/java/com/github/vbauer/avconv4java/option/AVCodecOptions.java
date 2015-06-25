@@ -7,6 +7,8 @@ import com.github.vbauer.avconv4java.model.AVMotionEstimationType;
 import com.github.vbauer.avconv4java.model.AVStreamType;
 import com.github.vbauer.avconv4java.model.AVStrictType;
 
+import java.util.Collection;
+
 /**
  * @see <a href="http://libav.org/avconv.html#Codec-AVOptions">Official doc: "5.4 Codec AVOptions"</a>
  *
@@ -33,8 +35,18 @@ public class AVCodecOptions extends AVOptions {
 
 
     @Override
+    public AVCodecOptions flags(final Collection<Object> flags) {
+        return (AVCodecOptions) super.flags(flags);
+    }
+
+    @Override
     public AVCodecOptions flags(final Object... flags) {
         return (AVCodecOptions) super.flags(flags);
+    }
+
+    @Override
+    public AVCodecOptions builders(final Collection<AVOptions> builders) {
+        return (AVCodecOptions) super.builders(builders);
     }
 
     @Override

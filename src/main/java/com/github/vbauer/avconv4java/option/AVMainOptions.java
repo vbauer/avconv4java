@@ -5,6 +5,8 @@ import com.github.vbauer.avconv4java.model.AVFileFormatType;
 import com.github.vbauer.avconv4java.model.AVStreamType;
 import com.github.vbauer.avconv4java.model.AVTargetFileType;
 
+import java.util.Collection;
+
 /**
  * @see <a href="http://libav.org/avconv.html#Main-options">Official doc: "5.6 Main options"</a>
  *
@@ -40,8 +42,18 @@ public class AVMainOptions extends AVOptions {
 
 
     @Override
+    public AVMainOptions flags(final Collection<Object> flags) {
+        return (AVMainOptions) super.flags(flags);
+    }
+
+    @Override
     public AVMainOptions flags(final Object... flags) {
         return (AVMainOptions) super.flags(flags);
+    }
+
+    @Override
+    public AVMainOptions builders(final Collection<AVOptions> builders) {
+        return (AVMainOptions) super.builders(builders);
     }
 
     @Override

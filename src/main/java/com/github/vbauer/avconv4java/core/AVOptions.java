@@ -3,6 +3,7 @@ package com.github.vbauer.avconv4java.core;
 import com.github.vbauer.avconv4java.model.AVStreamType;
 import com.github.vbauer.avconv4java.util.AVUtils;
 
+import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -29,6 +30,10 @@ public class AVOptions {
     }
 
 
+    public AVOptions flags(final Collection<Object> flags) {
+        return AVUtils.isEmpty(flags) ? this : flags(flags.toArray(new Object[flags.size()]));
+    }
+
     public AVOptions flags(final Object... flags) {
         if (!AVUtils.isEmpty(flags)) {
             final List<String> newFlags = new LinkedList<String>();
@@ -41,6 +46,10 @@ public class AVOptions {
             arguments.addAll(newFlags);
         }
         return this;
+    }
+
+    public AVOptions builders(final Collection<AVOptions> builders) {
+        return AVUtils.isEmpty(builders) ? this : builders(builders.toArray(new AVOptions[builders.size()]));
     }
 
     public AVOptions builders(final AVOptions... builders) {

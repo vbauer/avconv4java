@@ -11,7 +11,6 @@ import java.util.UUID;
  * @author Vladislav Bauer
  */
 
-@Test
 public class ModelTest {
 
     private static final String FAKE_VALUE = "FAKE_" + UUID.randomUUID().toString();
@@ -21,6 +20,7 @@ public class ModelTest {
     private static final String METHOD_GET_NAME = "getName";
 
 
+    @Test
     public void testModelTypes() throws Exception {
         makeBasicCheck(AVAudioCodecType.Constants.AAC, AVAudioCodecType.AAC);
         makeBasicCheck(AVCodecFlagType.Constants.AIC, AVCodecFlagType.AIC);

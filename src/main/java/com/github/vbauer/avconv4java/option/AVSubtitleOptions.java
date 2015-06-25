@@ -2,6 +2,8 @@ package com.github.vbauer.avconv4java.option;
 
 import com.github.vbauer.avconv4java.core.AVOptions;
 
+import java.util.Collection;
+
 /**
  * @see <a href="http://libav.org/avconv.html#Subtitle-options_003a">Official doc: "5.11 Subtitle options"</a>
  *
@@ -20,8 +22,18 @@ public class AVSubtitleOptions extends AVOptions {
 
 
     @Override
+    public AVSubtitleOptions flags(final Collection<Object> flags) {
+        return (AVSubtitleOptions) super.flags(flags);
+    }
+
+    @Override
     public AVSubtitleOptions flags(final Object... flags) {
         return (AVSubtitleOptions) super.flags(flags);
+    }
+
+    @Override
+    public AVSubtitleOptions builders(final Collection<AVOptions> builders) {
+        return (AVSubtitleOptions) super.builders(builders);
     }
 
     @Override

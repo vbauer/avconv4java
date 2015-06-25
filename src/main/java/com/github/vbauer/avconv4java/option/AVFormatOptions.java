@@ -5,6 +5,8 @@ import com.github.vbauer.avconv4java.model.AVErrorDetectionType;
 import com.github.vbauer.avconv4java.model.AVFormatDebugInfoType;
 import com.github.vbauer.avconv4java.model.AVFormatFlagType;
 
+import java.util.Collection;
+
 /**
  * @see <a href="http://libav.org/avconv.html#Format-AVOptions">Official doc: "5.5 Format AVOptions"</a>
  *
@@ -33,8 +35,18 @@ public class AVFormatOptions extends AVOptions {
 
 
     @Override
+    public AVFormatOptions flags(final Collection<Object> flags) {
+        return (AVFormatOptions) super.flags(flags);
+    }
+
+    @Override
     public AVFormatOptions flags(final Object... flags) {
         return (AVFormatOptions) super.flags(flags);
+    }
+
+    @Override
+    public AVFormatOptions builders(final Collection<AVOptions> builders) {
+        return (AVFormatOptions) super.builders(builders);
     }
 
     @Override

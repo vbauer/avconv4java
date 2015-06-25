@@ -3,6 +3,8 @@ package com.github.vbauer.avconv4java.option;
 import com.github.vbauer.avconv4java.core.AVOptions;
 import com.github.vbauer.avconv4java.model.AVLogLevelType;
 
+import java.util.Collection;
+
 /**
  * @see <a href="http://libav.org/avconv.html#Generic-options">Official doc: "5.2 Generic options"</a>
  *
@@ -22,8 +24,18 @@ public class AVGenericOptions extends AVOptions {
 
 
     @Override
+    public AVGenericOptions flags(final Collection<Object> flags) {
+        return (AVGenericOptions) super.flags(flags);
+    }
+
+    @Override
     public AVGenericOptions flags(final Object... flags) {
         return (AVGenericOptions) super.flags(flags);
+    }
+
+    @Override
+    public AVGenericOptions builders(final Collection<AVOptions> builders) {
+        return (AVGenericOptions) super.builders(builders);
     }
 
     @Override

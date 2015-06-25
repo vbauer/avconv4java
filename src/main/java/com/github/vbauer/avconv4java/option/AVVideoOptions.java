@@ -7,6 +7,8 @@ import com.github.vbauer.avconv4java.model.AVVideoCodecType;
 import com.github.vbauer.avconv4java.model.AVVideoSizeType;
 import com.github.vbauer.avconv4java.util.AVUtils;
 
+import java.util.Collection;
+
 /**
  * @see <a href="http://libav.org/avconv.html#Video-Options">Official doc: "5.7 Video Options"</a>
  *
@@ -36,8 +38,18 @@ public class AVVideoOptions extends AVOptions {
 
 
     @Override
+    public AVVideoOptions flags(final Collection<Object> flags) {
+        return (AVVideoOptions) super.flags(flags);
+    }
+
+    @Override
     public AVVideoOptions flags(final Object... flags) {
         return (AVVideoOptions) super.flags(flags);
+    }
+
+    @Override
+    public AVVideoOptions builders(final Collection<AVOptions> builders) {
+        return (AVVideoOptions) super.builders(builders);
     }
 
     @Override

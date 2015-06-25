@@ -4,6 +4,8 @@ import com.github.vbauer.avconv4java.core.AVOptions;
 import com.github.vbauer.avconv4java.model.AVAudioCodecType;
 import com.github.vbauer.avconv4java.model.AVStreamType;
 
+import java.util.Collection;
+
 /**
  * @see <a href="http://libav.org/avconv.html#Audio-Options">Official doc: "5.9 Audio Options"</a>
  *
@@ -29,8 +31,18 @@ public class AVAudioOptions extends AVOptions {
 
 
     @Override
+    public AVAudioOptions flags(final Collection<Object> flags) {
+        return (AVAudioOptions) super.flags(flags);
+    }
+
+    @Override
     public AVAudioOptions flags(final Object... flags) {
         return (AVAudioOptions) super.flags(flags);
+    }
+
+    @Override
+    public AVAudioOptions builders(final Collection<AVOptions> builders) {
+        return (AVAudioOptions) super.builders(builders);
     }
 
     @Override
