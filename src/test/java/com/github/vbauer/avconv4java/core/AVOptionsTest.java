@@ -35,6 +35,16 @@ public class AVOptionsTest {
 
 
     @Test
+    public void testCreate() {
+        Assert.assertNotNull(AVOptions.create());
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void testBuilders() {
+        Assert.fail(AVOptions.create().builders(AVRootOptions.create("", "")).build().toString());
+    }
+
+    @Test
     public void testCombineOptions() {
         final AVRootOptions options = createOptions();
         Assert.assertEquals(options.toString(), String.format(OPTION_FLAGS, AVUtils.SPACE));

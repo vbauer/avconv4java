@@ -1,10 +1,14 @@
 package com.github.vbauer.avconv4java.util;
 
+import com.github.vbauer.avconv4java.core.TestUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.InputStream;
 import java.io.StringReader;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -24,6 +28,12 @@ public class AVUtilsTest {
     private static final String TODO_MARKER = "[TO-DO]";
     private static final String TODO_FILE = "TODO.txt";
 
+
+    @Test(expectedExceptions = UnsupportedOperationException.class)
+    public void testConstructorContract() throws Throwable {
+        Class<AVUtils> utilsClass = AVUtils.class;
+        TestUtils.checkUtilClassConstructor(utilsClass);
+    }
 
     @Test
     public void testIsEmptyCollection() {
@@ -129,6 +139,8 @@ public class AVUtilsTest {
         final String data = AVUtils.trimToEmpty(AVUtils.readFully(inputStream));
         Assert.assertTrue(data.startsWith(TODO_MARKER));
         Assert.assertTrue(data.endsWith(TODO_MARKER));
+
+        Assert.assertNull(AVUtils.readFully(null));
     }
 
     @Test

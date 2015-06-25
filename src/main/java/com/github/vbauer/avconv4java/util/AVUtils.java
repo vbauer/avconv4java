@@ -122,10 +122,9 @@ public final class AVUtils {
     }
 
     public static String readFully(final InputStream inputStream) {
-        final StringBuilder result = new StringBuilder();
         BufferedReader reader = null;
-
         try {
+            final StringBuilder result = new StringBuilder();
             reader = new BufferedReader(new InputStreamReader(inputStream, Charset.defaultCharset()));
             String line;
 
@@ -133,24 +132,21 @@ public final class AVUtils {
                 result.append(line);
                 result.append(LINE_SEPARATOR);
             }
+            return result.toString();
         } catch (final Throwable ex) {
             return null;
         } finally {
             closeQuietly(reader);
         }
-        return result.toString();
     }
 
     public static boolean closeQuietly(final Reader reader) {
-        if (reader != null) {
-            try {
-                reader.close();
-                return true;
-            } catch (final Throwable ex) {
-                return false;
-            }
+        try {
+            reader.close();
+            return true;
+        } catch (final Throwable ex) {
+            return false;
         }
-        return false;
     }
 
 }
