@@ -59,6 +59,8 @@
         <maven.checkstyle.plugin.version>2.15</maven.checkstyle.plugin.version>
         <maven.pmd.plugin.version>3.4</maven.pmd.plugin.version>
         <maven.animal.sniffer.plugin.version>1.14</maven.animal.sniffer.plugin.version>
+        <maven.jacoco.plugin.version>0.7.4.201502262128</maven.jacoco.plugin.version>
+        <maven.coveralls.plugin.version>3.1.0</maven.coveralls.plugin.version>
     </properties>
 
     <dependencies>
@@ -109,6 +111,26 @@
                 <configuration>
                     <parallel>classes</parallel>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${maven.jacoco.plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.eluder.coveralls</groupId>
+                <artifactId>coveralls-maven-plugin</artifactId>
+                <version>${maven.coveralls.plugin.version}</version>
             </plugin>
 
         </plugins>
