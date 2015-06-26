@@ -1,14 +1,11 @@
 package com.github.vbauer.avconv4java.util;
 
-import com.github.vbauer.avconv4java.core.TestUtils;
+import com.github.vbauer.avconv4java.common.TestUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.InputStream;
 import java.io.StringReader;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;

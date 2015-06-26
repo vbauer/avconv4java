@@ -27,11 +27,13 @@ public class AVCommand {
 
 
     public static String getDefaultToolPath() {
-        return AVUtils.defaultValue(AVUtils.getSystemProperty(SYSTEM_PROPERTY_TOOL_PATH), DEFAULT_TOOL_PATH);
+        final String env = AVUtils.getSystemProperty(SYSTEM_PROPERTY_TOOL_PATH);
+        return AVUtils.defaultValue(env, DEFAULT_TOOL_PATH);
     }
 
-    public static void setGlobalToolPath(final String toolPath) {
+    public static String setGlobalToolPath(final String toolPath) {
         AVCommand.globalToolPath = toolPath;
+        return toolPath;
     }
 
     public static String getGlobalToolPath() {
@@ -77,6 +79,10 @@ public class AVCommand {
         return this;
     }
 
+
+    /*
+     * Internal API.
+     */
 
     protected List<String> prepareArguments(final List<String> flags) {
         final String path = calculateToolPath();

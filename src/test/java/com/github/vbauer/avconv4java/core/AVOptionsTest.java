@@ -71,6 +71,10 @@ public class AVOptionsTest {
     }
 
 
+    /*
+     * Internal API.
+     */
+
     private AVRootOptions createOptions() {
         return AVRootOptions.create(INPUT_FILE, OUTPUT_FILE);
     }

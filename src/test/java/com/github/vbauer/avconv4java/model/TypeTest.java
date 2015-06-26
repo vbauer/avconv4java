@@ -1,6 +1,6 @@
 package com.github.vbauer.avconv4java.model;
 
-import com.github.vbauer.avconv4java.core.TestUtils;
+import com.github.vbauer.avconv4java.common.TestUtils;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Factory;

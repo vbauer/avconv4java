@@ -1,5 +1,6 @@
 package com.github.vbauer.avconv4java.core;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -28,8 +29,18 @@ public class AVRootOptions extends AVOptions {
 
 
     @Override
+    public AVRootOptions flags(final Collection<Object> flags) {
+        return (AVRootOptions) super.flags(flags);
+    }
+
+    @Override
     public AVRootOptions flags(final Object... flags) {
         return (AVRootOptions) super.flags(flags);
+    }
+
+    @Override
+    public AVRootOptions builders(final Collection<AVOptions> builders) {
+        return (AVRootOptions) super.builders(builders);
     }
 
     @Override

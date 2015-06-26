@@ -1,4 +1,4 @@
-package com.github.vbauer.avconv4java.core;
+package com.github.vbauer.avconv4java.common;
 
 import org.testng.Assert;
 
