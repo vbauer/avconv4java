@@ -6,6 +6,7 @@
 [![License](http://img.shields.io/badge/License-Apache%2C%20Version%202.0-blue.svg?style=flat)](http://opensource.org/licenses/Apache-2.0)
 [![Maven](https://img.shields.io/github/tag/vbauer/avconv4java.svg?label=maven)](https://jitpack.io/#vbauer/avconv4java)
 
+<img align="right" style="margin-left: 15px; box-shadow: 5px 5px 5px #888;" width="300" height="250" src="misc/logo.png">
 
 ## Introduction
 
