@@ -12,9 +12,11 @@
 <img align="right" style="margin-left: 15px; box-shadow: 5px 5px 5px #888;" width="250" height="250" src="misc/logo.png">
 
 **avconv** tool is a part of the [Libav](http://libav.org) project (originates from the FFmpeg codebase).
-It is a fast video and audio converter that can also grab from a live audio/video source.
+It is a fast and powerful video and audio converter.
+Libav supports most common instruction set architectures (including IA-32, x86-64, PowerPC, ARM, etc.) with great performance.
 
 **avconv4java** is a simple pure-java interface to the [avconv](http://libav.org/avconv.html) command-line tool.
+API was designed with KISS principle in mind to be as simple as possible.
 
 
 ## Features
