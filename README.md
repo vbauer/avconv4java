@@ -9,19 +9,19 @@
 
 ## Introduction
 
-<img align="right" style="margin-left: 15px; box-shadow: 5px 5px 5px #888;" width="300" height="250" src="misc/logo.png">
+<img align="right" style="margin-left: 15px; box-shadow: 5px 5px 5px #888;" width="250" height="250" src="misc/logo.png">
 
 **avconv** tool is a part of the [Libav](http://libav.org) project (originates from the FFmpeg codebase).
 It is a fast video and audio converter that can also grab from a live audio/video source.
 
-**avconv4java** is a pure-java interface to the [avconv](http://libav.org/avconv.html) command-line tool.
+**avconv4java** is a simple pure-java interface to the [avconv](http://libav.org/avconv.html) command-line tool.
 
 
 ## Features
 
-* Supports most avconv commands.
-* Support parallel processing out of box.
-* Has a very simple API with fluent interfaces and method chaining.
+* Most avconv commands are supported (and tested in real projects).
+* Parallel processing is supported out of box.
+* It has a very simple API with fluent interfaces and method chaining.
 * Options and operators are transformed into similar method-names, e.g.
     * -vcodec libx264 -> .videoCodec(AVVideoCodecType.H264)
     * -vcodec libtheora -> .videoCodec(AVVideoCodecType.THEORA)
