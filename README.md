@@ -37,7 +37,7 @@ Maven:
 <dependency>
     <groupId>com.github.vbauer</groupId>
     <artifactId>avconv4java</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
 </dependency>
 ```
 
@@ -50,7 +50,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.vbauer:avconv4java:1.0.2'
+    compile 'com.github.vbauer:avconv4java:1.0.3'
 }
 ```
 
