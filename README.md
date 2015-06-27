@@ -6,24 +6,26 @@
 [![License](http://img.shields.io/badge/License-Apache%2C%20Version%202.0-blue.svg?style=flat)](http://opensource.org/licenses/Apache-2.0)
 [![Maven](https://img.shields.io/github/tag/vbauer/avconv4java.svg?label=maven)](https://jitpack.io/#vbauer/avconv4java)
 
-<img align="right" style="margin-left: 15px; box-shadow: 5px 5px 5px #888;" width="300" height="250" src="misc/logo.png">
 
 ## Introduction
 
-[Libav](http://libav.org) is a friendly and community-driven effort to provide its users with a set of portable, functional and high-performance libraries for dealing with multimedia formats of all sorts. It originates from the FFmpeg codebase.
+<img align="right" style="margin-left: 15px; box-shadow: 5px 5px 5px #888;" width="300" height="250" src="misc/logo.png">
 
-Project "avconv4java" is a pure-java interface to the [avconv](http://libav.org/avconv.html) commandline.
+**avconv** tool is a part of the [Libav](http://libav.org) project (originates from the FFmpeg codebase).
+It is a fast video and audio converter that can also grab from a live audio/video source.
+
+**avconv4java** is a pure-java interface to the [avconv](http://libav.org/avconv.html) command-line tool.
 
 
 ## Features
 
-* Supports most avconv commands
-* Reuse a commandline multiple times for different set of parameters
-* Options and operators translate into similar method-names, e.g.
+* Supports most avconv commands.
+* Support parallel processing out of box.
+* Has a very simple API with fluent interfaces and method chaining.
+* Options and operators are transformed into similar method-names, e.g.
     * -vcodec libx264 -> .videoCodec(AVVideoCodecType.H264)
     * -vcodec libtheora -> .videoCodec(AVVideoCodecType.THEORA)
     * -vcodec libtheora -> .videoCodec("libtheora")
-* Parallel processing out of box
 
 
 ## Setup
@@ -61,7 +63,7 @@ dependencies {
 First of all you need to configure options for avconv command. Builder pattern allows to do it as simple as possible:
 
 ```java
-final AVOptions options = AVRootOptions.create("input.avi", "output.mp4")
+final AVRootOptions options = AVRootOptions.create("input.avi", "output.mp4")
     .builders(
         AVMainOptions.create()
             .overwriteOutput(),
