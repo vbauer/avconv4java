@@ -53,7 +53,7 @@ public class AVOptions {
     }
 
     public AVOptions builders(final AVOptions... builders) {
-        if (!AVUtils.isEmpty(builders)) {
+        if (!AVUtils.isEmpty((Object[]) builders)) {
             for (final AVOptions builder : builders) {
                 if (builder instanceof AVRootOptions) {
                     throw new IllegalArgumentException("It's impossible to add root options as child node");
