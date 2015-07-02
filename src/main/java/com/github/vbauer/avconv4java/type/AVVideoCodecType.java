@@ -1,10 +1,12 @@
-package com.github.vbauer.avconv4java.model;
+package com.github.vbauer.avconv4java.type;
+
+import com.github.vbauer.avconv4java.util.AVUtils;
 
 /**
  * @author Vladislav Bauer
  */
 
-public enum AVVideoCodecType {
+public enum AVVideoCodecType implements NamedType {
 
     H264(Constants.H264),
 
@@ -14,23 +16,19 @@ public enum AVVideoCodecType {
     private final String name;
 
 
-    private AVVideoCodecType(final String name) {
+    AVVideoCodecType(final String name) {
         this.name = name;
     }
 
 
+    @Override
     public String getName() {
         return name;
     }
 
 
     public static AVVideoCodecType findByName(final String name) {
-        for (final AVVideoCodecType type : values()) {
-            if (type.getName().equalsIgnoreCase(name)) {
-                return type;
-            }
-        }
-        return null;
+        return AVUtils.findByName(AVVideoCodecType.class, name);
     }
 
 

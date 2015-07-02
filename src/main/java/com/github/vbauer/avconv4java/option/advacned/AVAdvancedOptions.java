@@ -1,7 +1,7 @@
 package com.github.vbauer.avconv4java.option.advacned;
 
 import com.github.vbauer.avconv4java.core.AVOptions;
-import com.github.vbauer.avconv4java.model.AVVideoSyncType;
+import com.github.vbauer.avconv4java.type.AVVideoSyncType;
 
 /**
  * @see <a href="http://libav.org/avconv.html#Advanced-options">Official doc: "5.12 Advanced options"</a>

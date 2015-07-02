@@ -1,7 +1,8 @@
 # Created by https://www.gitignore.io
 
 ### Java ###
-*.class
+# Covered by the "target/" directory
+# *.class
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

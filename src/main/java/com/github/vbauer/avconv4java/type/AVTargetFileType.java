@@ -1,10 +1,12 @@
-package com.github.vbauer.avconv4java.model;
+package com.github.vbauer.avconv4java.type;
+
+import com.github.vbauer.avconv4java.util.AVUtils;
 
 /**
  * @author Vladislav Bauer
  */
 
-public enum  AVTargetFileType {
+public enum  AVTargetFileType implements NamedType {
 
     VCD(Constants.VCD),
 
@@ -20,23 +22,19 @@ public enum  AVTargetFileType {
     private final String name;
 
 
-    private AVTargetFileType(final String name) {
+    AVTargetFileType(final String name) {
         this.name = name;
     }
 
 
+    @Override
     public String getName() {
         return name;
     }
 
 
     public static AVTargetFileType findByName(final String name) {
-        for (final AVTargetFileType type : values()) {
-            if (type.getName().equalsIgnoreCase(name)) {
-                return type;
-            }
-        }
-        return null;
+        return AVUtils.findByName(AVTargetFileType.class, name);
     }
 
 

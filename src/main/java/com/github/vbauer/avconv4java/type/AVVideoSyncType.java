@@ -1,10 +1,12 @@
-package com.github.vbauer.avconv4java.model;
+package com.github.vbauer.avconv4java.type;
+
+import com.github.vbauer.avconv4java.util.AVUtils;
 
 /**
  * @author Vladislav Bauer
  */
 
-public enum AVVideoSyncType {
+public enum AVVideoSyncType implements NamedType {
 
     /**
      * Each frame is passed with its timestamp from the demuxer to the muxer.
@@ -30,23 +32,19 @@ public enum AVVideoSyncType {
     private final String name;
 
 
-    private AVVideoSyncType(final String name) {
+    AVVideoSyncType(final String name) {
         this.name = name;
     }
 
 
+    @Override
     public String getName() {
         return name;
     }
 
 
     public static AVVideoSyncType findByName(final String name) {
-        for (final AVVideoSyncType type : values()) {
-            if (type.getName().equalsIgnoreCase(name)) {
-                return type;
-            }
-        }
-        return null;
+        return AVUtils.findByName(AVVideoSyncType.class, name);
     }
 
 

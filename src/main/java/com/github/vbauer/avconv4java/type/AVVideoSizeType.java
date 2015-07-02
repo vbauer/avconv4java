@@ -1,10 +1,10 @@
-package com.github.vbauer.avconv4java.model;
+package com.github.vbauer.avconv4java.type;
 
 /**
  * @author Vladislav Bauer
  */
 
-public enum AVVideoSizeType {
+public enum AVVideoSizeType implements NamedType {
 
     SQCIF(Constants.SQCIF, 128, 96),
 
@@ -70,13 +70,14 @@ public enum AVVideoSizeType {
     private final int height;
 
 
-    private AVVideoSizeType(final String name, final int width, final int height) {
+    AVVideoSizeType(final String name, final int width, final int height) {
         this.name = name;
         this.width = width;
         this.height = height;
     }
 
 
+    @Override
     public String getName() {
         return name;
     }

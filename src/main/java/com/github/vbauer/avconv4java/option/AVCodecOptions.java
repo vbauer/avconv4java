@@ -1,11 +1,11 @@
 package com.github.vbauer.avconv4java.option;
 
 import com.github.vbauer.avconv4java.core.AVOptions;
-import com.github.vbauer.avconv4java.model.AVCodecFlagType;
-import com.github.vbauer.avconv4java.model.AVDebugInfoType;
-import com.github.vbauer.avconv4java.model.AVMotionEstimationType;
-import com.github.vbauer.avconv4java.model.AVStreamType;
-import com.github.vbauer.avconv4java.model.AVStrictType;
+import com.github.vbauer.avconv4java.type.AVCodecFlagType;
+import com.github.vbauer.avconv4java.type.AVDebugInfoType;
+import com.github.vbauer.avconv4java.type.AVMotionEstimationType;
+import com.github.vbauer.avconv4java.type.AVStreamType;
+import com.github.vbauer.avconv4java.type.AVStrictType;
 
 import java.util.Collection;
 

@@ -1,10 +1,12 @@
-package com.github.vbauer.avconv4java.model;
+package com.github.vbauer.avconv4java.type;
+
+import com.github.vbauer.avconv4java.util.AVUtils;
 
 /**
  * @author Vladislav Bauer
  */
 
-public enum AVLogLevelType {
+public enum AVLogLevelType implements NamedType {
 
     QUIET(Constants.QUIET),
 
@@ -26,23 +28,19 @@ public enum AVLogLevelType {
     private final String name;
 
 
-    private AVLogLevelType(final String name) {
+    AVLogLevelType(final String name) {
         this.name = name;
     }
 
 
+    @Override
     public String getName() {
         return name;
     }
 
 
     public static AVLogLevelType findByName(final String name) {
-        for (final AVLogLevelType type : values()) {
-            if (type.getName().equalsIgnoreCase(name)) {
-                return type;
-            }
-        }
-        return null;
+        return AVUtils.findByName(AVLogLevelType.class, name);
     }
 
 

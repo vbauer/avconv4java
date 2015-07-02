@@ -2,9 +2,9 @@ package com.github.vbauer.avconv4java.option;
 
 import com.beust.jcommander.internal.Lists;
 import com.github.vbauer.avconv4java.core.AVOptions;
-import com.github.vbauer.avconv4java.model.AVErrorDetectionType;
-import com.github.vbauer.avconv4java.model.AVFormatDebugInfoType;
-import com.github.vbauer.avconv4java.model.AVFormatFlagType;
+import com.github.vbauer.avconv4java.type.AVErrorDetectionType;
+import com.github.vbauer.avconv4java.type.AVFormatDebugInfoType;
+import com.github.vbauer.avconv4java.type.AVFormatFlagType;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

@@ -1,10 +1,12 @@
-package com.github.vbauer.avconv4java.model;
+package com.github.vbauer.avconv4java.type;
+
+import com.github.vbauer.avconv4java.util.AVUtils;
 
 /**
  * @author Vladislav Bauer
  */
 
-public enum AVErrorDetectionType {
+public enum AVErrorDetectionType implements NamedType {
 
     /**
      * Verify embedded CRCs.
@@ -30,23 +32,19 @@ public enum AVErrorDetectionType {
     private final String name;
 
 
-    private AVErrorDetectionType(final String name) {
+    AVErrorDetectionType(final String name) {
         this.name = name;
     }
 
 
+    @Override
     public String getName() {
         return name;
     }
 
 
     public static AVErrorDetectionType findByName(final String name) {
-        for (final AVErrorDetectionType type : values()) {
-            if (type.getName().equalsIgnoreCase(name)) {
-                return type;
-            }
-        }
-        return null;
+        return AVUtils.findByName(AVErrorDetectionType.class, name);
     }
 
 

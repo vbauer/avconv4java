@@ -1,10 +1,12 @@
-package com.github.vbauer.avconv4java.model;
+package com.github.vbauer.avconv4java.type;
+
+import com.github.vbauer.avconv4java.util.AVUtils;
 
 /**
  * @author Vladislav Bauer
  */
 
-public enum AVAudioCodecType {
+public enum AVAudioCodecType implements NamedType {
 
     VORBIS(Constants.VORBIS),
 
@@ -28,23 +30,19 @@ public enum AVAudioCodecType {
     private final String name;
 
 
-    private AVAudioCodecType(final String name) {
+    AVAudioCodecType(final String name) {
         this.name = name;
     }
 
 
+    @Override
     public String getName() {
         return name;
     }
 
 
     public static AVAudioCodecType findByName(final String name) {
-        for (final AVAudioCodecType type : values()) {
-            if (type.getName().equalsIgnoreCase(name)) {
-                return type;
-            }
-        }
-        return null;
+        return AVUtils.findByName(AVAudioCodecType.class, name);
     }
 
 

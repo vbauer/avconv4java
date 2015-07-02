@@ -1,10 +1,10 @@
 package com.github.vbauer.avconv4java.option;
 
 import com.github.vbauer.avconv4java.core.AVOptions;
-import com.github.vbauer.avconv4java.model.AVMovFlagsType;
-import com.github.vbauer.avconv4java.model.AVStreamType;
-import com.github.vbauer.avconv4java.model.AVVideoCodecType;
-import com.github.vbauer.avconv4java.model.AVVideoSizeType;
+import com.github.vbauer.avconv4java.type.AVMovFlagsType;
+import com.github.vbauer.avconv4java.type.AVStreamType;
+import com.github.vbauer.avconv4java.type.AVVideoCodecType;
+import com.github.vbauer.avconv4java.type.AVVideoSizeType;
 import com.github.vbauer.avconv4java.util.AVUtils;
 
 import java.util.Collection;
@@ -115,7 +115,7 @@ public class AVVideoOptions extends AVOptions {
      * (note that this actually causes the fps filter to be inserted to the end of the corresponding filtergraph).
      */
     public AVVideoOptions frameRate(final AVStreamType streamType, final Integer rate) {
-        return flags(FLAG_FRAME_RATE, rate);
+        return flags(specifyStream(FLAG_FRAME_RATE, streamType), rate);
     }
 
     public AVVideoOptions frameRate(final Integer rate) {

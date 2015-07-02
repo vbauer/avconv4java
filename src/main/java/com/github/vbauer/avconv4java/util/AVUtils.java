@@ -1,5 +1,7 @@
 package com.github.vbauer.avconv4java.util;
 
+import com.github.vbauer.avconv4java.type.NamedType;
+
 import java.io.*;
 import java.nio.charset.Charset;
 import java.util.Arrays;
@@ -147,6 +149,19 @@ public final class AVUtils {
         } catch (final Throwable ex) {
             return false;
         }
+    }
+
+    public static <T extends Enum & NamedType> T findByName(
+        final Class<T> enumClass, final String name
+    ) {
+        final T[] values = enumClass.getEnumConstants();
+        for (final T value : values) {
+            final String valueName = value.getName();
+            if (valueName.equalsIgnoreCase(name)) {
+                return value;
+            }
+        }
+        return null;
     }
 
 }

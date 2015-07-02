@@ -1,10 +1,12 @@
-package com.github.vbauer.avconv4java.model;
+package com.github.vbauer.avconv4java.type;
+
+import com.github.vbauer.avconv4java.util.AVUtils;
 
 /**
  * @author Vladislav Bauer
  */
 
-public enum AVCodecFlagType {
+public enum AVCodecFlagType implements NamedType {
 
     /**
      * Allow decoders to produce unaligned output.
@@ -119,23 +121,19 @@ public enum AVCodecFlagType {
     private final String name;
 
 
-    private AVCodecFlagType(final String name) {
+    AVCodecFlagType(final String name) {
         this.name = name;
     }
 
 
+    @Override
     public String getName() {
         return name;
     }
 
 
     public static AVCodecFlagType findByName(final String name) {
-        for (final AVCodecFlagType type : values()) {
-            if (type.getName().equalsIgnoreCase(name)) {
-                return type;
-            }
-        }
-        return null;
+        return AVUtils.findByName(AVCodecFlagType.class, name);
     }
 
 

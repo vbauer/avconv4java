@@ -1,7 +1,7 @@
 package com.github.vbauer.avconv4java.option;
 
 import com.github.vbauer.avconv4java.core.AVOptions;
-import com.github.vbauer.avconv4java.model.AVLogLevelType;
+import com.github.vbauer.avconv4java.type.AVLogLevelType;
 
 import java.util.Collection;
 

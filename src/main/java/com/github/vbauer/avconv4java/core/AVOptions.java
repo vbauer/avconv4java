@@ -1,6 +1,6 @@
 package com.github.vbauer.avconv4java.core;
 
-import com.github.vbauer.avconv4java.model.AVStreamType;
+import com.github.vbauer.avconv4java.type.AVStreamType;
 import com.github.vbauer.avconv4java.util.AVUtils;
 
 import java.util.Collection;

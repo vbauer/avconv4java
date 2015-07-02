@@ -1,4 +1,6 @@
-package com.github.vbauer.avconv4java.model;
+package com.github.vbauer.avconv4java.type;
+
+import com.github.vbauer.avconv4java.util.AVUtils;
 
 /**
  * Type shows how strictly to follow the standards.
@@ -6,7 +8,7 @@ package com.github.vbauer.avconv4java.model;
  * @author Vladislav Bauer
  */
 
-public enum AVStrictType {
+public enum AVStrictType implements NamedType {
 
     /**
      * Strictly conform to a older more strict version of the spec or reference software.
@@ -37,23 +39,19 @@ public enum AVStrictType {
     private final String name;
 
 
-    private AVStrictType(final String name) {
+    AVStrictType(final String name) {
         this.name = name;
     }
 
 
+    @Override
     public String getName() {
         return name;
     }
 
 
     public static AVStrictType findByName(final String name) {
-        for (final AVStrictType type : values()) {
-            if (type.getName().equalsIgnoreCase(name)) {
-                return type;
-            }
-        }
-        return null;
+        return AVUtils.findByName(AVStrictType.class, name);
     }
 
 

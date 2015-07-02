@@ -1,10 +1,12 @@
-package com.github.vbauer.avconv4java.model;
+package com.github.vbauer.avconv4java.type;
+
+import com.github.vbauer.avconv4java.util.AVUtils;
 
 /**
  * @author Vladislav Bauer
  */
 
-public enum AVFileFormatType {
+public enum AVFileFormatType implements NamedType {
 
     /**
      * Image file muxer.
@@ -60,23 +62,19 @@ public enum AVFileFormatType {
     private final String name;
 
 
-    private AVFileFormatType(final String name) {
+    AVFileFormatType(final String name) {
         this.name = name;
     }
 
 
+    @Override
     public String getName() {
         return name;
     }
 
 
     public static AVFileFormatType findByName(final String name) {
-        for (final AVFileFormatType type : values()) {
-            if (type.getName().equalsIgnoreCase(name)) {
-                return type;
-            }
-        }
-        return null;
+        return AVUtils.findByName(AVFileFormatType.class, name);
     }
 
 

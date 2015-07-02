@@ -1,10 +1,12 @@
-package com.github.vbauer.avconv4java.model;
+package com.github.vbauer.avconv4java.type;
+
+import com.github.vbauer.avconv4java.util.AVUtils;
 
 /**
  * @author Vladislav Bauer
  */
 
-public enum AVFormatDebugInfoType {
+public enum AVFormatDebugInfoType implements NamedType {
 
     TS(Constants.TS);
 
@@ -12,23 +14,19 @@ public enum AVFormatDebugInfoType {
     private final String name;
 
 
-    private AVFormatDebugInfoType(final String name) {
+    AVFormatDebugInfoType(final String name) {
         this.name = name;
     }
 
 
+    @Override
     public String getName() {
         return name;
     }
 
 
     public static AVFormatDebugInfoType findByName(final String name) {
-        for (final AVFormatDebugInfoType type : values()) {
-            if (type.getName().equalsIgnoreCase(name)) {
-                return type;
-            }
-        }
-        return null;
+        return AVUtils.findByName(AVFormatDebugInfoType.class, name);
     }
 
 

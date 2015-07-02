@@ -2,10 +2,10 @@ package com.github.vbauer.avconv4java.option;
 
 import com.beust.jcommander.internal.Lists;
 import com.github.vbauer.avconv4java.core.AVOptions;
-import com.github.vbauer.avconv4java.model.AVMovFlagsType;
-import com.github.vbauer.avconv4java.model.AVStreamType;
-import com.github.vbauer.avconv4java.model.AVVideoCodecType;
-import com.github.vbauer.avconv4java.model.AVVideoSizeType;
+import com.github.vbauer.avconv4java.type.AVMovFlagsType;
+import com.github.vbauer.avconv4java.type.AVStreamType;
+import com.github.vbauer.avconv4java.type.AVVideoCodecType;
+import com.github.vbauer.avconv4java.type.AVVideoSizeType;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

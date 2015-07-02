@@ -170,6 +170,7 @@
                             <failOnViolation>true</failOnViolation>
                             <printFailingErrors>true</printFailingErrors>
                             <includeTests>false</includeTests>
+                            <linkXRef>false</linkXRef>
                         </configuration>
                         <executions>
                             <execution>

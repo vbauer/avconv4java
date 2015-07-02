@@ -108,9 +108,9 @@ public class AVUtilsTest {
     public void testOs() {
         Assert.assertTrue(
             AVUtils.isUnix()
-            || AVUtils.isWindows()
-            || AVUtils.isMac()
-            || AVUtils.isSolaris()
+            | AVUtils.isWindows()
+            | AVUtils.isMac()
+            | AVUtils.isSolaris()
         );
     }
 

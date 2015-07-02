@@ -1,8 +1,8 @@
 package com.github.vbauer.avconv4java.option.advacned;
 
 import com.github.vbauer.avconv4java.core.AVOptions;
-import com.github.vbauer.avconv4java.model.AVHardwareAccelerationType;
-import com.github.vbauer.avconv4java.model.AVStreamType;
+import com.github.vbauer.avconv4java.type.AVHardwareAccelerationType;
+import com.github.vbauer.avconv4java.type.AVStreamType;
 
 /**
  * @see <a href="http://libav.org/avconv.html#Advanced-Video-Options">Official doc: "5.8 Advanced Video Options"</a>

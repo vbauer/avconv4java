@@ -1,9 +1,9 @@
 package com.github.vbauer.avconv4java.core;
 
-import com.github.vbauer.avconv4java.model.AVAudioCodecType;
-import com.github.vbauer.avconv4java.model.AVLogLevelType;
-import com.github.vbauer.avconv4java.model.AVMovFlagsType;
-import com.github.vbauer.avconv4java.model.AVVideoCodecType;
+import com.github.vbauer.avconv4java.type.AVAudioCodecType;
+import com.github.vbauer.avconv4java.type.AVLogLevelType;
+import com.github.vbauer.avconv4java.type.AVMovFlagsType;
+import com.github.vbauer.avconv4java.type.AVVideoCodecType;
 import com.github.vbauer.avconv4java.option.AVAudioOptions;
 import com.github.vbauer.avconv4java.option.AVCodecOptions;
 import com.github.vbauer.avconv4java.option.AVGenericOptions;

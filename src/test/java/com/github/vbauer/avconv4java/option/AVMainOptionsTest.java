@@ -2,9 +2,9 @@ package com.github.vbauer.avconv4java.option;
 
 import com.beust.jcommander.internal.Lists;
 import com.github.vbauer.avconv4java.core.AVOptions;
-import com.github.vbauer.avconv4java.model.AVFileFormatType;
-import com.github.vbauer.avconv4java.model.AVStreamType;
-import com.github.vbauer.avconv4java.model.AVTargetFileType;
+import com.github.vbauer.avconv4java.type.AVFileFormatType;
+import com.github.vbauer.avconv4java.type.AVStreamType;
+import com.github.vbauer.avconv4java.type.AVTargetFileType;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

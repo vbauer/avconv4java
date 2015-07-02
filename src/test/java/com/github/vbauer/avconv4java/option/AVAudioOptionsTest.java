@@ -2,8 +2,8 @@ package com.github.vbauer.avconv4java.option;
 
 import com.beust.jcommander.internal.Lists;
 import com.github.vbauer.avconv4java.core.AVOptions;
-import com.github.vbauer.avconv4java.model.AVAudioCodecType;
-import com.github.vbauer.avconv4java.model.AVStreamType;
+import com.github.vbauer.avconv4java.type.AVAudioCodecType;
+import com.github.vbauer.avconv4java.type.AVStreamType;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

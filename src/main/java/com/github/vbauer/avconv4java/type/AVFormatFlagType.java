@@ -1,10 +1,12 @@
-package com.github.vbauer.avconv4java.model;
+package com.github.vbauer.avconv4java.type;
+
+import com.github.vbauer.avconv4java.util.AVUtils;
 
 /**
  * @author Vladislav Bauer
  */
 
-public enum AVFormatFlagType {
+public enum AVFormatFlagType implements NamedType {
 
     /**
      * Reduce the latency by flushing out packets immediately.
@@ -50,23 +52,19 @@ public enum AVFormatFlagType {
     private final String name;
 
 
-    private AVFormatFlagType(final String name) {
+    AVFormatFlagType(final String name) {
         this.name = name;
     }
 
 
+    @Override
     public String getName() {
         return name;
     }
 
 
     public static AVFormatFlagType findByName(final String name) {
-        for (final AVFormatFlagType type : values()) {
-            if (type.getName().equalsIgnoreCase(name)) {
-                return type;
-            }
-        }
-        return null;
+        return AVUtils.findByName(AVFormatFlagType.class, name);
     }
 
 

@@ -1,8 +1,8 @@
 package com.github.vbauer.avconv4java.option;
 
 import com.github.vbauer.avconv4java.core.AVOptions;
-import com.github.vbauer.avconv4java.model.AVAudioCodecType;
-import com.github.vbauer.avconv4java.model.AVStreamType;
+import com.github.vbauer.avconv4java.type.AVAudioCodecType;
+import com.github.vbauer.avconv4java.type.AVStreamType;
 
 import java.util.Collection;
 

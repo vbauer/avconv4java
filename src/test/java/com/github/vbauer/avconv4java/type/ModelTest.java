@@ -1,4 +1,4 @@
-package com.github.vbauer.avconv4java.model;
+package com.github.vbauer.avconv4java.type;
 
 import com.github.vbauer.avconv4java.util.AVUtils;
 import org.testng.Assert;

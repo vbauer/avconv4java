@@ -1,10 +1,12 @@
-package com.github.vbauer.avconv4java.model;
+package com.github.vbauer.avconv4java.type;
+
+import com.github.vbauer.avconv4java.util.AVUtils;
 
 /**
  * @author Vladislav Bauer
  */
 
-public enum AVMovFlagsType {
+public enum AVMovFlagsType implements NamedType {
 
     /**
      * Start a new fragment at each video keyframe.
@@ -49,23 +51,19 @@ public enum AVMovFlagsType {
     private final String name;
 
 
-    private AVMovFlagsType(final String name) {
+    AVMovFlagsType(final String name) {
         this.name = name;
     }
 
 
+    @Override
     public String getName() {
         return name;
     }
 
 
     public static AVMovFlagsType findByName(final String name) {
-        for (final AVMovFlagsType type : values()) {
-            if (type.getName().equalsIgnoreCase(name)) {
-                return type;
-            }
-        }
-        return null;
+        return AVUtils.findByName(AVMovFlagsType.class, name);
     }
 
 

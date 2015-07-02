@@ -1,10 +1,12 @@
-package com.github.vbauer.avconv4java.model;
+package com.github.vbauer.avconv4java.type;
+
+import com.github.vbauer.avconv4java.util.AVUtils;
 
 /**
  * @author Vladislav Bauer
  */
 
-public enum AVStreamType {
+public enum AVStreamType implements NamedType {
 
     AUDIO(Constants.AUDIO),
 
@@ -16,23 +18,19 @@ public enum AVStreamType {
     private final String name;
 
 
-    private AVStreamType(final String name) {
+    AVStreamType(final String name) {
         this.name = name;
     }
 
 
+    @Override
     public String getName() {
         return name;
     }
 
 
     public static AVStreamType findByName(final String name) {
-        for (final AVStreamType type : values()) {
-            if (type.getName().equalsIgnoreCase(name)) {
-                return type;
-            }
-        }
-        return null;
+        return AVUtils.findByName(AVStreamType.class, name);
     }
 
 

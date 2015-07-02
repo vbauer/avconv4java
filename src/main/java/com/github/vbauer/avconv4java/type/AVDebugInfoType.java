@@ -1,10 +1,12 @@
-package com.github.vbauer.avconv4java.model;
+package com.github.vbauer.avconv4java.type;
+
+import com.github.vbauer.avconv4java.util.AVUtils;
 
 /**
  * @author Vladislav Bauer
  */
 
-public enum AVDebugInfoType {
+public enum AVDebugInfoType implements NamedType {
 
     /**
      * Picture info.
@@ -74,23 +76,19 @@ public enum AVDebugInfoType {
     private final String name;
 
 
-    private AVDebugInfoType(final String name) {
+    AVDebugInfoType(final String name) {
         this.name = name;
     }
 
 
+    @Override
     public String getName() {
         return name;
     }
 
 
     public static AVDebugInfoType findByName(final String name) {
-        for (final AVDebugInfoType type : values()) {
-            if (type.getName().equalsIgnoreCase(name)) {
-                return type;
-            }
-        }
-        return null;
+        return AVUtils.findByName(AVDebugInfoType.class, name);
     }
 
 

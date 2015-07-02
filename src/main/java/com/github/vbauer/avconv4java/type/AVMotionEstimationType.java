@@ -1,10 +1,12 @@
-package com.github.vbauer.avconv4java.model;
+package com.github.vbauer.avconv4java.type;
+
+import com.github.vbauer.avconv4java.util.AVUtils;
 
 /**
  * @author Vladislav Bauer
  */
 
-public enum AVMotionEstimationType {
+public enum AVMotionEstimationType implements NamedType {
 
     /**
      * Zero motion estimation (fastest).
@@ -65,23 +67,19 @@ public enum AVMotionEstimationType {
     private final String name;
 
 
-    private AVMotionEstimationType(final String name) {
+    AVMotionEstimationType(final String name) {
         this.name = name;
     }
 
 
+    @Override
     public String getName() {
         return name;
     }
 
 
     public static AVMotionEstimationType findByName(final String name) {
-        for (final AVMotionEstimationType type : values()) {
-            if (type.getName().equalsIgnoreCase(name)) {
-                return type;
-            }
-        }
-        return null;
+        return AVUtils.findByName(AVMotionEstimationType.class, name);
     }
 
 
