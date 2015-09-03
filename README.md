@@ -118,6 +118,7 @@ This command is equivalent to the following:
 
 ## Might also like
 
+* [jconditions](https://github.com/vbauer/jconditions) - Extra conditional annotations for JUnit.
 * [jackdaw](https://github.com/vbauer/jackdaw) - Java Annotation Processor which allows to simplify development.
 * [houdini](https://github.com/vbauer/houdini) - Type conversion system for Spring framework.
 * [herald](https://github.com/vbauer/herald) - Logging annotation for Spring framework.
