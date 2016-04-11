@@ -3,7 +3,6 @@ package com.github.vbauer.avconv4java.option.advanced;
 import com.beust.jcommander.internal.Lists;
 import com.github.vbauer.avconv4java.core.AVOptions;
 import com.github.vbauer.avconv4java.type.AVVideoSyncType;
-import com.github.vbauer.avconv4java.option.advacned.AVAdvancedOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

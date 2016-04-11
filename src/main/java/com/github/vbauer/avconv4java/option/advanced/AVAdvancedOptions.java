@@ -1,4 +1,4 @@
-package com.github.vbauer.avconv4java.option.advacned;
+package com.github.vbauer.avconv4java.option.advanced;
 
 import com.github.vbauer.avconv4java.core.AVOptions;
 import com.github.vbauer.avconv4java.type.AVVideoSyncType;

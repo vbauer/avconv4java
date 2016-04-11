@@ -4,7 +4,6 @@ import com.beust.jcommander.internal.Lists;
 import com.github.vbauer.avconv4java.core.AVOptions;
 import com.github.vbauer.avconv4java.type.AVHardwareAccelerationType;
 import com.github.vbauer.avconv4java.type.AVStreamType;
-import com.github.vbauer.avconv4java.option.advacned.AVAdvancedVideoOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
