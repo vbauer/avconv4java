@@ -50,11 +50,11 @@ public class TypeTest {
 
         private final Class<?> utilClass;
 
-        public TypeConstructorTest(final Class<?> utilClass) {
+        TypeConstructorTest(final Class<?> utilClass) {
             this.utilClass = utilClass;
         }
 
-        @Test(expectedExceptions = UnsupportedOperationException.class)
+        @Test
         public void testConstructorContract() throws Throwable {
             TestUtils.checkUtilClassConstructor(utilClass);
         }

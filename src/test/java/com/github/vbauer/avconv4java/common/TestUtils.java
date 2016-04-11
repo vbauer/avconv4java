@@ -1,10 +1,6 @@
 package com.github.vbauer.avconv4java.common;
 
-import org.testng.Assert;
-
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Modifier;
+import com.pushtorefresh.private_constructor_checker.PrivateConstructorChecker;
 
 /**
  * @author Vladislav Bauer
@@ -17,20 +13,10 @@ public final class TestUtils {
     }
 
 
-    public static void checkUtilClassConstructor(Class<?> utilsClass) throws Throwable {
-        final Constructor<?>[] constructors = utilsClass.getDeclaredConstructors();
-        Assert.assertEquals(constructors.length, 1);
-
-        final Constructor<?> constructor = constructors[0];
-        final int modifiers = constructor.getModifiers();
-        Assert.assertTrue(Modifier.isPrivate(modifiers));
-
-        constructor.setAccessible(true);
-        try {
-            Assert.fail(constructor.newInstance().toString());
-        } catch (final InvocationTargetException ex) {
-            throw ex.getCause();
-        }
+    public static void checkUtilClassConstructor(final Class<?> utilsClass) throws Throwable {
+        PrivateConstructorChecker.forClass(utilsClass)
+            .expectedTypeOfException(UnsupportedOperationException.class)
+            .check();
     }
 
 }

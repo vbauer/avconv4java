@@ -25,10 +25,9 @@ public class AVUtilsTest {
     private static final String TODO_FILE = "TODO.txt";
 
 
-    @Test(expectedExceptions = UnsupportedOperationException.class)
+    @Test
     public void testConstructorContract() throws Throwable {
-        Class<AVUtils> utilsClass = AVUtils.class;
-        TestUtils.checkUtilClassConstructor(utilsClass);
+        TestUtils.checkUtilClassConstructor(AVUtils.class);
     }
 
     @Test

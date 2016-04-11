@@ -19,7 +19,7 @@ public class ProcessExecutorTest {
     private static final String MESSAGE_OS_TYPE = "Test is only for Solaris, Unix, Windows and Mac";
 
 
-    @Test(expectedExceptions = UnsupportedOperationException.class)
+    @Test
     public void testConstructorContract() throws Throwable {
         TestUtils.checkUtilClassConstructor(ProcessExecutor.class);
     }

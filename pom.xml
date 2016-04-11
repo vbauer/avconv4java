@@ -52,6 +52,7 @@
         <java.version>1.7</java.version>
 
         <testng.version>6.8.21</testng.version>
+        <checker.version>1.2.0</checker.version>
 
         <maven.compiler.plugin.version>3.3</maven.compiler.plugin.version>
         <maven.source.plugin.version>2.4</maven.source.plugin.version>
@@ -69,6 +70,13 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.pushtorefresh.java-private-constructor-checker</groupId>
+            <artifactId>checker</artifactId>
+            <version>${checker.version}</version>
             <scope>test</scope>
         </dependency>
 
