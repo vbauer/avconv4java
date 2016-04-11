@@ -28,7 +28,7 @@ public class AVCommand {
 
     public static String getDefaultToolPath() {
         final String env = AVUtils.getSystemProperty(SYSTEM_PROPERTY_TOOL_PATH);
-        return AVUtils.defaultValue(env, DEFAULT_TOOL_PATH);
+        return env == null ? DEFAULT_TOOL_PATH : env;
     }
 
     public static String setGlobalToolPath(final String toolPath) {
@@ -86,7 +86,7 @@ public class AVCommand {
 
     protected List<String> prepareArguments(final List<String> flags) {
         final String path = calculateToolPath();
-        final List<String> parameters = new LinkedList<String>();
+        final List<String> parameters = new LinkedList<>();
 
         parameters.add(path);
         if (flags != null) {

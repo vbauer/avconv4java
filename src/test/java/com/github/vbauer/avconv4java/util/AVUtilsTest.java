@@ -5,7 +5,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.InputStream;
-import java.io.StringReader;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -121,14 +120,6 @@ public class AVUtilsTest {
     }
 
     @Test
-    public void testDefault() {
-        Assert.assertNull(AVUtils.defaultValue(null, null));
-        Assert.assertEquals(AVUtils.defaultValue(null, 1), Integer.valueOf(1));
-        Assert.assertEquals(AVUtils.defaultValue(2, null), Integer.valueOf(2));
-        Assert.assertEquals(AVUtils.defaultValue(3, 4), Integer.valueOf(3));
-    }
-
-    @Test
     public void testReadFully() throws Exception {
         final InputStream inputStream = ClassLoader.getSystemResourceAsStream(TODO_FILE);
         Assert.assertNotNull(inputStream);
@@ -138,12 +129,6 @@ public class AVUtilsTest {
         Assert.assertTrue(data.endsWith(TODO_MARKER));
 
         Assert.assertNull(AVUtils.readFully(null));
-    }
-
-    @Test
-    public void testCloseQuietly() {
-        Assert.assertFalse(AVUtils.closeQuietly(null));
-        Assert.assertTrue(AVUtils.closeQuietly(new StringReader("")));
     }
 
 }

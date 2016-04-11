@@ -49,7 +49,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.6</java.version>
+        <java.version>1.7</java.version>
 
         <testng.version>6.8.21</testng.version>
 
@@ -189,13 +189,13 @@
                         <configuration>
                             <signature>
                                 <groupId>org.codehaus.mojo.signature</groupId>
-                                <artifactId>java16</artifactId>
-                                <version>1.1</version>
+                                <artifactId>java17</artifactId>
+                                <version>1.0</version>
                             </signature>
                         </configuration>
                         <executions>
                             <execution>
-                                <id>check-java16</id>
+                                <id>check-java17</id>
                                 <phase>test</phase>
                                 <goals>
                                     <goal>check</goal>

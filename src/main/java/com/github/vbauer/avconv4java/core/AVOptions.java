@@ -15,8 +15,8 @@ import java.util.List;
 
 public class AVOptions {
 
-    private final List<AVOptions> builders = new LinkedList<AVOptions>();
-    private final List<String> arguments = new LinkedList<String>();
+    private final List<AVOptions> builders = new LinkedList<>();
+    private final List<String> arguments = new LinkedList<>();
 
 
     public static AVOptions create() {
@@ -36,7 +36,7 @@ public class AVOptions {
 
     public AVOptions flags(final Object... flags) {
         if (!AVUtils.isEmpty(flags)) {
-            final List<String> newFlags = new LinkedList<String>();
+            final List<String> newFlags = new LinkedList<>();
             for (final Object flag : flags) {
                 if (flag == null) {
                     return this;
@@ -65,7 +65,7 @@ public class AVOptions {
     }
 
     public List<String> build() {
-        final List<String> result = new LinkedList<String>();
+        final List<String> result = new LinkedList<>();
         result.addAll(arguments);
         for (final AVOptions builder : builders) {
             result.addAll(builder.build());

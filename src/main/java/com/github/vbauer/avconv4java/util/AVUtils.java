@@ -2,7 +2,9 @@ package com.github.vbauer.avconv4java.util;
 
 import com.github.vbauer.avconv4java.type.NamedType;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.Collection;
@@ -119,15 +121,14 @@ public final class AVUtils {
         return envProperty == null ? System.getProperty(key) : envProperty;
     }
 
-    public static <T> T defaultValue(final T value, final T defaultValue) {
-        return value == null ? defaultValue : value;
-    }
-
     public static String readFully(final InputStream inputStream) {
-        BufferedReader reader = null;
-        try {
+        final Charset charset = Charset.defaultCharset();
+
+        try (
+            final InputStreamReader streamReader = new InputStreamReader(inputStream, charset);
+            final BufferedReader reader = new BufferedReader(streamReader)
+        ) {
             final StringBuilder result = new StringBuilder();
-            reader = new BufferedReader(new InputStreamReader(inputStream, Charset.defaultCharset()));
             String line;
 
             while ((line = reader.readLine()) != null) {
@@ -137,17 +138,6 @@ public final class AVUtils {
             return result.toString();
         } catch (final Throwable ex) {
             return null;
-        } finally {
-            closeQuietly(reader);
-        }
-    }
-
-    public static boolean closeQuietly(final Reader reader) {
-        try {
-            reader.close();
-            return true;
-        } catch (final Throwable ex) {
-            return false;
         }
     }
 

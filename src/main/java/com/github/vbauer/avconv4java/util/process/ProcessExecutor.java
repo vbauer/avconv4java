@@ -2,7 +2,6 @@ package com.github.vbauer.avconv4java.util.process;
 
 import com.github.vbauer.avconv4java.util.AVUtils;
 
-import java.lang.reflect.Method;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
@@ -76,14 +75,7 @@ public final class ProcessExecutor {
         final ProcessBuilder builder = new ProcessBuilder(arguments);
         if (debug) {
             LOGGER.info(AVUtils.join(arguments));
-
-            // Invoke "inheritIO" for Java 7+
-            try {
-                final Method inheritIO = ProcessBuilder.class.getDeclaredMethod("inheritIO");
-                inheritIO.invoke(builder);
-            } catch (final Exception ignored) {
-                LOGGER.fine("Can't use debug mode. JRE version doesn't support ProcessBuilder.inheritIO");
-            }
+            builder.inheritIO();
         }
         return builder.start();
     }
