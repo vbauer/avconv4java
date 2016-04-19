@@ -5,6 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/vbauer/avconv4java/badge.svg)](https://coveralls.io/r/vbauer/avconv4java)
 [![License](http://img.shields.io/badge/License-Apache%2C%20Version%202.0-blue.svg?style=flat)](http://opensource.org/licenses/Apache-2.0)
 [![Maven](https://img.shields.io/github/tag/vbauer/avconv4java.svg?label=maven)](https://jitpack.io/#vbauer/avconv4java)
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/a57d77abf87a4f77a27ca0bef1038b91)](https://www.codacy.com/app/bauer-vlad/avconv4java)
 
 
 ## Introduction
