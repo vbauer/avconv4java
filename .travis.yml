@@ -1,14 +1,21 @@
 language: java
+
 script: mvn clean package -P strict
+
 after_success:
   - mvn jacoco:report coveralls:report
+  - bash ./deploy.sh
+
 jdk:
   - oraclejdk7
   - oraclejdk8
-branches:
-  only:
-  - master
+
 sudo: false
 cache:
   directories:
     - $HOME/.m2
+
+env:
+  global:
+  - GH_REF: github.com/vbauer/avconv4java.git
+  - secure: "Rki2d/a/sy4/C6/o5hWNX/HOFOFs6vn4IDnrs8viQoGwmbD6czmhbCVAuSchOXns1N69lNU1O3IDSksKk5Omwai0nSyOewsAlq7PoNB12TgEu5MbJOazqZnFqaPLEcyTc6Kkju1b3Qje5XNo5pspxN5ZknXD/fMsZPcFQ5+EwgY="

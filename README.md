@@ -19,6 +19,11 @@ Libav supports most common instruction set architectures (including IA-32, x86-6
 **avconv4java** is a simple pure-java interface to the [avconv](http://libav.org/avconv.html) command-line tool.
 API was designed with KISS principle in mind to be as simple as possible.
 
+**Online documentation:**
+
+* [Maven site](https://vbauer.github.io/avconv4java)
+* [Javadoc](https://vbauer.github.io/avconv4java/apidocs)
+
 
 ## Features
 
