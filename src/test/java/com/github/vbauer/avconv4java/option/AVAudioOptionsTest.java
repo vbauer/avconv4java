@@ -1,13 +1,15 @@
 package com.github.vbauer.avconv4java.option;
 
-import com.beust.jcommander.internal.Lists;
+import java.util.List;
+
 import com.github.vbauer.avconv4java.core.AVOptions;
 import com.github.vbauer.avconv4java.type.AVAudioCodecType;
 import com.github.vbauer.avconv4java.type.AVStreamType;
-import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.util.List;
+import org.testng.collections.Lists;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.emptyIterable;
+import static org.hamcrest.Matchers.not;
 
 /**
  * @author Vladislav Bauer
@@ -38,7 +40,7 @@ public class AVAudioOptionsTest {
             .flags()
             .build();
 
-        Assert.assertFalse(options.isEmpty());
+        assertThat(options, not(emptyIterable()));
     }
 
 

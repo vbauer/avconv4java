@@ -1,11 +1,14 @@
 package com.github.vbauer.avconv4java.type;
 
-import com.github.vbauer.avconv4java.util.AVUtils;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
 import java.lang.reflect.Method;
 import java.util.UUID;
+
+import com.github.vbauer.avconv4java.util.AVUtils;
+import org.testng.annotations.Test;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.hamcrest.Matchers.nullValue;
 
 /**
  * @author Vladislav Bauer
@@ -39,26 +42,28 @@ public class ModelTest {
         makeBasicCheck(AVVideoCodecType.Constants.H264, AVVideoCodecType.H264);
         makeBasicCheck(AVVideoSyncType.Constants.CFR, AVVideoSyncType.CRF);
         makeBasicCheck(AVVideoSizeType.Constants.VGA, AVVideoSizeType.VGA);
+
         for (final AVVideoSizeType type : AVVideoSizeType.values()) {
-            Assert.assertTrue(type.getWidth() > 0);
-            Assert.assertTrue(type.getHeight() > 0);
+            assertThat(type.getWidth(), greaterThan(0));
+            assertThat(type.getHeight(), greaterThan(0));
         }
     }
 
 
     private void makeBasicCheck(final String choiceName, final Object choice) throws Exception {
         final Method findByName = findMethod(choice, METHOD_FIND_BY_NAME, String.class);
-        Assert.assertEquals(findByName.invoke(null, choiceName), choice);
-        Assert.assertNull(findByName.invoke(null, FAKE_VALUE));
-        Assert.assertNull(findByName.invoke(null, AVUtils.EMPTY));
-        Assert.assertNull(findByName.invoke(null, (String) null));
+        assertThat(findByName.invoke(null, choiceName), equalTo(choice));
+        assertThat(findByName.invoke(null, FAKE_VALUE), nullValue());
+        assertThat(findByName.invoke(null, AVUtils.EMPTY), nullValue());
+        assertThat(findByName.invoke(null, (String) null), nullValue());
 
         final Method valuesMethod = findMethod(choice, METHOD_VALUES);
         final Object[] values = (Object[]) valuesMethod.invoke(null);
+
         for (final Object value : values) {
             final Method method = findMethod(value, METHOD_GET_NAME);
             final String name = (String) method.invoke(value);
-            Assert.assertFalse(AVUtils.isBlank(name));
+            assertThat(AVUtils.isBlank(name), equalTo(false));
         }
     }
 

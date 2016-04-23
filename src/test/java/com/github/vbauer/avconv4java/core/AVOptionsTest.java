@@ -1,17 +1,20 @@
 package com.github.vbauer.avconv4java.core;
 
-import com.github.vbauer.avconv4java.type.AVAudioCodecType;
-import com.github.vbauer.avconv4java.type.AVLogLevelType;
-import com.github.vbauer.avconv4java.type.AVMovFlagsType;
-import com.github.vbauer.avconv4java.type.AVVideoCodecType;
 import com.github.vbauer.avconv4java.option.AVAudioOptions;
 import com.github.vbauer.avconv4java.option.AVCodecOptions;
 import com.github.vbauer.avconv4java.option.AVGenericOptions;
 import com.github.vbauer.avconv4java.option.AVMainOptions;
 import com.github.vbauer.avconv4java.option.AVVideoOptions;
+import com.github.vbauer.avconv4java.type.AVAudioCodecType;
+import com.github.vbauer.avconv4java.type.AVLogLevelType;
+import com.github.vbauer.avconv4java.type.AVMovFlagsType;
+import com.github.vbauer.avconv4java.type.AVVideoCodecType;
 import com.github.vbauer.avconv4java.util.AVUtils;
-import org.testng.Assert;
 import org.testng.annotations.Test;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.testng.Assert.fail;
 
 /**
  * @author Vladislav Bauer
@@ -36,38 +39,38 @@ public class AVOptionsTest {
 
     @Test
     public void testCreate() {
-        Assert.assertNotNull(AVOptions.create());
+        assertThat(AVOptions.create(), notNullValue());
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void testBuilders() {
-        Assert.fail(AVOptions.create().builders(AVRootOptions.create("", "")).build().toString());
+        fail(AVOptions.create().builders(AVRootOptions.create("", "")).build().toString());
     }
 
     @Test
     public void testCombineOptions() {
         final AVRootOptions options = createOptions();
-        Assert.assertEquals(options.toString(), String.format(OPTION_FLAGS, AVUtils.SPACE));
+        assertThat(options.toString(), equalTo(String.format(OPTION_FLAGS, AVUtils.SPACE)));
 
         final AVGenericOptions genericOptions = createGenericOptions();
-        Assert.assertEquals(genericOptions.toString(), GENERIC_FLAGS);
+        assertThat(genericOptions.toString(), equalTo(GENERIC_FLAGS));
 
         final AVMainOptions mainOptions = createMainOptions();
-        Assert.assertEquals(mainOptions.toString(), MAIN_FLAGS);
+        assertThat(mainOptions.toString(), equalTo(MAIN_FLAGS));
 
         final AVVideoOptions videoOptions = createVideoOptions();
-        Assert.assertEquals(videoOptions.toString(), VIDEO_FLAGS);
+        assertThat(videoOptions.toString(), equalTo(VIDEO_FLAGS));
 
         final AVAudioOptions audioOptions = createAudioOptions();
-        Assert.assertEquals(audioOptions.toString(), AUDIO_FLAGS);
+        assertThat(audioOptions.toString(), equalTo(AUDIO_FLAGS));
 
         final AVCodecOptions codecOptions = createCodecOptions();
-        Assert.assertEquals(codecOptions.toString(), CODEC_FLAGS);
+        assertThat(codecOptions.toString(), equalTo(CODEC_FLAGS));
 
         final AVOptions combinedOptions = options.builders(
             genericOptions, mainOptions, videoOptions, audioOptions, codecOptions
         );
-        Assert.assertEquals(combinedOptions.toString(), COMBINED_FLAGS);
+        assertThat(combinedOptions.toString(), equalTo(COMBINED_FLAGS));
     }
 
 

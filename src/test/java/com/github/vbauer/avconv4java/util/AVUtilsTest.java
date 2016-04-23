@@ -1,14 +1,17 @@
 package com.github.vbauer.avconv4java.util;
 
-import com.github.vbauer.avconv4java.common.TestUtils;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
 import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+
+import com.github.vbauer.avconv4java.common.TestUtils;
+import org.testng.annotations.Test;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.nullValue;
 
 /**
  * @author Vladislav Bauer
@@ -32,102 +35,103 @@ public class AVUtilsTest {
 
     @Test
     public void testIsEmptyCollection() {
-        Assert.assertTrue(AVUtils.isEmpty((List) null));
-        Assert.assertFalse(AVUtils.isEmpty(Collections.singleton(HELLO)));
+        assertThat(AVUtils.isEmpty((List) null), equalTo(true));
+        assertThat(AVUtils.isEmpty(Collections.singleton(HELLO)), equalTo(false));
     }
 
     @Test
     public void testIsEmptyMap() {
-        Assert.assertTrue(AVUtils.isEmpty((Map) null));
-        Assert.assertFalse(AVUtils.isEmpty(Collections.singletonMap(HELLO, WORLD)));
+        assertThat(AVUtils.isEmpty((Map) null), equalTo(true));
+        assertThat(AVUtils.isEmpty(Collections.singletonMap(HELLO, WORLD)), equalTo(false));
     }
 
     @Test
     public void testIsEmptyArray() {
-        Assert.assertTrue(AVUtils.isEmpty((Object[]) null));
-        Assert.assertFalse(AVUtils.isEmpty(HELLO, WORLD));
+        assertThat(AVUtils.isEmpty((Object[]) null), equalTo(true));
+        assertThat(AVUtils.isEmpty(HELLO, WORLD), equalTo(false));
     }
 
     @Test
     public void testTrimToNull() {
-        Assert.assertEquals(AVUtils.trimToNull(null), null);
-        Assert.assertEquals(AVUtils.trimToNull(AVUtils.EMPTY), null);
-        Assert.assertEquals(AVUtils.trimToNull(AVUtils.SPACE), null);
+        assertThat(AVUtils.trimToNull(null), nullValue());
+        assertThat(AVUtils.trimToNull(AVUtils.EMPTY), nullValue());
+        assertThat(AVUtils.trimToNull(AVUtils.SPACE), nullValue());
     }
 
     @Test
     public void testTrimToEmpty() {
-        Assert.assertEquals(AVUtils.trimToEmpty(null), AVUtils.EMPTY);
-        Assert.assertEquals(AVUtils.trimToEmpty(AVUtils.EMPTY), AVUtils.EMPTY);
-        Assert.assertEquals(AVUtils.trimToEmpty(AVUtils.SPACE), AVUtils.EMPTY);
+        assertThat(AVUtils.trimToEmpty(null), equalTo(AVUtils.EMPTY));
+        assertThat(AVUtils.trimToEmpty(AVUtils.EMPTY), equalTo(AVUtils.EMPTY));
+        assertThat(AVUtils.trimToEmpty(AVUtils.SPACE), equalTo(AVUtils.EMPTY));
     }
 
     @Test
     public void testIsBlank() {
-        Assert.assertTrue(AVUtils.isBlank(null));
-        Assert.assertTrue(AVUtils.isBlank(AVUtils.EMPTY));
-        Assert.assertTrue(AVUtils.isBlank(AVUtils.SPACE));
-        Assert.assertFalse(AVUtils.isBlank(" a "));
-        Assert.assertFalse(AVUtils.isBlank("a"));
+        assertThat(AVUtils.isBlank(null), equalTo(true));
+        assertThat(AVUtils.isBlank(AVUtils.EMPTY), equalTo(true));
+        assertThat(AVUtils.isBlank(AVUtils.SPACE), equalTo(true));
+        assertThat(AVUtils.isBlank(" a "), equalTo(false));
+        assertThat(AVUtils.isBlank("a"), equalTo(false));
     }
 
     @Test
-    @SuppressWarnings({"unchecked", "NullArgumentToVariableArgMethod"})
+    @SuppressWarnings("all")
     public void testHasNull() {
-        Assert.assertTrue(AVUtils.hasNull(1, null));
-        Assert.assertTrue(AVUtils.hasNull((Object) null));
-        Assert.assertTrue(AVUtils.hasNull(null, null));
-        Assert.assertTrue(AVUtils.hasNull(HELLO, null));
-        Assert.assertFalse(AVUtils.hasNull(HELLO, WORLD));
+        assertThat(AVUtils.hasNull(1, null), equalTo(true));
+        assertThat(AVUtils.hasNull((Object) null), equalTo(true));
+        assertThat(AVUtils.hasNull(null, null), equalTo(true));
+        assertThat(AVUtils.hasNull(HELLO, null), equalTo(true));
+        assertThat(AVUtils.hasNull(HELLO, WORLD), equalTo(false));
     }
 
     @Test
     public void testJoinCollection() {
         final Iterable<String> data = Arrays.asList(HELLO, WORLD);
 
-        Assert.assertEquals(AVUtils.SPACE, SPACE);
+        assertThat(AVUtils.SPACE, equalTo(SPACE));
 
-        Assert.assertEquals(AVUtils.join(data), AVUtils.join(data, AVUtils.SPACE));
-        Assert.assertEquals(AVUtils.join(data), HELLO_WORLD);
-        Assert.assertEquals(AVUtils.join(data), HELLO_WORLD);
+        assertThat(AVUtils.join(data), equalTo(AVUtils.join(data, AVUtils.SPACE)));
+        assertThat(AVUtils.join(data), equalTo(HELLO_WORLD));
+        assertThat(AVUtils.join(data), equalTo(HELLO_WORLD));
 
-        Assert.assertEquals(AVUtils.join(Arrays.<String>asList(null, null)), null);
-        Assert.assertEquals(AVUtils.join((Iterable<String>) null), null);
+        assertThat(AVUtils.join(Arrays.<String>asList(null, null)), nullValue());
+        assertThat(AVUtils.join((Iterable<String>) null), nullValue());
     }
 
     @Test
     public void testJoinArray() {
-        Assert.assertEquals(AVUtils.join((String) null), null);
-        Assert.assertEquals(AVUtils.join((String[]) null), null);
-        Assert.assertEquals(AVUtils.join(HELLO, WORLD), HELLO_WORLD);
+        assertThat(AVUtils.join((String) null), nullValue());
+        assertThat(AVUtils.join((String[]) null), nullValue());
+        assertThat(AVUtils.join(HELLO, WORLD), equalTo(HELLO_WORLD));
     }
 
     @Test
     public void testOs() {
-        Assert.assertTrue(
+        assertThat(
             AVUtils.isUnix()
-            | AVUtils.isWindows()
-            | AVUtils.isMac()
-            | AVUtils.isSolaris()
+                || AVUtils.isWindows()
+                || AVUtils.isMac()
+                || AVUtils.isSolaris(),
+            equalTo(true)
         );
     }
 
     @Test
     public void testGetSystemProperty() {
-        Assert.assertNotNull(AVUtils.getSystemProperty(AVUtils.SYSTEM_PROPERTY_OS_NAME));
-        Assert.assertNotNull(AVUtils.getSystemProperty(AVUtils.SYSTEM_PROPERTY_LINE_SEPARATOR));
+        assertThat(AVUtils.getSystemProperty(AVUtils.SYSTEM_PROPERTY_OS_NAME), notNullValue());
+        assertThat(AVUtils.getSystemProperty(AVUtils.SYSTEM_PROPERTY_LINE_SEPARATOR), notNullValue());
     }
 
     @Test
     public void testReadFully() throws Exception {
         final InputStream inputStream = ClassLoader.getSystemResourceAsStream(TODO_FILE);
-        Assert.assertNotNull(inputStream);
+        assertThat(inputStream, notNullValue());
 
         final String data = AVUtils.trimToEmpty(AVUtils.readFully(inputStream));
-        Assert.assertTrue(data.startsWith(TODO_MARKER));
-        Assert.assertTrue(data.endsWith(TODO_MARKER));
+        assertThat(data.startsWith(TODO_MARKER), equalTo(true));
+        assertThat(data.endsWith(TODO_MARKER), equalTo(true));
 
-        Assert.assertNull(AVUtils.readFully(null));
+        assertThat(AVUtils.readFully(null), nullValue());
     }
 
 }

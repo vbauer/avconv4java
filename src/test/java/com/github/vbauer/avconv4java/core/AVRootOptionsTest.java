@@ -1,10 +1,13 @@
 package com.github.vbauer.avconv4java.core;
 
-import com.beust.jcommander.internal.Lists;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
 import java.util.List;
+
+import org.testng.annotations.Test;
+import org.testng.collections.Lists;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.emptyIterable;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.not;
 
 /**
  * @author Vladislav Bauer
@@ -24,10 +27,10 @@ public class AVRootOptionsTest {
             .flags(Lists.newArrayList())
             .flags();
 
-        Assert.assertEquals(rootOptions.getOutputFile(), OUTPUT_FILE);
+        assertThat(rootOptions.getOutputFile(), equalTo(OUTPUT_FILE));
 
         final List<String> options = rootOptions.build();
-        Assert.assertFalse(options.isEmpty());
+        assertThat(options, not(emptyIterable()));
     }
 
 }
