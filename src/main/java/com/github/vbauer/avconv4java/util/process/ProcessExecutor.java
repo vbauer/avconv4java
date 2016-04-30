@@ -32,7 +32,7 @@ public final class ProcessExecutor {
     ) throws Exception {
         final Process process = runProcess(arguments, debug);
         final boolean hasTimeout = timeout != null && timeout > 0;
-        return hasTimeout ? waitWithTimeout(process, arguments, timeout) : waitWithoutTimeout(process);
+        return hasTimeout ? waitWithTimeout(process, timeout) : waitWithoutTimeout(process);
     }
 
 
@@ -47,9 +47,7 @@ public final class ProcessExecutor {
         }
     }
 
-    private static ProcessInfo waitWithTimeout(
-        final Process process, final List<String> arguments, final long timeout
-    ) throws Exception {
+    private static ProcessInfo waitWithTimeout(final Process process, final long timeout) throws Exception {
         final ExecutorService executor = Executors.newSingleThreadExecutor();
         try {
             final Callable<ProcessInfo> task = new Callable<ProcessInfo>() {
@@ -62,12 +60,18 @@ public final class ProcessExecutor {
         } catch (final TimeoutException ex) {
             return ProcessInfo.error(ex.getMessage());
         } finally {
-            try {
-                executor.shutdownNow();
-                LOGGER.fine(String.format("Command %s was killed by timeout.", arguments));
-            } catch (final Exception ex) {
-                LOGGER.severe("Can't shutdown executor's watchdog service: " + ex.getMessage());
-            }
+            shutdownExecutor(executor);
+        }
+    }
+
+    private static boolean shutdownExecutor(final ExecutorService executor) {
+        try {
+            executor.shutdownNow();
+            LOGGER.fine("Command was killed by timeout.");
+            return true;
+        } catch (final Exception ex) {
+            LOGGER.severe("Can't shutdown executor's watchdog service: " + ex.getMessage());
+            return false;
         }
     }
 

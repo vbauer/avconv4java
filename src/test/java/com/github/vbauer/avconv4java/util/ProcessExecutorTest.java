@@ -1,6 +1,8 @@
 package com.github.vbauer.avconv4java.util;
 
+import java.lang.reflect.Method;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
 
 import com.github.vbauer.avconv4java.common.TestUtils;
 import com.github.vbauer.avconv4java.util.process.ProcessExecutor;
@@ -66,6 +68,14 @@ public class ProcessExecutorTest {
         assertThat(info.getOutput(), equalTo(MESSAGE_OS_TYPE));
     }
 
+    @Test
+    public void testShutdownExecutor() throws Exception {
+        final Method method = ProcessExecutor.class.getDeclaredMethod("shutdownExecutor", ExecutorService.class);
+        method.setAccessible(true);
+
+        assertThat((Boolean) method.invoke(null, new Object[] { null }), equalTo(false));
+    }
+
 
     /*
      * Internal API.
@@ -82,7 +92,7 @@ public class ProcessExecutorTest {
     }
 
     private List<String> getDirListCmd() {
-        if (AVUtils.isMac() || AVUtils.isSolaris() || AVUtils.isUnix()) {
+        if (couldHaveBash()) {
             return Lists.newArrayList("ls");
         } else if (AVUtils.isWindows()) {
             return Lists.newArrayList("CMD", "/C", "DIR");
@@ -91,11 +101,19 @@ public class ProcessExecutorTest {
     }
 
     private List<String> getSleepCmd() {
-        if (AVUtils.isMac() || AVUtils.isSolaris() || AVUtils.isUnix()) {
+        if (couldHaveBash()) {
             return Lists.newArrayList("sleep", "1");
         }
         // XXX: Test is not run on Windows, because OS does not have command "sleep".
         throw new SkipException(MESSAGE_OS_TYPE);
+    }
+
+    private boolean couldHaveBash() {
+        final boolean mac = AVUtils.isMac();
+        final boolean solaris = AVUtils.isSolaris();
+        final boolean unix = AVUtils.isUnix();
+
+        return mac || solaris || unix;
     }
 
 }
