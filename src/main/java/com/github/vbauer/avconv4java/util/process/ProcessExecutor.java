@@ -64,14 +64,12 @@ public final class ProcessExecutor {
         }
     }
 
-    private static boolean shutdownExecutor(final ExecutorService executor) {
+    private static void shutdownExecutor(final ExecutorService executor) {
         try {
             executor.shutdownNow();
             LOGGER.fine("Command was killed by timeout.");
-            return true;
         } catch (final Exception ex) {
             LOGGER.severe("Can't shutdown executor's watchdog service: " + ex.getMessage());
-            return false;
         }
     }
 
