@@ -3,12 +3,7 @@ package com.github.vbauer.avconv4java.util.process;
 import com.github.vbauer.avconv4java.util.AVUtils;
 
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
+import java.util.concurrent.*;
 import java.util.logging.Logger;
 
 /**
@@ -50,12 +45,7 @@ public final class ProcessExecutor {
     private static ProcessInfo waitWithTimeout(final Process process, final long timeout) throws Exception {
         final ExecutorService executor = Executors.newSingleThreadExecutor();
         try {
-            final Callable<ProcessInfo> task = new Callable<ProcessInfo>() {
-                public ProcessInfo call() throws Exception {
-                    return waitWithoutTimeout(process);
-                }
-            };
-            final Future<ProcessInfo> future = executor.submit(task);
+            final Future<ProcessInfo> future = executor.submit(() -> waitWithoutTimeout(process));
             return future.get(timeout, TimeUnit.MILLISECONDS);
         } catch (final TimeoutException ex) {
             return ProcessInfo.error(ex.getMessage());

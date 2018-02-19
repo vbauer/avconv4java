@@ -1,19 +1,18 @@
 package com.github.vbauer.avconv4java.util;
 
-import java.lang.reflect.Method;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-
 import com.github.vbauer.avconv4java.common.TestUtils;
 import com.github.vbauer.avconv4java.util.process.ProcessExecutor;
 import com.github.vbauer.avconv4java.util.process.ProcessInfo;
 import org.testng.SkipException;
 import org.testng.annotations.Test;
 import org.testng.collections.Lists;
+
+import java.lang.reflect.Method;
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.not;
-import static org.hamcrest.Matchers.nullValue;
+import static org.hamcrest.Matchers.*;
 
 /**
  * @author Vladislav Bauer
@@ -73,7 +72,8 @@ public class ProcessExecutorTest {
         final Method method = ProcessExecutor.class.getDeclaredMethod("shutdownExecutor", ExecutorService.class);
         method.setAccessible(true);
 
-        assertThat((Boolean) method.invoke(null, new Object[] { null }), equalTo(false));
+        final Object result = method.invoke(null, new Object[]{null});
+        assertThat(result, nullValue());
     }
 
 
