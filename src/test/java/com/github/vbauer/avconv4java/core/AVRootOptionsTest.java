@@ -1,13 +1,12 @@
 package com.github.vbauer.avconv4java.core;
 
-import java.util.List;
-
 import org.testng.annotations.Test;
 import org.testng.collections.Lists;
+
+import java.util.List;
+
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.emptyIterable;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.*;
 
 /**
  * @author Vladislav Bauer
@@ -22,7 +21,7 @@ public class AVRootOptionsTest {
     @Test
     public void testSmokeAVRootOptions() {
         final AVRootOptions rootOptions = AVRootOptions.create(INPUT_FILE, OUTPUT_FILE)
-            .builders(Lists.<AVOptions>newArrayList())
+            .builders(Lists.newArrayList())
             .builders()
             .flags(Lists.newArrayList())
             .flags();

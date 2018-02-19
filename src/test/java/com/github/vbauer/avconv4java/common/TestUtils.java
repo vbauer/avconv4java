@@ -13,7 +13,7 @@ public final class TestUtils {
     }
 
 
-    public static void checkUtilClassConstructor(final Class<?> utilsClass) throws Throwable {
+    public static void checkUtilClassConstructor(final Class<?> utilsClass) {
         PrivateConstructorChecker.forClass(utilsClass)
             .expectedTypeOfException(UnsupportedOperationException.class)
             .check();

@@ -1,12 +1,12 @@
 package com.github.vbauer.avconv4java.option;
 
-import java.util.List;
-
-import com.github.vbauer.avconv4java.core.AVOptions;
 import com.github.vbauer.avconv4java.type.AVAudioCodecType;
 import com.github.vbauer.avconv4java.type.AVStreamType;
 import org.testng.annotations.Test;
 import org.testng.collections.Lists;
+
+import java.util.List;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.emptyIterable;
 import static org.hamcrest.Matchers.not;
@@ -34,7 +34,7 @@ public class AVAudioOptionsTest {
             .sampleFormat("format")
             .sampleRate(AVStreamType.AUDIO, 1)
             .sampleRate(1)
-            .builders(Lists.<AVOptions>newArrayList())
+            .builders(Lists.newArrayList())
             .builders()
             .flags(Lists.newArrayList())
             .flags()

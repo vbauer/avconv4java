@@ -1,15 +1,11 @@
 package com.github.vbauer.avconv4java.option;
 
-import java.util.List;
-
-import com.github.vbauer.avconv4java.core.AVOptions;
-import com.github.vbauer.avconv4java.type.AVCodecFlagType;
-import com.github.vbauer.avconv4java.type.AVDebugInfoType;
-import com.github.vbauer.avconv4java.type.AVMotionEstimationType;
-import com.github.vbauer.avconv4java.type.AVStreamType;
-import com.github.vbauer.avconv4java.type.AVStrictType;
+import com.github.vbauer.avconv4java.type.*;
 import org.testng.annotations.Test;
 import org.testng.collections.Lists;
+
+import java.util.List;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.emptyIterable;
 import static org.hamcrest.Matchers.not;
@@ -46,7 +42,7 @@ public class AVCodecOptionsTest {
             .strict(AVStrictType.STRICT.getName())
             .videoBitRateTolerance(AVStreamType.AUDIO, 1)
             .videoBitRateTolerance(1)
-            .builders(Lists.<AVOptions>newArrayList())
+            .builders(Lists.newArrayList())
             .builders()
             .flags(Lists.newArrayList())
             .flags()

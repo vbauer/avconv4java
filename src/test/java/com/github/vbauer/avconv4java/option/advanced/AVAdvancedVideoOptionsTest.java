@@ -1,12 +1,12 @@
 package com.github.vbauer.avconv4java.option.advanced;
 
-import java.util.List;
-
-import com.github.vbauer.avconv4java.core.AVOptions;
 import com.github.vbauer.avconv4java.type.AVHardwareAccelerationType;
 import com.github.vbauer.avconv4java.type.AVStreamType;
 import org.testng.annotations.Test;
 import org.testng.collections.Lists;
+
+import java.util.List;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.emptyIterable;
 import static org.hamcrest.Matchers.not;
@@ -28,7 +28,7 @@ public class AVAdvancedVideoOptionsTest {
             .pixelFormat(AVStreamType.AUDIO, "format")
             .pixelFormat("format")
             .swScalerFlags("flags")
-            .builders(Lists.<AVOptions>newArrayList())
+            .builders(Lists.newArrayList())
             .builders()
             .flags(Lists.newArrayList())
             .flags()

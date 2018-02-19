@@ -1,11 +1,11 @@
 package com.github.vbauer.avconv4java.option;
 
-import java.util.List;
-
-import com.github.vbauer.avconv4java.core.AVOptions;
 import com.github.vbauer.avconv4java.type.AVLogLevelType;
 import org.testng.annotations.Test;
 import org.testng.collections.Lists;
+
+import java.util.List;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.emptyIterable;
 import static org.hamcrest.Matchers.not;
@@ -24,7 +24,7 @@ public class AVGenericOptionsTest {
             .logLevel(AVLogLevelType.DEBUG)
             .logLevel(AVLogLevelType.DEBUG.getName())
             .showLicense()
-            .builders(Lists.<AVOptions>newArrayList())
+            .builders(Lists.newArrayList())
             .builders()
             .flags(Lists.newArrayList())
             .flags()
