@@ -38,6 +38,19 @@ API was designed with KISS principle in mind to be as simple as possible.
 
 ## Setup
 
+Gradle:
+```groovy
+repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}
+
+dependencies {
+    compile 'com.github.vbauer:avconv4java:1.2.3'
+}
+```
+
 Maven:
 ```xml
 <repository>
@@ -48,21 +61,8 @@ Maven:
 <dependency>
     <groupId>com.github.vbauer</groupId>
     <artifactId>avconv4java</artifactId>
-    <version>1.2.2</version>
+    <version>1.2.3</version>
 </dependency>
-```
-
-Gradle:
-```groovy
-repositories {
-    maven {
-        url "https://jitpack.io"
-    }
-}
-
-dependencies {
-    compile 'com.github.vbauer:avconv4java:1.2.2'
-}
 ```
 
 
