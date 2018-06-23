@@ -6,7 +6,7 @@ import com.github.vbauer.avconv4java.util.AVUtils;
  * @author Vladislav Bauer
  */
 
-public enum  AVTargetFileType implements NamedType {
+public enum AVTargetFileType implements NamedType {
 
     VCD(Constants.VCD),
 

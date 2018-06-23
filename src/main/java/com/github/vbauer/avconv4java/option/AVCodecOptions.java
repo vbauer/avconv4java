@@ -10,6 +10,7 @@ import com.github.vbauer.avconv4java.type.AVStrictType;
 import java.util.Collection;
 
 /**
+ * Codec Audio/Video Options.
  * @see <a href="http://libav.org/avconv.html#Codec-AVOptions">Official doc: "5.4 Codec AVOptions"</a>
  *
  * @author Vladislav Bauer
@@ -64,8 +65,8 @@ public class AVCodecOptions extends AVOptions {
     }
 
     /**
-     * ‘-b[:stream_specifier] integer (output,audio,video)’
      * Set bitrate (in kbits/s).
+     * CMD: ‘-b[:stream_specifier] integer (output,audio,video)’
      */
     public AVCodecOptions bitRate(final AVStreamType streamType, final Integer bitRate) {
         return flags(specifyStream(FLAG_BIT_RATE, streamType), kb(bitRate));
@@ -76,10 +77,10 @@ public class AVCodecOptions extends AVOptions {
     }
 
     /**
-     * ‘-bt[:stream_specifier] integer (output,video)’
      * Set video bitrate tolerance (in kbits/s). In 1-pass mode, bitrate tolerance specifies how far ratecontrol is
      * willing to deviate from the target average bitrate value. This is not related to minimum/maximum bitrate.
      * Lowering tolerance too much has an adverse effect on quality.
+     * CMD: ‘-bt[:stream_specifier] integer (output,video)’
      */
     public AVCodecOptions videoBitRateTolerance(final AVStreamType streamType, final Integer bitRate) {
         return flags(specifyStream(FLAG_VIDEO_BIT_RATE_TOLERANCE, streamType), kb(bitRate));
@@ -90,8 +91,8 @@ public class AVCodecOptions extends AVOptions {
     }
 
     /**
-     * ‘-me_method[:stream_specifier] integer (output,video)’
      * Set motion estimation method.
+     * CMD: ‘-me_method[:stream_specifier] integer (output,video)’
      */
     public AVCodecOptions motionEstimationMethod(
         final AVStreamType streamType, final AVMotionEstimationType motionEstimationType
@@ -113,8 +114,8 @@ public class AVCodecOptions extends AVOptions {
     }
 
     /**
-     * ‘-debug[:stream_specifier] flags (input/output,audio,video,subtitles)’
      * Print specific debug info.
+     * CMD: ‘-debug[:stream_specifier] flags (input/output,audio,video,subtitles)’
      */
     public AVCodecOptions debug(final AVDebugInfoType debugInfoType) {
         return debug(debugInfoType == null ? null : debugInfoType.getName());
@@ -125,7 +126,8 @@ public class AVCodecOptions extends AVOptions {
     }
 
     /**
-     * ‘-flags[:stream_specifier] flags (input/output,audio,video)’
+     * Codec flags.
+     * CMD: ‘-flags[:stream_specifier] flags (input/output,audio,video)’
      */
     public AVCodecOptions codecFlags(final AVStreamType streamType, final AVCodecFlagType flagType) {
         return codecFlags(streamType, flagType == null ? null : flagType.getName());
@@ -144,8 +146,8 @@ public class AVCodecOptions extends AVOptions {
     }
 
     /**
-     * ‘-g[:stream_specifier] integer (output,video)’
-     * set the group of picture (GOP) size
+     * Set the group of picture (GOP) size.
+     * CMD: ‘-g[:stream_specifier] integer (output,video)’
      */
     public AVCodecOptions groupOfPictures(final AVStreamType streamType, final Integer gopSize) {
         return flags(specifyStream(FLAG_GROUP_OF_PICTURES, streamType), gopSize);
@@ -156,8 +158,8 @@ public class AVCodecOptions extends AVOptions {
     }
 
     /**
-     * ‘-cutoff[:stream_specifier] integer (output,audio)’
-     * set cutoff bandwidth
+     * Set cutoff bandwidth.
+     * CMD: ‘-cutoff[:stream_specifier] integer (output,audio)’
      */
     public AVCodecOptions cutOffBandwidth(final AVStreamType streamType, final Integer bandwidth) {
         return flags(specifyStream(FLAG_CUT_OFF_BANDWIDTH, streamType), bandwidth);

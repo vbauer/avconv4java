@@ -8,6 +8,7 @@ import com.github.vbauer.avconv4java.type.AVFormatFlagType;
 import java.util.Collection;
 
 /**
+ * Format Audio/Video Options.
  * @see <a href="http://libav.org/avconv.html#Format-AVOptions">Official doc: "5.5 Format AVOptions"</a>
  *
  * @author Vladislav Bauer
@@ -56,23 +57,24 @@ public class AVFormatOptions extends AVOptions {
 
 
     /**
-     * ‘-probesize integer (input)’
-     * set probing size
+     * Set probing size.
+     * CMD: ‘-probesize integer (input)’
      */
     public AVFormatOptions probeSize(final Long size) {
         return flags(FLAG_PROBE_SIZE, size);
     }
 
     /**
-     * ‘-packetsize integer (output)’
-     * set packet size
+     * Set packet size.
+     * CMD: ‘-packetsize integer (output)’
      */
     public AVFormatOptions packetSize(final Long size) {
         return flags(FLAG_PACKET_SIZE, size);
     }
 
     /**
-     * ‘-fflags flags (input/output)’
+     * Set format flags.
+     * CMD: ‘-fflags flags (input/output)’
      */
     public AVFormatOptions formatFlags(final AVFormatFlagType formatFlagType) {
         return formatFlags(formatFlagType == null ? null : formatFlagType.getName());
@@ -83,40 +85,40 @@ public class AVFormatOptions extends AVOptions {
     }
 
     /**
-     * ‘-analyzeduration integer (input)’
-     * how many microseconds are analyzed to estimate duration
+     * How many microseconds are analyzed to estimate duration.
+     * CMD: ‘-analyzeduration integer (input)’
      */
     public AVFormatOptions analyzeDuration(final Long duration) {
         return flags(FLAG_ANALYZE_DURATION, duration);
     }
 
     /**
-     * ‘-cryptokey hexadecimal string (input)’
-     * decryption key
+     * Set decryption key.
+     * CMD: ‘-cryptokey hexadecimal string (input)’
      */
     public AVFormatOptions decryptionKey(final String key) {
         return flags(FLAG_DECRYPTION_KEY, key);
     }
 
     /**
-     * ‘-indexmem integer (input)’
-     * max memory used for timestamp index (per stream)
+     * Max memory used for timestamp index (per stream).
+     * CMD: ‘-indexmem integer (input)’
      */
     public AVFormatOptions timestampIndexSize(final Long maxMemory) {
         return flags(FLAG_TIMESTAMP_INDEX_SIZE, maxMemory);
     }
 
     /**
-     * ‘-rtbufsize integer (input)’
-     * max memory used for buffering real-time frames
+     * Max memory used for buffering real-time frames.
+     * CMD: ‘-rtbufsize integer (input)’
      */
     public AVFormatOptions realTimeBufferSize(final Long maxMemory) {
         return flags(FLAG_REAL_TIME_BUFFER_SIZE, maxMemory);
     }
 
     /**
-     * ‘-fdebug flags (input/output)’
-     * print specific debug info
+     * Print specific debug info.
+     * CMD: ‘-fdebug flags (input/output)’
      */
     public AVFormatOptions debugInfo(final AVFormatDebugInfoType debugInfoType) {
         return debugInfo(debugInfoType == null ? null : debugInfoType.getName());
@@ -127,24 +129,24 @@ public class AVFormatOptions extends AVOptions {
     }
 
     /**
-     * ‘-max_delay integer (input/output)’
-     * maximum muxing or demuxing delay in microseconds
+     * Maximum muxing or demuxing delay in microseconds.
+     * CMD: ‘-max_delay integer (input/output)’
      */
     public AVFormatOptions maxDelay(final Long delay) {
         return flags(FLAG_MAX_DELAY, delay);
     }
 
     /**
-     * ‘-fpsprobesize integer (input)’
-     * number of frames used to probe fps
+     * Number of frames used to probe fps.
+     * CMD: ‘-fpsprobesize integer (input)’
      */
     public AVFormatOptions fpsProbeSize(final Long size) {
         return flags(FLAG_FPS_PROBE_SIZE, size);
     }
 
     /**
-     * ‘-f_err_detect flags (input)’
-     * set error detection flags (deprecated; use err_detect, save via avconv)
+     * Set error detection flags (deprecated; use err_detect, save via avconv).
+     * CMD: ‘-f_err_detect flags (input)’
      */
     public AVFormatOptions errorDetection(final AVErrorDetectionType errorDetectionType) {
         return errorDetection(errorDetectionType == null ? null : errorDetectionType.getName());

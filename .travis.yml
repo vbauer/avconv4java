@@ -1,18 +1,27 @@
 language: java
-
-script: mvn clean package -P strict
-
-after_success:
-  - mvn jacoco:report coveralls:report
-  - bash ./deploy.sh
-
 jdk:
   - oraclejdk8
 
 sudo: false
+env:
+  - TERM=dumb
+
+before_install:
+  - chmod +x gradlew deploy.sh
+
+script:
+  - ./gradlew build --stacktrace
+
+after_success:
+  - ./gradlew jacocoTestReport coveralls --stacktrace
+  - bash ./deploy.sh
+
+before_cache:
+  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
 cache:
   directories:
-    - $HOME/.m2
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
 
 env:
   global:

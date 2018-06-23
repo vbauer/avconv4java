@@ -6,6 +6,7 @@ import com.github.vbauer.avconv4java.type.AVLogLevelType;
 import java.util.Collection;
 
 /**
+ * Generic options.
  * @see <a href="http://libav.org/avconv.html#Generic-options">Official doc: "5.2 Generic options"</a>
  *
  * @author Vladislav Bauer

@@ -9,6 +9,7 @@ import java.nio.charset.Charset;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Generic utils.
@@ -35,12 +36,7 @@ public final class AVUtils {
 
     public static boolean hasNull(final Object... arguments) {
         if (!isEmpty(arguments)) {
-            for (final Object argument : arguments) {
-                if (argument == null) {
-                    return true;
-                }
-            }
-            return false;
+            return !Arrays.stream(arguments).allMatch(Objects::nonNull);
         }
         return true;
     }
@@ -125,8 +121,8 @@ public final class AVUtils {
         final Charset charset = Charset.defaultCharset();
 
         try (
-            final InputStreamReader streamReader = new InputStreamReader(inputStream, charset);
-            final BufferedReader reader = new BufferedReader(streamReader)
+            InputStreamReader streamReader = new InputStreamReader(inputStream, charset);
+            BufferedReader reader = new BufferedReader(streamReader)
         ) {
             final StringBuilder result = new StringBuilder();
             String line;

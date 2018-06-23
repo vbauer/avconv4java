@@ -7,7 +7,8 @@ import com.github.vbauer.avconv4java.type.AVStreamType;
 import java.util.Collection;
 
 /**
- * @see <a href="http://libav.org/avconv.html#Audio-Options">Official doc: "5.9 Audio Options"</a>
+ * Audio Options.
+ * @see <a href="http://libav.org/avconv.html#Audio-Options">Official doc: "5.9 Audio Options"</a>.
  *
  * @author Vladislav Bauer
  */

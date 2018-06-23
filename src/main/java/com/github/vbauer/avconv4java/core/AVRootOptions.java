@@ -62,8 +62,8 @@ public class AVRootOptions extends AVOptions {
 
 
     /**
-     * E‘-i filename (input)’
-     * input file name
+     * An input file name.
+     * CMD: ‘-i filename (input)’
      */
     private void inputFile(final String filename) {
         flags(FLAG_INPUT_FILE, filename);

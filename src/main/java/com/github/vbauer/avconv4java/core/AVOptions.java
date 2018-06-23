@@ -15,7 +15,7 @@ import java.util.List;
 
 public class AVOptions {
 
-    private final List<AVOptions> builders = new LinkedList<>();
+    private final List<AVOptions> options = new LinkedList<>();
     private final List<String> arguments = new LinkedList<>();
 
 
@@ -58,7 +58,7 @@ public class AVOptions {
                 if (builder instanceof AVRootOptions) {
                     throw new IllegalArgumentException("It's impossible to add root options as child node");
                 }
-                this.builders.add(builder);
+                this.options.add(builder);
             }
         }
         return this;
@@ -67,7 +67,7 @@ public class AVOptions {
     public List<String> build() {
         final List<String> result = new LinkedList<>();
         result.addAll(arguments);
-        for (final AVOptions builder : builders) {
+        for (final AVOptions builder : options) {
             result.addAll(builder.build());
         }
         return result;

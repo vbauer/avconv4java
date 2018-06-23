@@ -10,6 +10,7 @@ import com.github.vbauer.avconv4java.util.AVUtils;
 import java.util.Collection;
 
 /**
+ * Video Options.
  * @see <a href="http://libav.org/avconv.html#Video-Options">Official doc: "5.7 Video Options"</a>
  *
  * @author Vladislav Bauer

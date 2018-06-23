@@ -6,6 +6,7 @@ import com.github.vbauer.avconv4java.util.process.ProcessInfo;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Class that represents a avconv command.
@@ -18,7 +19,7 @@ public class AVCommand {
     public static final String DEFAULT_TOOL_PATH = "/usr/bin/avconv";
     public static final String SYSTEM_PROPERTY_TOOL_PATH = "AVCONV4JAVA_TOOLPATH";
 
-    private static volatile String globalToolPath = getDefaultToolPath();
+    private static final AtomicReference<String> GLOBAL_TOOL_PATH = new AtomicReference<>(getDefaultToolPath());
 
 
     private boolean debug;
@@ -32,12 +33,12 @@ public class AVCommand {
     }
 
     public static String setGlobalToolPath(final String toolPath) {
-        AVCommand.globalToolPath = toolPath;
+        AVCommand.GLOBAL_TOOL_PATH.set(toolPath);
         return toolPath;
     }
 
     public static String getGlobalToolPath() {
-        return AVCommand.globalToolPath;
+        return AVCommand.GLOBAL_TOOL_PATH.get();
     }
 
 

@@ -5,6 +5,7 @@ import com.github.vbauer.avconv4java.core.AVOptions;
 import java.util.Collection;
 
 /**
+ * Subtitle options.
  * @see <a href="http://libav.org/avconv.html#Subtitle-options_003a">Official doc: "5.11 Subtitle options"</a>
  *
  * @author Vladislav Bauer

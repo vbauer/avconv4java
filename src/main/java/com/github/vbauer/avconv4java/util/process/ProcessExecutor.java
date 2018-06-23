@@ -4,6 +4,7 @@ import com.github.vbauer.avconv4java.util.AVUtils;
 
 import java.util.List;
 import java.util.concurrent.*;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -59,7 +60,9 @@ public final class ProcessExecutor {
             executor.shutdownNow();
             LOGGER.fine("Command was killed by timeout.");
         } catch (final Exception ex) {
-            LOGGER.severe("Can't shutdown executor's watchdog service: " + ex.getMessage());
+            if (LOGGER.isLoggable(Level.SEVERE)) {
+                LOGGER.severe("Can't shutdown executor's watchdog service: " + ex.getMessage());
+            }
         }
     }
 
