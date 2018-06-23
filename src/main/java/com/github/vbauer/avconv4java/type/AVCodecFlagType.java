@@ -39,7 +39,7 @@ public enum AVCodecFlagType implements NamedType {
     GMC(Constants.GMC),
 
     /**
-     * Always try a mb with mv=<0,0>.
+     * Always try a mb with mv="0,0".
      */
     MV0(Constants.MV0),
 

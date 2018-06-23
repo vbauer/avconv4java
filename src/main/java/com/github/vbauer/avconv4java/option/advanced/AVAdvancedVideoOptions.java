@@ -37,8 +37,8 @@ public class AVAdvancedVideoOptions extends AVOptions {
 
 
     /**
-     * ‘-pix_fmt[:stream_specifier] format (input/output,per-stream)’
      * Set pixel format. Use -pix_fmts to show all the supported pixel formats.
+     * CMD: ‘-pix_fmt[:stream_specifier] format (input/output,per-stream)’
      */
     public AVAdvancedVideoOptions pixelFormat(final AVStreamType streamType, final String format) {
         return flags(specifyStream(FLAG_PIXEL_FORMAT, streamType), format);
@@ -49,39 +49,38 @@ public class AVAdvancedVideoOptions extends AVOptions {
     }
 
     /**
-     * ‘-sws_flags flags (input/output)’
      * Set SwScaler flags.
+     * CMD: ‘-sws_flags flags (input/output)’
      */
     public AVAdvancedVideoOptions swScalerFlags(final String flags) {
         return flags(FLAG_SW_SCALER_FLAGS, flags);
     }
 
     /**
-     * ‘-vdt n’
      * Discard threshold.
+     * CMD: ‘-vdt n’
      */
     public AVAdvancedVideoOptions discardThreshold(final Integer threshold) {
         return flags(FLAG_DISCARD_THRESHOLD, threshold);
     }
 
     /**
-     * ‘-vstats’
      * Dump video coding statistics to ‘vstats_HHMMSS.log’.
+     * CMD: ‘-vstats’
      */
     public AVAdvancedVideoOptions dumpVideoEncodingStatistics() {
         return flags(FLAG_DUMP_VIDEO_ENCODING_STATISTICS);
     }
 
     /**
-     * ‘-vstats_file file’
      * Dump video coding statistics to file.
+     * CMD: ‘-vstats_file file’
      */
     public AVAdvancedVideoOptions dumpVideoEncodingStatistics(final String fileName) {
         return flags(FLAG_DUMP_VIDEO_ENCODING_STATISTICS_FILE, fileName);
     }
 
     /**
-     * ‘-hwaccel[:stream_specifier] hwaccel (input,per-stream)’
      * Use hardware acceleration to decode the matching stream(s).
      *
      * This option has no effect if the selected hwaccel is not available or not supported by the chosen decoder.
@@ -89,6 +88,8 @@ public class AVAdvancedVideoOptions extends AVOptions {
      * Note that most acceleration methods are intended for playback and will not be faster than software decoding
      * on modern CPUs. Additionally, avconv will usually need to copy the decoded frames from the GPU memory into
      * the system memory, resulting in further performance loss. This option is thus mainly useful for testing.
+     *
+     * CMD: ‘-hwaccel[:stream_specifier] hwaccel (input,per-stream)’
      */
     public AVAdvancedVideoOptions hardwareAcceleration(
         final AVStreamType streamType, final AVHardwareAccelerationType accelerationType

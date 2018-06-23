@@ -37,6 +37,11 @@ task wrapper(type: Wrapper) {
     distributionType = Wrapper.DistributionType.ALL
 }
 
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+    options.addBooleanOption('html5', true)
+}
+
 compileJava {
     String javaVersion = JavaVersion.VERSION_1_8
 

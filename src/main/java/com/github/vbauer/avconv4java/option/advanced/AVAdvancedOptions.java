@@ -44,25 +44,25 @@ public class AVAdvancedOptions extends AVOptions {
 
 
     /**
-     * ‘-benchmark (global)’
      * Show benchmarking information at the end of an encode. Shows CPU time used and maximum memory consumption.
      * Maximum memory consumption is not supported on all systems, it will usually display as 0 if not supported.
+     * CMD: ‘-benchmark (global)’
      */
     public AVAdvancedOptions benchmark() {
         return flags(FLAG_BENCHMARK);
     }
 
     /**
-     * ‘-timelimit duration (global)’
      * Exit after avconv has been running for duration seconds.
+     * CMD: ‘-timelimit duration (global)’
      */
     public AVAdvancedOptions timeLimit(final Long limit) {
         return flags(FLAG_TIME_LIMIT, limit);
     }
 
     /**
-     * ‘-dump (global)’
      * Dump each input packet to stderr.
+     * CMD: ‘-dump (global)’
      */
     public AVAdvancedOptions dump() {
         return flags(FLAG_DUMP);
@@ -77,8 +77,8 @@ public class AVAdvancedOptions extends AVOptions {
     }
 
     /**
-     * ‘-vsync parameter’
      * Video sync method.
+     * CMD: ‘-vsync parameter’
      */
     public AVAdvancedOptions videoSyncMethod(final AVVideoSyncType videoSyncType) {
         return videoSyncMethod(videoSyncType == null ? null : videoSyncType.getName());
@@ -89,67 +89,67 @@ public class AVAdvancedOptions extends AVOptions {
     }
 
     /**
-     * ‘-copyts’
      * Copy timestamps from input to output.
+     * CMD: ‘-copyts’
      */
     public AVAdvancedOptions copyTimestamps() {
         return flags(FLAG_COPY_TIMESTAMPS);
     }
 
     /**
-     * ‘-copytb’
      * Copy input stream time base from input to output when stream copying.
+     * CMD: ‘-copytb’
      */
     public AVAdvancedOptions copyTimeBase() {
         return flags(FLAG_COPY_TIME_BASE);
     }
 
     /**
-     * ‘-dts_delta_threshold’
      * Timestamp discontinuity delta threshold.
+     * CMD: ‘-dts_delta_threshold’
      */
     public AVAdvancedOptions discontinuityDeltaThreshold() {
         return flags(FLAG_DISCONTINUITY_DELTA_THRESHOLD);
     }
 
     /**
-     * ‘-filter_complex_script filename (global)’
      * This option is similar to ‘-filter_complex’, the only difference is that its argument is the name of the file
      * from which a complex filtergraph description is to be read.
+     * CMD: ‘-filter_complex_script filename (global)’
      */
     public AVAdvancedOptions filterComplexScript(final String fileName) {
         return flags(FLAG_FILTER_COMPLEX_SCRIPT, fileName);
     }
 
     /**
-     * ‘-shortest (output)’
      * Finish encoding when the shortest input stream ends.
+     * CMD: ‘-shortest (output)’
      */
     public AVAdvancedOptions shortest() {
         return flags(FLAG_SHORTEST);
     }
 
     /**
-     * ‘-muxdelay seconds (input)’
      * Set the maximum demux-decode delay.
+     * CMD: ‘-muxdelay seconds (input)’
      */
     public AVAdvancedOptions maxDemuxDelay(final Long seconds) {
         return flags(FLAG_MAX_DEMUX_DELAY, seconds);
     }
 
     /**
-     * ‘-muxpreload seconds (input)’
      * Set the initial demux-decode delay.
+     * CMD: ‘-muxpreload seconds (input)’
      */
     public AVAdvancedOptions demuxPreLoadDelay(final Long seconds) {
         return flags(FLAG_DEMUX_PRELOAD_DELAY, seconds);
     }
 
     /**
-     * ‘-accurate_seek (input)’
      * This option enables or disables accurate seeking in input files with the ‘-ss’ option.
      * It is enabled by default, so seeking is accurate when transcoding. Use ‘-noaccurate_seek’ to disable it,
      * which may be useful e.g. when copying some streams and transcoding the others.
+     * CMD: ‘-accurate_seek (input)’
      */
     public AVAdvancedOptions accurateSeek(final boolean accurate) {
         return flags(accurate ? FLAG_ACCURATE_SEEK : FLAG_NO_ACCURATE_SEEK);
