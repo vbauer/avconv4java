@@ -12,7 +12,9 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.nullValue;
 
 /**
  * @author Vladislav Bauer
@@ -24,7 +26,7 @@ public class ProcessExecutorTest {
 
 
     @Test
-    public void testConstructorContract() throws Throwable {
+    public void testConstructorContract() {
         TestUtils.checkUtilClassConstructor(ProcessExecutor.class);
     }
 

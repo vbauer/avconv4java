@@ -55,7 +55,7 @@ public class TypeTest {
         }
 
         @Test
-        public void testConstructorContract() throws Throwable {
+        public void testConstructorContract() {
             TestUtils.checkUtilClassConstructor(utilClass);
         }
     }

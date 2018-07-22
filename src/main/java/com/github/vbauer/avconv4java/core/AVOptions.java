@@ -31,7 +31,7 @@ public class AVOptions {
 
 
     public AVOptions flags(final Collection<Object> flags) {
-        return AVUtils.isEmpty(flags) ? this : flags(flags.toArray(new Object[flags.size()]));
+        return AVUtils.isEmpty(flags) ? this : flags(flags.toArray(new Object[0]));
     }
 
     public AVOptions flags(final Object... flags) {

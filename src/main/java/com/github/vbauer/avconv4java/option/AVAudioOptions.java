@@ -8,7 +8,7 @@ import java.util.Collection;
 
 /**
  * Audio Options.
- * @see <a href="http://libav.org/avconv.html#Audio-Options">Official doc: "5.9 Audio Options"</a>.
+ * @see <a href="http://libav.org/avconv.html#Audio-Options">Official doc: "5.9 Audio Options"</a>
  *
  * @author Vladislav Bauer
  */
