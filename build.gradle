@@ -49,6 +49,10 @@ compileJava {
     targetCompatibility javaVersion
 }
 
+test {
+    useTestNG()
+}
+
 quality {
     pmd = false
 }
