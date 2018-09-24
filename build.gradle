@@ -5,7 +5,7 @@ plugins {
     id 'jacoco'
     id 'com.github.kt3k.coveralls' version '2.8.2'
     id 'com.github.ben-manes.versions' version '0.20.0'
-    id 'ru.vyarus.quality' version '3.1.1'
+    id 'ru.vyarus.quality' version '3.2.0'
     id 'ru.vyarus.java-lib' version '1.1.2'
 }
 
@@ -33,7 +33,7 @@ dependencies {
 }
 
 wrapper {
-    gradleVersion = '4.9'
+    gradleVersion = '4.10.2'
     distributionType = Wrapper.DistributionType.ALL
 }
 
