@@ -2,11 +2,10 @@ language: java
 jdk:
   - oraclejdk8
   - oraclejdk9
-  - oraclejdk10
+  - openjdk10
+  - openjdk11
 
 sudo: false
-env:
-  - TERM=dumb
 
 before_install:
   - chmod +x gradlew deploy.sh
@@ -27,5 +26,6 @@ cache:
 
 env:
   global:
-  - GH_REF: github.com/vbauer/avconv4java.git
-  - secure: "Rki2d/a/sy4/C6/o5hWNX/HOFOFs6vn4IDnrs8viQoGwmbD6czmhbCVAuSchOXns1N69lNU1O3IDSksKk5Omwai0nSyOewsAlq7PoNB12TgEu5MbJOazqZnFqaPLEcyTc6Kkju1b3Qje5XNo5pspxN5ZknXD/fMsZPcFQ5+EwgY="
+    - TERM=dumb
+    - GH_REF: github.com/vbauer/avconv4java.git
+    - secure: "Rki2d/a/sy4/C6/o5hWNX/HOFOFs6vn4IDnrs8viQoGwmbD6czmhbCVAuSchOXns1N69lNU1O3IDSksKk5Omwai0nSyOewsAlq7PoNB12TgEu5MbJOazqZnFqaPLEcyTc6Kkju1b3Qje5XNo5pspxN5ZknXD/fMsZPcFQ5+EwgY="
