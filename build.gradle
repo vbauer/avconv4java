@@ -27,14 +27,14 @@ ext.deps = [
 ]
 
 dependencies {
-    testCompile "org.testng:testng:${deps.testng}"
-    testCompile "org.hamcrest:hamcrest-library:${deps.hamcrest}"
-    testCompile "com.pushtorefresh.java-private-constructor-checker:checker:${deps.jpcc}"
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    testImplementation "org.testng:testng:${deps.testng}"
+    testImplementation "org.hamcrest:hamcrest-library:${deps.hamcrest}"
+    testImplementation "com.pushtorefresh.java-private-constructor-checker:checker:${deps.jpcc}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
 wrapper {
-    gradleVersion = '5.0'
+    gradleVersion = '5.3.1'
     distributionType = Wrapper.DistributionType.ALL
 }
 
